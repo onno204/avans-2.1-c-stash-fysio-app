@@ -15,7 +15,7 @@
                 <input type="password" class="form-control" id="password" placeholder="Wachtwoord">
             </div>
             <br />
-            <a class="btn btn-primary" style="width: 100%" asp-area="Manage" asp-controller="Dashboard" asp-action="Index">Inloggen</a>
+            <a class="btn btn-primary" style="width: 100%" asp-area="Manage" asp-controller="Dashboard" asp-action="Index">Inloggen als medewerker <i class="fa fa-lock-open"></i></a>
         </div>
     </div>
     <div class="col-md-2" style="height: 100%; position: relative">
@@ -35,10 +35,8 @@
                 <input type="password" class="form-control" id="password" placeholder="Wachtwoord">
             </div>
             <br />
-            <div class="row">
-                <div class="col-md-6"><a class="btn btn-primary" style="width: 100%" asp-area="Patient" asp-controller="Dashboard" asp-action="Index">Registreren</a></div>
-                <div class="col-md-6"><a class="btn btn-primary" style="width: 100%" asp-area="Patient" asp-controller="Dashboard" asp-action="Index">Inloggen</a></div>
-            </div>
+            <a class="btn btn-primary" style="width: 45%; padding-left: 0; padding-right: 0;" asp-area="Patient" asp-controller="Dashboard" asp-action="Index">Registreren <i class="fa fa-user-plus"></i></a>
+            <a class="btn btn-primary" style="width: 45%; float: right;" asp-area="Patient" asp-controller="Dashboard" asp-action="Index">Inloggen <i class="fa fa-lock-open"></i></a>
         </div>
     </div>
     <div class="col-md-6"></div>
