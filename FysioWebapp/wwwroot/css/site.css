@@ -19,5 +19,5 @@
     right: 50%;
     top: 5vh;
     position: fixed;
-    background-color: grey;
+    background-color: var(--accent-color);
 }

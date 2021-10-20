@@ -1,6 +1,36 @@
 ﻿
+:root {
+    --btn-bg-color: #185ADB;
+    --btn-color: #EFEFEF;
+    --btn-hover-bg-color: #0A1931;
+    --btn-hover-color: var(--btn-color);
+    --bg-color: #EFEFEF;
+    --accent-color: #FFC947;
+}
+
+.btn-primary {
+    background-color: var(--btn-bg-color);
+    border-color: var(--btn-bg-color);
+    color: var(--btn-color);
+}
+.btn {
+    border-color: var(--btn-bg-color);
+}
+    .btn-primary:hover {
+        background-color: var(--btn-hover-bg-color);
+        border-color: var(--btn-hover-bg-color);
+    }
+
+
+
 body {
     font-family: 'Roboto', sans-serif !important;
+    background-color: var(--bg-color);
+    /* color: #5C7AEA; */
+}
+
+input {
+    /* background-color: #E6E6E6 !important; */
 }
 
 select {
@@ -23,7 +53,7 @@ nav {
         right: 0;
         top: 1.5%;
         position: absolute;
-        background-color: grey;
+        background-color: var(--accent-color);
     }
 
     nav .nav-title {
@@ -91,19 +121,19 @@ content {
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 5px solid black;
+            border: 5px solid var(--btn-bg-color);
             box-sizing: border-box;
             border-radius: 5px;
         }
 
         .button a:before {
-            color: #fff;
-            background: #000;
+            color: var(--btn-color);
+            background-color: var(--btn-bg-color);
             transform: rotateY(0deg) translateZ(25px);
         }
 
         .button a:after {
-            color: #000;
+            color: var(--btn-bg-color);
             transform: rotateX(90deg) translateZ(25px);
         }
 
