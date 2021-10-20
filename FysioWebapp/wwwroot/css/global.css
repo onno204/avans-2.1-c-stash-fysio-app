@@ -1,0 +1,94 @@
+﻿
+html {
+    font-family: 'Roboto', sans-serif;
+}
+
+nav {
+    width: 20rem;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+}
+
+    nav::after {
+        content: "";
+        width: 1px;
+        height: 97vh;
+        right: 0;
+        top: 1.5%;
+        position: absolute;
+        background-color: grey;
+    }
+
+    nav .nav-title {
+        text-align: center;
+        width: 100%;
+        font-size: 200%;
+        margin-top: 1rem;
+    }
+
+    nav .nav-buttons {
+        margin-top: 3rem;
+        text-align-last: center;
+    }
+
+content {
+    width: calc(100vw - 23rem);
+    height: calc(100vh - 1.5rem);
+    top: 1.5rem;
+    right: 1.5rem;
+    position: fixed;
+}
+
+/* https://codepen.io/agrimsrud/pen/RwKbwXN */
+.button {
+    position: relative;
+    display: inline-flex;
+    width: 11.25rem;
+    height: 3.4rem;
+    perspective: 1000px;
+}
+
+    .button a {
+        font-size: 19px;
+        letter-spacing: 1px;
+        transform-style: preserve-3d;
+        transform: translateZ(-25px);
+        transition: transform .25s;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+        .button a:before,
+        .button a:after {
+            position: absolute;
+            content: attr(data-title);
+            height: 3.4rem;
+            width: 11.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 5px solid black;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        .button a:before {
+            color: #fff;
+            background: #000;
+            transform: rotateY(0deg) translateZ(25px);
+        }
+
+        .button a:after {
+            color: #000;
+            transform: rotateX(90deg) translateZ(25px);
+        }
+
+        .button a:hover {
+            transform: translateZ(-25px) rotateX(-90deg);
+        }
+
+
+
+
+

@@ -48,6 +48,14 @@ namespace FysioWebapp
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
+            });
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute("manage_route", "Manage/{controller=Dashboard}/{action=Index}/{id?}",
+                    defaults: new { area = "Manage" }, constraints: new { area = "Manage" });
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
