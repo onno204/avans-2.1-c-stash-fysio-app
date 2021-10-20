@@ -2,7 +2,84 @@
     ViewData["Title"] = "Nieuwe Patiënt";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<form asp-area="Manage" asp-controller="Patient" asp-action="Add">
+    <div class="row new-patient">
+        <div class="col-md-4">
+            <h3>Persoonsgegevens</h3>
+            <div class="form-group">
+                <label for="full-name">Volledige naam</label>
+                <input type="text" class="form-control" id="full-name" placeholder="Onno van Helfteren">
+            </div>
+            <div class="form-group">
+                <label for="email">E-mailadres</label>
+                <input type="email" class="form-control" id="email" placeholder="onno@fysioapp.com">
+            </div>
+            <div class="form-group">
+                <label for="birthdate">Geboortedatum</label>
+                <input type="date" class="form-control" id="birthdate">
+            </div>
+            <div class="form-group">
+                <label for="employee-or-student">Medewerker of student?</label>
+                <select class="form-control" id="employee-or-student">
+                    <option>Medewerker</option>
+                    <option>student</option>
+                </select>
+                <input type="number" class="form-control" id="studentnumber" placeholder="Student-/medewerkernummer">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3>Behandel gegevens</h3>
+            <div class="form-group">
+                <label for="global-description-complaints">Globale klachten omschrijving</label>
+                <textarea class="form-control" id="global-description-complaints" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="diagnosticscode">Diagnosecode</label>
+                <select class="form-control" id="diagnosticscode">
+                    <option>2500 [Inwendige organen thorax] Amputatie</option>
+                    <option>A2...</option>
+                </select>
+                <input type="text" disabled class="form-control" id="diagnostics-description" placeholder="Omschrijving" value="Amputatie">
+            </div>
+            <div class="form-group">
+                <label for="enddate-treatment">Einddatum behandeling</label>
+                <input type="date" class="form-control" id="enddate-treatment">
+            </div>
+            <div class="form-group">
+                <label for="comments">Opmerkingen (1 per regel)</label>
+                <textarea class="form-control" id="comments" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3>Administratie gegevens</h3>
+            <div class="form-group">
+                <label for="intake-by">Intake gedaan door</label>
+                <select class="form-control" id="intake-by">
+                    <option>onno@fysioapp.com</option>
+                    <option>A2...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="intake-supervision">Onder supervisie van</label>
+                <select class="form-control" id="intake-supervision">
+                    <option>sylvester@fysioapp.com</option>
+                    <option>A2...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="main-therapist">Hoofdbehandelaar</label>
+                <select class="form-control" id="main-therapist">
+                    <option>onno@fysioapp.com</option>
+                    <option>A2...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="signup-date">Aanmeld datum</label>
+                <input type="date" class="form-control" id="signup-date">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <button type="submit" style="float: right;" class="btn btn-primary">Opslaan</button>
+        </div>
+    </div>
+</form>

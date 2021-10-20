@@ -1,6 +1,10 @@
 ﻿
-html {
-    font-family: 'Roboto', sans-serif;
+body {
+    font-family: 'Roboto', sans-serif !important;
+}
+
+select {
+    appearance: auto !important;
 }
 
 nav {

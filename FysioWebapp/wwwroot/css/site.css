@@ -1,1 +1,15 @@
 ﻿
+.new-patient .form-group {
+    margin-top: 1.4rem;
+}
+
+.table-max-height-1 {
+    display: block;
+    max-height: calc(50% - 2.8rem );
+    overflow: auto;
+}
+.table-max-height-2 {
+    display: block;
+    max-height: 100%;
+    overflow: auto;
+}
