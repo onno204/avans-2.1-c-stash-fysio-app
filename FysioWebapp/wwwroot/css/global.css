@@ -55,6 +55,11 @@ content {
     position: fixed;
 }
 
+    content.no-nav {
+        width: calc(100vw - 3rem);
+    }
+
+
 /* https://codepen.io/agrimsrud/pen/RwKbwXN */
 .button {
     position: relative;

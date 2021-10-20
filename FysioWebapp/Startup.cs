@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FysioWebapp.Helpers;
 
 namespace FysioWebapp
 {
@@ -39,26 +40,32 @@ namespace FysioWebapp
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseMiddleware<RequestResponseLoggingMiddleware>();
             app.UseRouting();
-
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            // app.UseEndpoints(endpoints =>
+            // {
+            //     endpoints.MapControllers();
+            // });
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("manage_route", "Manage/{controller=Dashboard}/{action=Index}/{id?}",
                     defaults: new { area = "Manage" }, constraints: new { area = "Manage" });
 
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute("patient_route", "Patient/{controller=Dashboard}/{action=Index}/{id?}",
+                    defaults: new { area = "Patient" }, constraints: new { area = "Patient" });
+
+                endpoints.MapControllerRoute("default", "{controller=Login}/{action=Index}/{id?}",
+                    defaults: new { area = "Public" }, constraints: new { area = "Public" });
+
+                // endpoints.MapControllerRoute(
+                //     name: "default",
+                //     pattern: "{controller=Login}/{action=Index}");
             });
         }
     }

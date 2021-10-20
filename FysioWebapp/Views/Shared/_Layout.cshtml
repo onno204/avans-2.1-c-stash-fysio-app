@@ -15,20 +15,42 @@
     <link rel="stylesheet" href="~/css/listTimeline.css" />
 </head>
 <body>
-    <nav>
-        <div class="nav-title">@ViewData["Title"]</div>
-        <div class="nav-buttons">
-            <span class="button"><a data-title="Dashboard" asp-area="Manage" asp-controller="Dashboard" asp-action="Index"></a></span>
-            <span class="button"><a data-title="Patiënten lijst" asp-area="Manage" asp-controller="Patient" asp-action="List"></a></span>
-            <span class="button"><a data-title="Nieuwe patiënt" asp-area="Manage" asp-controller="Patient" asp-action="Add"></a></span>
-            <span class="button"><a data-title="Agenda" asp-area="Manage" asp-controller="Agenda" asp-action="Index"></a></span>
-        </div>
-        <div class="nav-bottom">
-            <span class="button"><a data-title="Uitloggen" asp-area="Manage" asp-controller="Dashboard" asp-action="Index"></a></span>
-            <label><i class="fa-solid fa-user"></i> onno@fysioapp.com</label>
-        </div>
-    </nav>
-    <content>
+    @{ Boolean hasNav = false; }
+    @if ((ViewContext.RouteData.Values["area"] ?? "").Equals("Manage"))
+    {
+        <nav>
+            <div class="nav-title">@ViewData["Title"] </div>
+            <div class="nav-buttons">
+                <span class="button"><a data-title="Dashboard" asp-area="Manage" asp-controller="Dashboard" asp-action="Index"></a></span>
+                <span class="button"><a data-title="Patiënten lijst" asp-area="Manage" asp-controller="Patient" asp-action="List"></a></span>
+                <span class="button"><a data-title="Nieuwe patiënt" asp-area="Manage" asp-controller="Patient" asp-action="Add"></a></span>
+                <span class="button"><a data-title="Agenda" asp-area="Manage" asp-controller="Agenda" asp-action="Index"></a></span>
+            </div>
+            <div class="nav-bottom">
+                <span class="button"><a data-title="Uitloggen" asp-area="Public" asp-controller="Login" asp-action="Index"></a></span>
+                <label><i class="fa-solid fa-user"></i> onno@fysioapp.com</label>
+            </div>
+        </nav>
+        hasNav = true;
+    }
+    @if ((ViewContext.RouteData.Values["area"] ?? "").Equals("Patient"))
+    {
+        <nav>
+            <div class="nav-title">@ViewData["Title"] </div>
+            <div class="nav-buttons">
+                <span class="button"><a data-title="Dashboard" asp-area="Patient" asp-controller="Dashboard" asp-action="Index"></a></span>
+                <span class="button"><a data-title="Mijn behandelingen" asp-area="Patient" asp-controller="Treatment" asp-action="Index"></a></span>
+                <span class="button"><a data-title="Afspraak inplannen" asp-area="Patient" asp-controller="Agenda" asp-action="Add"></a></span>
+                <span class="button"><a data-title="Agenda" asp-area="Patient" asp-controller="Agenda" asp-action="Index"></a></span>
+            </div>
+            <div class="nav-bottom">
+                <span class="button"><a data-title="Uitloggen" asp-area="Public" asp-controller="Login" asp-action="Index"></a></span>
+                <label><i class="fa-solid fa-user"></i> onno@fysioapp.com</label>
+            </div>
+        </nav>
+        hasNav = true;
+    }
+    <content class="@if (!hasNav){ @Html.Raw("no-nav"); }">
         @RenderBody()
     </content>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

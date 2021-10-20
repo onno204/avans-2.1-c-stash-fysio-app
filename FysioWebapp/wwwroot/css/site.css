@@ -1,5 +1,5 @@
 ﻿
-.new-patient .form-group {
+.form-group {
     margin-top: 1.4rem;
 }
 
@@ -12,4 +12,12 @@
     display: block;
     max-height: 100%;
     overflow: auto;
+}
+.login-spacer {
+    width: 1px;
+    height: 90vh;
+    right: 50%;
+    top: 5vh;
+    position: fixed;
+    background-color: grey;
 }

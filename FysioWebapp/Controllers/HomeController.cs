@@ -9,8 +9,6 @@ using System.Threading.Tasks;
 
 namespace FysioWebapp.Controllers
 {
-
-    [Route("[controller]/[action]")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -20,7 +18,6 @@ namespace FysioWebapp.Controllers
             _logger = logger;
         }
 
-        [Route("~/")]
         public IActionResult Index()
         {
             return View();

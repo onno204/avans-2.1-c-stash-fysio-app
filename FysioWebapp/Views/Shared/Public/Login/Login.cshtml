@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row">
+    <div class="col-md-5" style="height: 100vh; position: relative">
+
+
+        <div class="col-md-6" style="top: 35%; left: 50%; transform: translate(-50%, -50%); position: absolute;">
+            <h3 class="text-center" style="margin-bottom: 25%;">Medewerker Login</h3>
+            <div class="form-group">
+                <label for="email">E-mailadres</label>
+                <input type="email" class="form-control" id="email" placeholder="onno@fysioapp.com">
+            </div>
+            <div class="form-group">
+                <label for="password">Wachtwoord</label>
+                <input type="password" class="form-control" id="password" placeholder="Wachtwoord">
+            </div>
+            <br />
+            <a class="btn btn-primary" style="width: 100%" asp-area="Manage" asp-controller="Dashboard" asp-action="Index">Inloggen</a>
+        </div>
+    </div>
+    <div class="col-md-2" style="height: 100vh; position: relative">
+        <div class="login-spacer"></div>
+    </div>
+    <div class="col-md-5" style="height: 100vh; position: relative">
+
+
+        <div class="col-md-6" style="top: 35%; left: 50%; transform: translate(-50%, -50%); position: absolute;">
+            <h3 class="text-center" style="margin-bottom: 25%;">Patiënt Login</h3>
+            <div class="form-group">
+                <label for="email">E-mailadres</label>
+                <input type="email" class="form-control" id="email" placeholder="onno@fysioapp.com">
+            </div>
+            <div class="form-group">
+                <label for="password">Wachtwoord</label>
+                <input type="password" class="form-control" id="password" placeholder="Wachtwoord">
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6"><a class="btn btn-primary" style="width: 100%" asp-area="Patient" asp-controller="Dashboard" asp-action="Index">Registreren</a></div>
+                <div class="col-md-6"><a class="btn btn-primary" style="width: 100%" asp-area="Patient" asp-controller="Dashboard" asp-action="Index">Inloggen</a></div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="col-md-6"></div>
+</div>

@@ -21,12 +21,7 @@ namespace FysioWebapp.Controllers.Manage
 
         public IActionResult Index()
         {
-            return View("Manage/Dashboard/Index");
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            return View("Manage/Dashboard/Dashboard");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

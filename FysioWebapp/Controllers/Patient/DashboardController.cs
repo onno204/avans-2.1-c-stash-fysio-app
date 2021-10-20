@@ -7,21 +7,21 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FysioWebapp.Controllers.Manage
+namespace FysioWebapp.Controllers.Patient
 {
-    [Area("Manage")]
-    public class AgendaController : Controller
+    [Area("Patient")]
+    public class DashboardController : Controller
     {
-        private readonly ILogger<AgendaController> _logger;
+        private readonly ILogger<DashboardController> _logger;
 
-        public AgendaController(ILogger<AgendaController> logger)
+        public DashboardController(ILogger<DashboardController> logger)
         {
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View("Manage/Agenda/Agenda");
+            return View("Patient/Dashboard/Dashboard");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
