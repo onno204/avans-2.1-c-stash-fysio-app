@@ -47,12 +47,17 @@ nav {
         width: inherit;
     }
 
+.row {
+    width: 100%;
+}
+
 content {
     width: calc(100vw - 19rem);
     height: calc(100vh - 1.5rem);
     top: 1.5rem;
     right: 1.5rem;
     position: fixed;
+    overflow: auto;
 }
 
     content.no-nav {

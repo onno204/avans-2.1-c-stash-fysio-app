@@ -1,8 +1,246 @@
 ﻿@{
-    ViewData["Title"] = "Behandelingen";
+    ViewData["Title"] = "Behandeldossier";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Dashboard</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row new-patient">
+    <div class="col-md-3">
+        <h3>Persoonsgegevens</h3>
+        <div class="form-group">
+            <label for="full-name">Volledige naam</label>
+            <input type="text" class="form-control" id="full-name" placeholder="Onno van Helfteren" disabled>
+        </div>
+        <div class="form-group">
+            <label for="email">E-mailadres</label>
+            <input type="email" class="form-control" id="email" placeholder="onno@fysioapp.com" disabled>
+        </div>
+        <div class="form-group">
+            <label for="birthdate">Geboortedatum</label>
+            <input type="date" class="form-control" id="birthdate" disabled>
+        </div>
+        <div class="form-group">
+            <label for="employee-or-student">Medewerker of student?</label>
+            <select class="form-control" id="employee-or-student" disabled>
+                <option>Medewerker</option>
+            </select>
+            <input type="number" class="form-control" id="studentnumber" placeholder="Student-/medewerkernummer" value="2167988" disabled>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <h3>Behandel gegevens</h3>
+        <div class="form-group">
+            <label for="global-description-complaints">Globale klachten omschrijving</label>
+            <textarea class="form-control" id="global-description-complaints" rows="3" disabled></textarea>
+        </div>
+        <div class="form-group">
+            <label for="diagnosticscode">Diagnosecode</label>
+            <select class="form-control" id="diagnosticscode" disabled>
+                <option>2500 [Inwendige organen thorax] Amputatie</option>
+            </select>
+            <input type="text" disabled class="form-control" id="diagnostics-description" placeholder="Omschrijving" value="Amputatie" disabled>
+        </div>
+        <div class="form-group">
+            <label for="enddate-treatment">Einddatum behandeling</label>
+            <input type="date" class="form-control" id="enddate-treatment" disabled>
+        </div>
+        <br />
+    </div>
+    <div class="col-md-6" style="max-height: 50vh">
+        <h3>Bezoek geschiedenis</h3>
+        <table class="table table-max-height-1">
+            <thead>
+                <tr>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Start tijd</th>
+                    <th scope="col">Eind tijd</th>
+                    <th scope="col">Behandelaar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">01-10-2021</th>
+                    <td>10.00u</td>
+                    <td>11.00u</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021</th>
+                    <td>10.00u</td>
+                    <td>11.00u</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021</th>
+                    <td>10.00u</td>
+                    <td>11.00u</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021</th>
+                    <td>10.00u</td>
+                    <td>11.00u</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021</th>
+                    <td>10.00u</td>
+                    <td>11.00u</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021</th>
+                    <td>10.00u</td>
+                    <td>11.00u</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021</th>
+                    <td>10.00u</td>
+                    <td>11.00u</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021</th>
+                    <td>10.00u</td>
+                    <td>11.00u</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021</th>
+                    <td>10.00u</td>
+                    <td>11.00u</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021</th>
+                    <td>10.00u</td>
+                    <td>11.00u</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>Opmerking geschiedenis</h3>
+        <table class="table table-max-height-1">
+            <thead>
+                <tr>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Opmerking</th>
+                    <th scope="col">Door</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">01-10-2021 11:32</th>
+                    <td>Hij heeft overgewicht</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021 11:32</th>
+                    <td>Hij heeft overgewicht</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021 11:32</th>
+                    <td>Hij heeft overgewicht</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021 11:32</th>
+                    <td>Hij heeft overgewicht</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021 11:32</th>
+                    <td>Hij heeft overgewicht</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021 11:32</th>
+                    <td>Hij heeft overgewicht</td>
+                    <td>onno@fysioapp.com</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="margin-top: 1rem;" class="col-md-3">
+        <h3>Administratie gegevens</h3>
+        <div class="form-group">
+            <label for="intake-by">Intake gedaan door</label>
+            <select class="form-control" id="intake-by" disabled>
+                <option>onno@fysioapp.com</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="intake-supervision">Intake onder supervisie van</label>
+            <select class="form-control" id="intake-supervision" disabled>
+                <option>sylvester@fysioapp.com</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="main-therapist">Hoofdbehandelaar</label>
+            <select class="form-control" id="main-therapist" disabled>
+                <option>onno@fysioapp.com</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="signup-date">Aanmeld datum</label>
+            <input type="date" class="form-control" id="signup-date" disabled>
+        </div>
+    </div>
+    <div class="col-md-9 mt-3">
+        <h3>Behandel geschiedenis</h3>
+        <table class="table table-max-height-2">
+            <thead>
+                <tr>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Door</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Omschrijving</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">01-10-2021 11:32</th>
+                    <td>onno@fysioapp.com</td>
+                    <td>1100</td>
+                    <td>Individuele zitting kinderfysiotherapie</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021 11:32</th>
+                    <td>onno@fysioapp.com</td>
+                    <td>1100</td>
+                    <td>Individuele zitting kinderfysiotherapie</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021 11:32</th>
+                    <td>onno@fysioapp.com</td>
+                    <td>1100</td>
+                    <td>Individuele zitting kinderfysiotherapie</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021 11:32</th>
+                    <td>onno@fysioapp.com</td>
+                    <td>1100</td>
+                    <td>Individuele zitting kinderfysiotherapie</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021 11:32</th>
+                    <td>onno@fysioapp.com</td>
+                    <td>1100</td>
+                    <td>Individuele zitting kinderfysiotherapie</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021 11:32</th>
+                    <td>onno@fysioapp.com</td>
+                    <td>1100</td>
+                    <td>Individuele zitting kinderfysiotherapie</td>
+                </tr>
+                <tr>
+                    <th scope="row">01-10-2021 11:32</th>
+                    <td>onno@fysioapp.com</td>
+                    <td>1100</td>
+                    <td>Individuele zitting kinderfysiotherapie</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

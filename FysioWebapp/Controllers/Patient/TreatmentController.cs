@@ -21,7 +21,7 @@ namespace FysioWebapp.Controllers.Patient
 
         public IActionResult Index()
         {
-            return View("Patient/Agenda/Agenda");
+            return View("Patient/Treatment/Treatment");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

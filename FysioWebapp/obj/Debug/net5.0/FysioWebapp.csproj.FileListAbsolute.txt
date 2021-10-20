@@ -355,10 +355,12 @@ C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\o
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\ref\FysioWebapp.dll
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\FysioWebapp.pdb
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\FysioWebapp.genruntimeconfig.cache
-C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Manage\Dashboard\Index.cshtml.g.cs
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Manage\Patient\Add.cshtml.g.cs
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Manage\Patient\Info.cshtml.g.cs
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Manage\Patient\List.cshtml.g.cs
-C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Manage\Agenda\Index.cshtml.g.cs
-C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Patient\Dashboard\Index.cshtml.g.cs
-C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Public\Login\Index.cshtml.g.cs
+C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Manage\Agenda\Agenda.cshtml.g.cs
+C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Manage\Dashboard\Dashboard.cshtml.g.cs
+C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Patient\Agenda\Agenda.cshtml.g.cs
+C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Patient\Dashboard\Dashboard.cshtml.g.cs
+C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Patient\Treatment\Treatment.cshtml.g.cs
+C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Public\Login\Login.cshtml.g.cs
