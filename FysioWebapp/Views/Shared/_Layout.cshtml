@@ -17,7 +17,14 @@
     <nav>
         <div class="nav-title">@ViewData["Title"]</div>
         <div class="nav-buttons">
-            <span class="button"><a data-title="Dashboard" asp-area="Manage" asp-controller="Dashboard"></a></span>
+            <span class="button"><a data-title="Dashboard" asp-area="Manage" asp-controller="Dashboard" asp-action="Index"></a></span>
+            <span class="button"><a data-title="Patiënten lijst" asp-area="Manage" asp-controller="Patient" asp-action="List"></a></span>
+            <span class="button"><a data-title="Nieuwe patiënt" asp-area="Manage" asp-controller="Patient" asp-action="Add"></a></span>
+            <span class="button"><a data-title="Agenda" asp-area="Manage" asp-controller="Dashboard" asp-action="Index"></a></span>
+        </div>
+        <div class="nav-bottom">
+            <span class="button"><a data-title="Uitloggen" asp-area="Manage" asp-controller="Dashboard" asp-action="Index"></a></span>
+            <label><i class="fa-solid fa-user"></i> onno@fysioapp.com</label>
         </div>
     </nav>
     <content>
@@ -26,6 +33,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://kit.fontawesome.com/c9a94ca234.js" crossorigin="anonymous"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
