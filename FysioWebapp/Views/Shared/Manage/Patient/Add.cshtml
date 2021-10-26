@@ -1,81 +1,80 @@
 ﻿@{
     ViewData["Title"] = "Nieuwe Patiënt";
 }
+@model NewPatientModel
 
 <form asp-area="Manage" asp-controller="Patient" asp-action="Add">
     <div class="row new-patient">
         <div class="col-md-4">
             <h3>Persoonsgegevens</h3>
             <div class="form-group">
-                <label for="full-name">Volledige naam</label>
-                <input type="text" class="form-control" id="full-name" placeholder="Onno van Helfteren">
+                <label asp-for="FullName">Volledige naam</label>
+                <input asp-for="FullName" type="text" class="form-control" placeholder="Onno van Helfteren">
+                <span asp-validation-for="FullName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="email">E-mailadres</label>
-                <input type="email" class="form-control" id="email" placeholder="onno@fysioapp.com">
+                <label asp-for="Email">E-mailadres</label>
+                <input asp-for="Email" type="email" class="form-control" placeholder="onno@fysioapp.com">
+                <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="birthdate">Geboortedatum</label>
-                <input type="date" class="form-control" id="birthdate">
+                <label asp-for="BirthDate">Geboortedatum</label>
+                <input asp-for="BirthDate" type="date" class="form-control">
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="employee-or-student">Medewerker of student?</label>
-                <select class="form-control" id="employee-or-student">
-                    <option>Medewerker</option>
-                    <option>student</option>
-                </select>
-                <input type="number" class="form-control" id="studentnumber" placeholder="Student-/medewerkernummer">
+                <label asp-for="UserType">Medewerker of student?</label>
+                <select asp-for="UserType" asp-items="@ViewBag.UserTypes" class="form-control"></select>
+                <span asp-validation-for="UserType" class="text-danger"></span>
+                <input asp-for="AdditionalIdentifier" type="number" class="form-control" placeholder="Student-/medewerkernummer">
+                <span asp-validation-for="AdditionalIdentifier" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-4">
             <h3>Behandel gegevens</h3>
             <div class="form-group">
-                <label for="global-description-complaints">Globale klachten omschrijving</label>
-                <textarea class="form-control" id="global-description-complaints" rows="3"></textarea>
+                <label asp-for="GlobalDescriptionComplaints">Globale klachten omschrijving</label>
+                <textarea asp-for="GlobalDescriptionComplaints" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="GlobalDescriptionComplaints" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="diagnosticscode">Diagnosecode</label>
-                <select class="form-control" id="diagnosticscode">
-                    <option>2500 [Inwendige organen thorax] Amputatie</option>
-                    <option>A2...</option>
-                </select>
-                <input type="text" disabled class="form-control" id="diagnostics-description" placeholder="Omschrijving" value="Amputatie">
+                <label asp-for="DcsphCode">Diagnosecode</label>
+                <select asp-for="DcsphCode" class="form-control" asp-items="@ViewBag.DcsphCode" id="diagnosticscode"></select>
+                <input asp-for="DcsphCode" type="text" disabled class="form-control" placeholder="Omschrijving" value="Amputatie">
+                <span asp-validation-for="DcsphCode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="enddate-treatment">Einddatum behandeling</label>
-                <input type="date" class="form-control" id="enddate-treatment">
+                <label asp-for="EndDateTreatment">Einddatum behandeling</label>
+                <input asp-for="EndDateTreatment" type="date" class="form-control">
+                <span asp-validation-for="EndDateTreatment" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="comments">Opmerkingen (1 per regel)</label>
-                <textarea class="form-control" id="comments" rows="3"></textarea>
+                <label asp-for="CommentsInput">Opmerkingen (1 per regel)</label>
+                <textarea asp-for="CommentsInput" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="CommentsInput" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-4">
             <h3>Administratie gegevens</h3>
             <div class="form-group">
-                <label for="intake-by">Intake gedaan door</label>
-                <select class="form-control" id="intake-by">
-                    <option>onno@fysioapp.com</option>
-                    <option>A2...</option>
-                </select>
+                <label asp-for="IntakeUserId">Intake gedaan door</label>
+                <select asp-for="IntakeUserId" asp-items="@ViewBag.AllTherapists" class="form-control"></select>
+                <span asp-validation-for="IntakeUserId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="intake-supervision">Onder supervisie van</label>
-                <select class="form-control" id="intake-supervision">
-                    <option>sylvester@fysioapp.com</option>
-                    <option>A2...</option>
-                </select>
+                <label asp-for="IntakeSuperVisionUserId">Onder supervisie van</label>
+                <select asp-for="IntakeSuperVisionUserId" asp-items="@ViewBag.Therapists" class="form-control"></select>
+                <span asp-validation-for="IntakeSuperVisionUserId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="main-therapist">Hoofdbehandelaar</label>
-                <select class="form-control" id="main-therapist">
-                    <option>onno@fysioapp.com</option>
-                    <option>A2...</option>
-                </select>
+                <label asp-for="MainTherapistId">Hoofdbehandelaar</label>
+                <select asp-for="MainTherapistId" asp-items="@ViewBag.Therapists" class="form-control"></select>
+                <span asp-validation-for="MainTherapistId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label for="signup-date">Aanmeld datum</label>
-                <input type="date" class="form-control" id="signup-date">
+                <label asp-for="SignUpDate">Aanmeld datum</label>
+                <input asp-for="SignUpDate" type="date" class="form-control">
+                <span asp-validation-for="SignUpDate" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-12">

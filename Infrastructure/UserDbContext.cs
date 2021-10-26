@@ -30,6 +30,8 @@ namespace Infrastructure
             modelBuilder.Entity<User>().HasOne<User>(u => u.IntakeUser);
             modelBuilder.Entity<User>().HasOne<User>(u => u.MainTherapist);
             modelBuilder.Entity<User>().HasOne<User>(u => u.IntakeSuperVisionUser);
+
+            // OnDelete(DeleteBehavior.NoAction); Is required to prevent migrations errors when updating the database
             modelBuilder.Entity<User>().OwnsMany<Appointment>(u => u.Appointments, a =>
             {
                 a.HasOne<User>(a2 => a2.AppointmentUser).WithMany().OnDelete(DeleteBehavior.NoAction);
@@ -46,7 +48,6 @@ namespace Infrastructure
                 t.HasOne<User>(t2 => t2.TreatmentUser).WithMany().OnDelete(DeleteBehavior.NoAction);
                 t.HasOne<User>(t2 => t2.CarriedOutByUser).WithMany().OnDelete(DeleteBehavior.NoAction);
             });
-
 
         }
     }

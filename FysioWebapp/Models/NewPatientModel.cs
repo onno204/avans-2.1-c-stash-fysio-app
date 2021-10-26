@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core.Domain;
+using System.ComponentModel.DataAnnotations;
 
-namespace Core.Domain
+namespace FysioWebapp.Models
 {
-    public class User
+    public class NewPatientModel
     {
-        public int UserId { get; set; }
-
+        [Required]
         public string FullName { get; set; }
 
         private string _email;
+        [Required]
         public virtual string Email
         {
             get => _email;
@@ -17,6 +19,7 @@ namespace Core.Domain
         }
 
         private DateTime _birthDate;
+        [Required]
         public virtual DateTime BirthDate
         {
             get => _birthDate;
@@ -36,43 +39,46 @@ namespace Core.Domain
             }
         }
 
+        [Required]
         public UserType UserType { get; set; }
 
+        [Required]
         public int AdditionalIdentifier { get; set; }
 
-
+        [Required]
         public Gender Gender { get; set; }
 
+        [Required]
         public DateTime EndDateTreatment { get; set; }
 
+        [Required]
         public DateTime SignUpDate { get; set; }
+
+        [Required]
+        public int IntakeUserId { get; set; }
 
 #nullable enable
         public string? Picture { get; set; }
 
-        public string? Password { get; set; }
-
-        public User? IntakeUser { get; set; }
-
-        public User? IntakeSuperVisionUser { get; set; }
-
-        public User? MainTherapist { get; set; }
-
+        public int? IntakeSuperVisionUserId { get; set; }
 #nullable disable
-        public ICollection<Comment> Comments { get; set; }
 
-        public ICollection<Treatment> TreatmentHistory { get; set; }
+        [Required]
+        public int MainTherapistId { get; set; }
 
-        public ICollection<Appointment> Appointments { get; set; }
+        [Required]
+        public string CommentsInput { get; set; }
 
+        [Required]
         public int DcsphCode { get; set; }
 
+        [Required]
         public string DcsphDescription { get; set; }
 
+        [Required]
         public string GlobalDescriptionComplaints { get; set; }
 
+        [Required]
         public string TreatmentPlan { get; set; }
-
-
     }
 }

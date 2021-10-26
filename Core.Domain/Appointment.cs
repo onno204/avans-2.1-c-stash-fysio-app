@@ -9,13 +9,13 @@ namespace Core.Domain
 
         public DateTime Date { get; set; }
 
-        public int AppointmentUserId { get; set; }
+        private int AppointmentUserId { get; set; }
         public virtual User AppointmentUser { get; set; }
 
-        public int AppointmentWithUserId { get; set; }
+        private int AppointmentWithUserId { get; set; }
         public virtual User AppointmentWithUser { get; set; }
 
-        public int AppointmentCreatedByUserId { get; set; }
+        private int AppointmentCreatedByUserId { get; set; }
         public virtual User AppointmentCreatedByUser { get; set; }
     }
 }

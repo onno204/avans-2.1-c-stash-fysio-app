@@ -17,10 +17,10 @@ namespace Core.Domain
 
         public DateTime Date { get; set; }
 
-        public int TreatmentUserId { get; set; }
+        private int TreatmentUserId { get; set; }
         public virtual User TreatmentUser { get; set; }
 
-        public int CarriedOutByUserId { get; set; }
+        private int CarriedOutByUserId { get; set; }
         public virtual User CarriedOutByUser { get; set; }
     }
 }
