@@ -151,13 +151,13 @@ namespace Infrastructure.Migrations
                     b.Property<string>("GlobalDescriptionComplaints")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("IntakeSuperVisionUserUserId")
+                    b.Property<int?>("IntakeSuperVisionUserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("IntakeUserUserId")
+                    b.Property<int?>("IntakeUserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MainTherapistUserId")
+                    b.Property<int?>("MainTherapistId")
                         .HasColumnType("int");
 
                     b.Property<string>("Password")
@@ -181,11 +181,11 @@ namespace Infrastructure.Migrations
                         .IsUnique()
                         .HasFilter("[Email] IS NOT NULL");
 
-                    b.HasIndex("IntakeSuperVisionUserUserId");
+                    b.HasIndex("IntakeSuperVisionUserId");
 
-                    b.HasIndex("IntakeUserUserId");
+                    b.HasIndex("IntakeUserId");
 
-                    b.HasIndex("MainTherapistUserId");
+                    b.HasIndex("MainTherapistId");
 
                     b.ToTable("Users");
 
@@ -202,7 +202,7 @@ namespace Infrastructure.Migrations
                             FullName = "Onno van Helfteren",
                             Gender = 0,
                             GlobalDescriptionComplaints = "Heel veel klachten",
-                            SignUpDate = new DateTime(2021, 10, 27, 1, 7, 52, 910, DateTimeKind.Local).AddTicks(5179),
+                            SignUpDate = new DateTime(2021, 10, 27, 1, 26, 54, 811, DateTimeKind.Local).AddTicks(1960),
                             TreatmentPlan = "Geen",
                             UserType = 0
                         });
@@ -269,15 +269,15 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Core.Domain.User", "IntakeSuperVisionUser")
                         .WithMany()
-                        .HasForeignKey("IntakeSuperVisionUserUserId");
+                        .HasForeignKey("IntakeSuperVisionUserId");
 
                     b.HasOne("Core.Domain.User", "IntakeUser")
                         .WithMany()
-                        .HasForeignKey("IntakeUserUserId");
+                        .HasForeignKey("IntakeUserId");
 
                     b.HasOne("Core.Domain.User", "MainTherapist")
                         .WithMany()
-                        .HasForeignKey("MainTherapistUserId");
+                        .HasForeignKey("MainTherapistId");
 
                     b.Navigation("IntakeSuperVisionUser");
 

@@ -55,13 +55,19 @@ namespace Core.Domain
 
         public string? Password { get; set; }
 
-        public User? IntakeUser { get; set; }
-
-        public User? IntakeSuperVisionUser { get; set; }
-
-        public User? MainTherapist { get; set; }
-
 #nullable disable
+        private int? IntakeUserId { get; set; }
+        [ForeignKey("IntakeUserId")]
+        public virtual User IntakeUser { get; set; }
+
+        private int? IntakeSuperVisionUserId { get; set; }
+        [ForeignKey("IntakeSuperVisionUserId")]
+        public virtual User IntakeSuperVisionUser { get; set; }
+
+        private int? MainTherapistId { get; set; }
+        [ForeignKey("MainTherapistId")]
+        public virtual User MainTherapist { get; set; }
+
         [InverseProperty("User")]
         public ICollection<Comment> Comments { get; set; }
 

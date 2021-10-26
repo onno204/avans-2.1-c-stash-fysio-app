@@ -23,9 +23,9 @@ namespace Infrastructure.Migrations
                     SignUpDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Picture = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IntakeUserUserId = table.Column<int>(type: "int", nullable: true),
-                    IntakeSuperVisionUserUserId = table.Column<int>(type: "int", nullable: true),
-                    MainTherapistUserId = table.Column<int>(type: "int", nullable: true),
+                    IntakeUserId = table.Column<int>(type: "int", nullable: true),
+                    IntakeSuperVisionUserId = table.Column<int>(type: "int", nullable: true),
+                    MainTherapistId = table.Column<int>(type: "int", nullable: true),
                     DcsphCode = table.Column<int>(type: "int", nullable: false),
                     DcsphDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GlobalDescriptionComplaints = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -35,20 +35,20 @@ namespace Infrastructure.Migrations
                 {
                     table.PrimaryKey("PK_Users", x => x.UserId);
                     table.ForeignKey(
-                        name: "FK_Users_Users_IntakeSuperVisionUserUserId",
-                        column: x => x.IntakeSuperVisionUserUserId,
+                        name: "FK_Users_Users_IntakeSuperVisionUserId",
+                        column: x => x.IntakeSuperVisionUserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Users_Users_IntakeUserUserId",
-                        column: x => x.IntakeUserUserId,
+                        name: "FK_Users_Users_IntakeUserId",
+                        column: x => x.IntakeUserId,
                         principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Users_Users_MainTherapistUserId",
-                        column: x => x.MainTherapistUserId,
+                        name: "FK_Users_Users_MainTherapistId",
+                        column: x => x.MainTherapistId,
                         principalTable: "Users",
                         principalColumn: "UserId",
                         onDelete: ReferentialAction.Restrict);
@@ -150,8 +150,8 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "UserId", "AdditionalIdentifier", "BirthDate", "DcsphCode", "DcsphDescription", "Email", "EndDateTreatment", "FullName", "Gender", "GlobalDescriptionComplaints", "IntakeSuperVisionUserUserId", "IntakeUserUserId", "MainTherapistUserId", "Password", "Picture", "SignUpDate", "TreatmentPlan", "UserType" },
-                values: new object[] { 1, 2167988, new DateTime(2002, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 999, "unknown", "o.vanhelfteren@student.avans.nl", new DateTime(2021, 10, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Onno van Helfteren", 0, "Heel veel klachten", null, null, null, null, null, new DateTime(2021, 10, 27, 1, 7, 52, 910, DateTimeKind.Local).AddTicks(5179), "Geen", 0 });
+                columns: new[] { "UserId", "AdditionalIdentifier", "BirthDate", "DcsphCode", "DcsphDescription", "Email", "EndDateTreatment", "FullName", "Gender", "GlobalDescriptionComplaints", "IntakeSuperVisionUserId", "IntakeUserId", "MainTherapistId", "Password", "Picture", "SignUpDate", "TreatmentPlan", "UserType" },
+                values: new object[] { 1, 2167988, new DateTime(2002, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 999, "unknown", "o.vanhelfteren@student.avans.nl", new DateTime(2021, 10, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Onno van Helfteren", 0, "Heel veel klachten", null, null, null, null, null, new DateTime(2021, 10, 27, 1, 26, 54, 811, DateTimeKind.Local).AddTicks(1960), "Geen", 0 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appointment_AppointmentCreatedByUserId",
@@ -196,19 +196,19 @@ namespace Infrastructure.Migrations
                 filter: "[Email] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_IntakeSuperVisionUserUserId",
+                name: "IX_Users_IntakeSuperVisionUserId",
                 table: "Users",
-                column: "IntakeSuperVisionUserUserId");
+                column: "IntakeSuperVisionUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_IntakeUserUserId",
+                name: "IX_Users_IntakeUserId",
                 table: "Users",
-                column: "IntakeUserUserId");
+                column: "IntakeUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_MainTherapistUserId",
+                name: "IX_Users_MainTherapistId",
                 table: "Users",
-                column: "MainTherapistUserId");
+                column: "MainTherapistId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

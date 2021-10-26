@@ -26,7 +26,6 @@ namespace Infrastructure
                     Picture = null, SignUpDate = DateTime.Now, TreatmentHistory = new List<Treatment>(), TreatmentPlan = "Geen", UserId = 1, UserType = UserType.Therapist
                 });
 
-            modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
             modelBuilder.Entity<User>().HasOne<User>(u => u.IntakeUser);
             modelBuilder.Entity<User>().HasOne<User>(u => u.MainTherapist);
             modelBuilder.Entity<User>().HasOne<User>(u => u.IntakeSuperVisionUser);
