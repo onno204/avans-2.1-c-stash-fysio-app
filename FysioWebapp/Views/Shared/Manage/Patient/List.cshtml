@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Patiënten Lijst";
 }
+@model List<UsersViewModel>
 
 <table class="table table-striped">
     <thead>
@@ -12,47 +13,16 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row" style=" width: 13rem;"><a class="btn" asp-area="Manage" asp-controller="Patient" asp-action="Info">Patiënt weergeven <i class="fa fa-eye"></i></a></th>
-            <td>Onno van Helfteren</td>
-            <td>onno@fysioapp.com</td>
-            <td>04-02-2002</td>
-        </tr>
-        <tr>
-            <th scope="row" style=" width: 13rem;"><a class="btn" asp-area="Manage" asp-controller="Patient" asp-action="Info">Patiënt weergeven <i class="fa fa-eye"></i></a></th>
-            <td>Onno van Helfteren</td>
-            <td>onno@fysioapp.com</td>
-            <td>04-02-2002</td>
-        </tr>
-        <tr>
-            <th scope="row" style=" width: 13rem;"><a class="btn" asp-area="Manage" asp-controller="Patient" asp-action="Info">Patiënt weergeven <i class="fa fa-eye"></i></a></th>
-            <td>Onno van Helfteren</td>
-            <td>onno@fysioapp.com</td>
-            <td>04-02-2002</td>
-        </tr>
-        <tr>
-            <th scope="row" style=" width: 13rem;"><a class="btn" asp-area="Manage" asp-controller="Patient" asp-action="Info">Patiënt weergeven <i class="fa fa-eye"></i></a></th>
-            <td>Onno van Helfteren</td>
-            <td>onno@fysioapp.com</td>
-            <td>04-02-2002</td>
-        </tr>
-        <tr>
-            <th scope="row" style=" width: 13rem;"><a class="btn" asp-area="Manage" asp-controller="Patient" asp-action="Info">Patiënt weergeven <i class="fa fa-eye"></i></a></th>
-            <td>Onno van Helfteren</td>
-            <td>onno@fysioapp.com</td>
-            <td>04-02-2002</td>
-        </tr>
-        <tr>
-            <th scope="row" style=" width: 13rem;"><a class="btn" asp-area="Manage" asp-controller="Patient" asp-action="Info">Patiënt weergeven <i class="fa fa-eye"></i></a></th>
-            <td>Onno van Helfteren</td>
-            <td>onno@fysioapp.com</td>
-            <td>04-02-2002</td>
-        </tr>
-        <tr>
-            <th scope="row" style=" width: 13rem;"><a class="btn" asp-area="Manage" asp-controller="Patient" asp-action="Info">Patiënt weergeven <i class="fa fa-eye"></i></a></th>
-            <td>Onno van Helfteren</td>
-            <td>onno@fysioapp.com</td>
-            <td>04-02-2002</td>
-        </tr>
+
+        @foreach (var user in @Model)
+        {
+            <partial model="user" name="_UserRow" />
+            @*<tr>
+                <th scope="row" style="width: 13rem;"><a class="btn" asp-area="Manage" asp-controller="Patient" asp-action="Info">Patiënt weergeven <i class="fa fa-eye"></i></a></th>
+                <td>@game.FullName</td>
+                <td>@game.Email</td>
+                <td>@($"{@user.BirthDate:dd-MM-yyyy}")</td>
+            </tr>*@
+        }
     </tbody>
 </table>

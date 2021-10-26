@@ -5,22 +5,27 @@ namespace Core.Domain
 {
     public class User
     {
-        public int Id { get; set; }
+        public int UserId { get; set; }
 
         public string FullName { get; set; }
 
-        public string Email { get; set; }
+        private string _email;
+        public virtual string Email
+        {
+            get => _email;
+            set => _email = value.ToLower();
+        }
 
         private DateTime _birthDate;
-        public DateTime BirthDate
+        public virtual DateTime BirthDate
         {
             get => _birthDate;
 
             set
             {
-                int Age = new DateTime((DateTime.Now - value).Ticks).Year;
+                var age = new DateTime((DateTime.Now - value).Ticks).Year;
 
-                if (Age > 16)
+                if (age > 16)
                 {
                     _birthDate = value;
                 }
@@ -44,9 +49,11 @@ namespace Core.Domain
         public DateTime SignUpDate { get; set; }
 
 #nullable enable
+        public string? Password { get; set; }
+
         public User? IntakeUser { get; set; }
 
-        public User? SuperVisionUser { get; set; }
+        public User? IntakeSuperVisionUser { get; set; }
 
         public User? MainTherapist { get; set; }
 

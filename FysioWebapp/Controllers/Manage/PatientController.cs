@@ -1,11 +1,8 @@
-﻿using FysioWebapp.Models;
+﻿using Core.DomainServices;
+using FysioWebapp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FysioWebapp.Controllers.Manage
 {
@@ -13,15 +10,17 @@ namespace FysioWebapp.Controllers.Manage
     public class PatientController : Controller
     {
         private readonly ILogger<PatientController> _logger;
+        private readonly IUserRepository _userRepository;
 
-        public PatientController(ILogger<PatientController> logger)
+        public PatientController(ILogger<PatientController> logger, IUserRepository userRepository)
         {
+            _userRepository = userRepository;
             _logger = logger;
         }
 
         public IActionResult List()
         {
-            return View("Manage/Patient/List");
+            return View("Manage/Patient/List", _userRepository.GetAllPatientUsers().ToViewModel());
         }
 
         public IActionResult Add()

@@ -5,9 +5,11 @@ namespace Core.Domain
 {
     public class Appointment
     {
-        public int Id { get; set; }
+        public int AppointmentId { get; set; }
 
         public DateTime Date { get; set; }
+
+        public User User { get; set; }
 
         public User WithUser { get; set; }
 

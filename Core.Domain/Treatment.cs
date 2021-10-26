@@ -5,7 +5,7 @@ namespace Core.Domain
 {
     public class Treatment
     {
-        public int Id { get; set; }
+        public int TreatmentId { get; set; }
 
         public int VektisId { get; set; }
 
@@ -16,6 +16,8 @@ namespace Core.Domain
         public TreatmentRoom Room { get; set; }
 
         public DateTime Date { get; set; }
+
+        public User User { get; set; }
 
         public User CarriedOutByUser { get; set; }
     }
