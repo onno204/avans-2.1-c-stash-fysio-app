@@ -11,9 +11,11 @@ namespace Core.Domain
 
         public DateTime Date { get; set; }
 
-        public User User { get; set; }
+        public int CommentUserId { get; set; }
+        public virtual User CommentUser { get; set; }
 
-        public User MadeBy { get; set; }
+        public int CommentMadeById { get; set; }
+        public virtual User CommentMadeBy { get; set; }
 
         public bool PubliclyVisible { get; set; }
     }

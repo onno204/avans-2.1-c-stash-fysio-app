@@ -25,19 +25,19 @@ namespace Infrastructure
             modelBuilder.Entity<User>().HasOne<User>(u => u.IntakeSuperVisionUser);
             modelBuilder.Entity<User>().OwnsMany<Appointment>(u => u.Appointments, a =>
             {
-                a.HasOne<User>(a2 => a2.User);
-                a.HasOne<User>(a2 => a2.WithUser);
-                a.HasOne<User>(a2 => a2.CreatedByUser);
+                a.HasOne<User>(a2 => a2.AppointmentUser).WithMany().OnDelete(DeleteBehavior.NoAction);
+                a.HasOne<User>(a2 => a2.AppointmentWithUser).WithMany().OnDelete(DeleteBehavior.NoAction);
+                a.HasOne<User>(a2 => a2.AppointmentCreatedByUser).WithMany().OnDelete(DeleteBehavior.NoAction);
             });
             modelBuilder.Entity<User>().OwnsMany<Comment>(u => u.Comments, c =>
             {
-                c.HasOne<User>(c2 => c2.User);
-                c.HasOne<User>(c2 => c2.MadeBy);
+                c.HasOne<User>(c2 => c2.CommentUser).WithMany().OnDelete(DeleteBehavior.NoAction);
+                c.HasOne<User>(c2 => c2.CommentMadeBy).WithMany().OnDelete(DeleteBehavior.NoAction);
             });
             modelBuilder.Entity<User>().OwnsMany<Treatment>(u => u.TreatmentHistory, t =>
             {
-                t.HasOne<User>(t2 => t2.User);
-                t.HasOne<User>(t2 => t2.CarriedOutByUser);
+                t.HasOne<User>(t2 => t2.TreatmentUser).WithMany().OnDelete(DeleteBehavior.NoAction);
+                t.HasOne<User>(t2 => t2.CarriedOutByUser).WithMany().OnDelete(DeleteBehavior.NoAction);
             });
 
 
