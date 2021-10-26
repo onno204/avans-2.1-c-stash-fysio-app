@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,10 +18,10 @@ namespace Infrastructure.Migrations
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserType = table.Column<int>(type: "int", nullable: false),
                     AdditionalIdentifier = table.Column<int>(type: "int", nullable: false),
-                    Picture = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     EndDateTreatment = table.Column<DateTime>(type: "datetime2", nullable: false),
                     SignUpDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Picture = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IntakeUserUserId = table.Column<int>(type: "int", nullable: true),
                     IntakeSuperVisionUserUserId = table.Column<int>(type: "int", nullable: true),
@@ -58,32 +58,28 @@ namespace Infrastructure.Migrations
                 name: "Appointment",
                 columns: table => new
                 {
-                    AppointmentId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AppointmentUserId = table.Column<int>(type: "int", nullable: false),
-                    AppointmentWithUserId = table.Column<int>(type: "int", nullable: false),
-                    AppointmentCreatedByUserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    AppointmentWithUserId = table.Column<int>(type: "int", nullable: true),
+                    AppointmentCreatedByUserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Appointment", x => new { x.UserId, x.AppointmentId });
+                    table.PrimaryKey("PK_Appointment", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Appointment_Users_AppointmentCreatedByUserId",
                         column: x => x.AppointmentCreatedByUserId,
                         principalTable: "Users",
-                        principalColumn: "UserId");
-                    table.ForeignKey(
-                        name: "FK_Appointment_Users_AppointmentUserId",
-                        column: x => x.AppointmentUserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId");
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Appointment_Users_AppointmentWithUserId",
                         column: x => x.AppointmentWithUserId,
                         principalTable: "Users",
-                        principalColumn: "UserId");
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Appointment_Users_UserId",
                         column: x => x.UserId,
@@ -96,28 +92,23 @@ namespace Infrastructure.Migrations
                 name: "Comment",
                 columns: table => new
                 {
-                    CommentId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
                     CommentText = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CommentUserId = table.Column<int>(type: "int", nullable: false),
-                    CommentMadeById = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    CommentMadeById = table.Column<int>(type: "int", nullable: true),
                     PubliclyVisible = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Comment", x => new { x.UserId, x.CommentId });
+                    table.PrimaryKey("PK_Comment", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Comment_Users_CommentMadeById",
                         column: x => x.CommentMadeById,
                         principalTable: "Users",
-                        principalColumn: "UserId");
-                    table.ForeignKey(
-                        name: "FK_Comment_Users_CommentUserId",
-                        column: x => x.CommentUserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId");
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Comment_Users_UserId",
                         column: x => x.UserId,
@@ -130,30 +121,25 @@ namespace Infrastructure.Migrations
                 name: "Treatment",
                 columns: table => new
                 {
-                    TreatmentId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
                     VektisId = table.Column<int>(type: "int", nullable: false),
                     VektisExplanation = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Room = table.Column<int>(type: "int", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    TreatmentUserId = table.Column<int>(type: "int", nullable: false),
-                    CarriedOutByUserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    CarriedOutByUserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Treatment", x => new { x.UserId, x.TreatmentId });
+                    table.PrimaryKey("PK_Treatment", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Treatment_Users_CarriedOutByUserId",
                         column: x => x.CarriedOutByUserId,
                         principalTable: "Users",
-                        principalColumn: "UserId");
-                    table.ForeignKey(
-                        name: "FK_Treatment_Users_TreatmentUserId",
-                        column: x => x.TreatmentUserId,
-                        principalTable: "Users",
-                        principalColumn: "UserId");
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Treatment_Users_UserId",
                         column: x => x.UserId,
@@ -162,15 +148,15 @@ namespace Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "UserId", "AdditionalIdentifier", "BirthDate", "DcsphCode", "DcsphDescription", "Email", "EndDateTreatment", "FullName", "Gender", "GlobalDescriptionComplaints", "IntakeSuperVisionUserUserId", "IntakeUserUserId", "MainTherapistUserId", "Password", "Picture", "SignUpDate", "TreatmentPlan", "UserType" },
+                values: new object[] { 1, 2167988, new DateTime(2002, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 999, "unknown", "o.vanhelfteren@student.avans.nl", new DateTime(2021, 10, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Onno van Helfteren", 0, "Heel veel klachten", null, null, null, null, null, new DateTime(2021, 10, 27, 0, 46, 50, 820, DateTimeKind.Local).AddTicks(9566), "Geen", 0 });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Appointment_AppointmentCreatedByUserId",
                 table: "Appointment",
                 column: "AppointmentCreatedByUserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Appointment_AppointmentUserId",
-                table: "Appointment",
-                column: "AppointmentUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appointment_AppointmentWithUserId",
@@ -178,14 +164,19 @@ namespace Infrastructure.Migrations
                 column: "AppointmentWithUserId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Appointment_UserId",
+                table: "Appointment",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Comment_CommentMadeById",
                 table: "Comment",
                 column: "CommentMadeById");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comment_CommentUserId",
+                name: "IX_Comment_UserId",
                 table: "Comment",
-                column: "CommentUserId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Treatment_CarriedOutByUserId",
@@ -193,9 +184,9 @@ namespace Infrastructure.Migrations
                 column: "CarriedOutByUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Treatment_TreatmentUserId",
+                name: "IX_Treatment_UserId",
                 table: "Treatment",
-                column: "TreatmentUserId");
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Users_Email",

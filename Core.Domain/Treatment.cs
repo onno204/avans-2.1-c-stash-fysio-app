@@ -1,11 +1,12 @@
 ﻿
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Domain
 {
     public class Treatment
     {
-        public int TreatmentId { get; set; }
+        public int Id { get; set; }
 
         public int VektisId { get; set; }
 
@@ -17,10 +18,12 @@ namespace Core.Domain
 
         public DateTime Date { get; set; }
 
-        private int TreatmentUserId { get; set; }
-        public virtual User TreatmentUser { get; set; }
+        private int UserId { get; set; }
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
 
-        private int CarriedOutByUserId { get; set; }
+        private int? CarriedOutByUserId { get; set; }
+        [ForeignKey("CarriedOutByUserId")]
         public virtual User CarriedOutByUser { get; set; }
     }
 }

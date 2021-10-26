@@ -101,7 +101,7 @@ namespace FysioWebapp.Controllers.Manage
             {
                 user.Comments.Add(new Comment()
                 {
-                    CommentUser = user,
+                    // User = user,
                     CommentMadeBy = user.IntakeUser,
                     Date = DateTime.Now,
                     PubliclyVisible = false,

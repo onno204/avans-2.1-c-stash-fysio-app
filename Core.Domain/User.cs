@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Domain
 {
@@ -59,10 +60,13 @@ namespace Core.Domain
         public User? MainTherapist { get; set; }
 
 #nullable disable
+        [InverseProperty("User")]
         public ICollection<Comment> Comments { get; set; }
 
+        [InverseProperty("User")]
         public ICollection<Treatment> TreatmentHistory { get; set; }
 
+        [InverseProperty("User")]
         public ICollection<Appointment> Appointments { get; set; }
 
         public int DcsphCode { get; set; }
