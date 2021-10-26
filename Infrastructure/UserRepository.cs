@@ -51,7 +51,7 @@ namespace Infrastructure
 
         public async Task<User> GetByEmail(string email)
         {
-            return await this.GetAll().SingleOrDefaultAsync(u => u.Email.Equals(email));
+            return await this.GetAll().SingleOrDefaultAsync(u => u.Email.Equals(email.ToLower()));
         }
 
         public async Task<User> GetById(int id)

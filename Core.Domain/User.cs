@@ -40,7 +40,7 @@ namespace Core.Domain
 
         public int AdditionalIdentifier { get; set; }
 
-        public string Picture { get; set; }
+        public string? Picture { get; set; }
 
         public Gender Gender { get; set; }
 

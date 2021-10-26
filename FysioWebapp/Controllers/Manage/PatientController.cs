@@ -28,7 +28,7 @@ namespace FysioWebapp.Controllers.Manage
             return View("Manage/Patient/Add");
         }
 
-        public IActionResult Info()
+        public IActionResult Info(int id)
         {
             return View("Manage/Patient/Info");
         }

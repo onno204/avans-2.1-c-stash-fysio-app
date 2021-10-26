@@ -14,15 +14,14 @@
     </thead>
     <tbody>
 
-        @foreach (var user in @Model)
+        @foreach (UsersViewModel user in @Model)
         {
-            <partial model="user" name="_UserRow" />
-            @*<tr>
-                <th scope="row" style="width: 13rem;"><a class="btn" asp-area="Manage" asp-controller="Patient" asp-action="Info">Patiënt weergeven <i class="fa fa-eye"></i></a></th>
-                <td>@game.FullName</td>
-                <td>@game.Email</td>
+            <tr>
+                <th scope="row" style="width: 13rem;"><a class="btn" asp-area="Manage" asp-controller="Patient" asp-action="Info" asp-route-id="@user.UserId">Patiënt weergeven <i class="fa fa-eye"></i></a></th>
+                <td>@user.FullName</td>
+                <td>@user.Email</td>
                 <td>@($"{@user.BirthDate:dd-MM-yyyy}")</td>
-            </tr>*@
+            </tr>
         }
     </tbody>
 </table>
