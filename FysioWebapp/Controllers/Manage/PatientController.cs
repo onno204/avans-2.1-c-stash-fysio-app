@@ -49,15 +49,11 @@ namespace FysioWebapp.Controllers.Manage
             ViewBag.UserTypes = new SelectList(userTypes);
         }
 
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> Add(NewPatientModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                PrefillSelectOptions();
-                return View("Manage/Patient/Add", model);
-            }
-
+            Debug.WriteLine(model.FullName);
             if (model.UserType == UserType.StudentTherapist && model.IntakeSuperVisionUserId == null)
             {
                 ModelState.AddModelError(nameof(model.IntakeSuperVisionUserId),
@@ -68,6 +64,11 @@ namespace FysioWebapp.Controllers.Manage
             {
                 ModelState.AddModelError(nameof(model.UserType),
                     "Illegal user group");
+            }
+            if (!ModelState.IsValid)
+            {
+                PrefillSelectOptions();
+                return View("Manage/Patient/Add", model);
             }
 
             User user = new User()

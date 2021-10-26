@@ -78,7 +78,6 @@ namespace FysioWebapp.Models
         [Required]
         public string GlobalDescriptionComplaints { get; set; }
 
-        [Required]
         public string TreatmentPlan { get; set; }
     }
 }

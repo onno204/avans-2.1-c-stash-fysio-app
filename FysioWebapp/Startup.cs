@@ -53,15 +53,11 @@ namespace FysioWebapp
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseMiddleware<RequestResponseLoggingMiddleware>();
+            // @#$%!@#$%!@$%# Logger prevented me from receiving post requests and caused a lot of trouble..
+            // app.UseMiddleware<RequestResponseLoggingMiddleware>();
             app.UseRouting();
             app.UseAuthorization();
-
-            // app.UseEndpoints(endpoints =>
-            // {
-            //     endpoints.MapControllers();
-            // });
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("manage_route", "Manage/{controller=Dashboard}/{action=Index}/{id?}",
@@ -72,10 +68,6 @@ namespace FysioWebapp
 
                 endpoints.MapControllerRoute("default", "{controller=Login}/{action=Index}/{id?}",
                     defaults: new { area = "Public" }, constraints: new { area = "Public" });
-
-                // endpoints.MapControllerRoute(
-                //     name: "default",
-                //     pattern: "{controller=Login}/{action=Index}");
             });
         }
     }

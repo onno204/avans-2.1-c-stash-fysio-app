@@ -151,7 +151,7 @@ namespace Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "UserId", "AdditionalIdentifier", "BirthDate", "DcsphCode", "DcsphDescription", "Email", "EndDateTreatment", "FullName", "Gender", "GlobalDescriptionComplaints", "IntakeSuperVisionUserUserId", "IntakeUserUserId", "MainTherapistUserId", "Password", "Picture", "SignUpDate", "TreatmentPlan", "UserType" },
-                values: new object[] { 1, 2167988, new DateTime(2002, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 999, "unknown", "o.vanhelfteren@student.avans.nl", new DateTime(2021, 10, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Onno van Helfteren", 0, "Heel veel klachten", null, null, null, null, null, new DateTime(2021, 10, 27, 0, 46, 50, 820, DateTimeKind.Local).AddTicks(9566), "Geen", 0 });
+                values: new object[] { 1, 2167988, new DateTime(2002, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 999, "unknown", "o.vanhelfteren@student.avans.nl", new DateTime(2021, 10, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Onno van Helfteren", 0, "Heel veel klachten", null, null, null, null, null, new DateTime(2021, 10, 27, 1, 7, 52, 910, DateTimeKind.Local).AddTicks(5179), "Geen", 0 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appointment_AppointmentCreatedByUserId",

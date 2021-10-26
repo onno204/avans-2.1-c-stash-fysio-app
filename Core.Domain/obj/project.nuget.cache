@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "PB2E8ofGSv5TONtagYq3I7Kw8TYLJnRUydP9NthZtVU+9Gs+xERWKyV49U+XWWNvm5STe93nMPShK2HUeqPNzg==",
+  "dgSpecHash": "UKseuCt5df9CdWJjn2Pyb5knjJkShV4Sa8U/MZjFEQuAiJC6UutMyVYf/uCImtuV5PasvhPgg7yuckCp1JnftQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\Core.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\onnov\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.11\\microsoft.entityframeworkcore.abstractions.5.0.11.nupkg.sha512"
+  ],
   "logs": []
 }

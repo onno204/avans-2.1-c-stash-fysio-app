@@ -3,13 +3,13 @@
 }
 @model NewPatientModel
 
-<form asp-area="Manage" asp-controller="Patient" asp-action="Add">
+<form asp-area="Manage" asp-controller="Patient" asp-action="Add"  method="post">
     <div class="row new-patient">
         <div class="col-md-4">
             <h3>Persoonsgegevens</h3>
             <div class="form-group">
                 <label asp-for="FullName">Volledige naam</label>
-                <input asp-for="FullName" type="text" class="form-control" placeholder="Onno van Helfteren">
+                <input asp-for="FullName" class="form-control" placeholder="Onno van Helfteren">
                 <span asp-validation-for="FullName" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -40,8 +40,8 @@
             <div class="form-group">
                 <label asp-for="DcsphCode">Diagnosecode</label>
                 <select asp-for="DcsphCode" class="form-control" asp-items="@ViewBag.DcsphCode" id="diagnosticscode"></select>
-                <input asp-for="DcsphCode" type="text" disabled class="form-control" placeholder="Omschrijving" value="Amputatie">
-                <span asp-validation-for="DcsphCode" class="text-danger"></span>
+                <input asp-for="DcsphDescription" type="text" disabled class="form-control" placeholder="Omschrijving" value="Amputatie">
+                <span asp-validation-for="DcsphDescription" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="EndDateTreatment">Einddatum behandeling</label>
@@ -80,5 +80,6 @@
         <div class="col-md-12">
             <button type="submit" style="float: right;" class="btn btn-primary">Opslaan <i class="fa fa-user-plus"></i></button>
         </div>
+        <div asp-validation-summary="All"></div>
     </div>
 </form>

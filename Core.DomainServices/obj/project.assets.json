@@ -2,9 +2,21 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "Microsoft.EntityFrameworkCore.Abstractions/5.0.11": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Abstractions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Abstractions.dll": {}
+        }
+      },
       "Core.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Abstractions": "5.0.11"
+        },
         "compile": {
           "bin/placeholder/Core.Domain.dll": {}
         },
@@ -15,6 +27,20 @@
     }
   },
   "libraries": {
+    "Microsoft.EntityFrameworkCore.Abstractions/5.0.11": {
+      "sha512": "Ut1BeIwAavUncIChZ0jM7qdqVsnLI1i2eCn/7rdqpVW/JldPFMQzlCMBtiq7dGuVMSniDNUnc93olYtttyD/Fg==",
+      "type": "package",
+      "path": "microsoft.entityframeworkcore.abstractions/5.0.11",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Abstractions.dll",
+        "lib/netstandard2.1/Microsoft.EntityFrameworkCore.Abstractions.xml",
+        "microsoft.entityframeworkcore.abstractions.5.0.11.nupkg.sha512",
+        "microsoft.entityframeworkcore.abstractions.nuspec"
+      ]
+    },
     "Core.Domain/1.0.0": {
       "type": "project",
       "path": "../Core.Domain/Core.Domain.csproj",

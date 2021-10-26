@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Domain
 {
+    [Index(nameof(Email), IsUnique = true)]
     public class User
     {
         public int UserId { get; set; }

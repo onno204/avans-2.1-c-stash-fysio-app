@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20211026224651_initial")]
+    [Migration("20211026230753_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -204,7 +204,7 @@ namespace Infrastructure.Migrations
                             FullName = "Onno van Helfteren",
                             Gender = 0,
                             GlobalDescriptionComplaints = "Heel veel klachten",
-                            SignUpDate = new DateTime(2021, 10, 27, 0, 46, 50, 820, DateTimeKind.Local).AddTicks(9566),
+                            SignUpDate = new DateTime(2021, 10, 27, 1, 7, 52, 910, DateTimeKind.Local).AddTicks(5179),
                             TreatmentPlan = "Geen",
                             UserType = 0
                         });
