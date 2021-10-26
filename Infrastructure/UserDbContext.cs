@@ -23,7 +23,7 @@ namespace Infrastructure
                 {
                     AdditionalIdentifier = 2167988, Appointments = new List<Appointment>(), BirthDate = new DateTime(2002, 02, 04), Comments = new List<Comment>(), DcsphCode = 999, DcsphDescription = "unknown", Email = "o.vanhelfteren@student.avans.nl",
                     EndDateTreatment = new DateTime(2021, 10, 30), FullName = "Onno van Helfteren", Gender = Gender.Male, GlobalDescriptionComplaints = "Heel veel klachten", IntakeSuperVisionUser = null, IntakeUser = null, MainTherapist = null, Password = null,
-                    Picture = null, SignUpDate = DateTime.Now, TreatmentHistory = new List<Treatment>(), TreatmentPlan = "Geen", UserId = 1, UserType = UserType.Therapist
+                    Picture = null, SignUpDate = DateTime.Now, TreatmentHistory = new List<Treatment>(), TreatmentPlan = "Geen", Id = 1, UserType = UserType.Therapist
                 });
 
             modelBuilder.Entity<User>().HasOne<User>(u => u.IntakeUser);

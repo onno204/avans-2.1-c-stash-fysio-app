@@ -56,7 +56,7 @@ namespace Infrastructure
 
         public async Task<User> GetById(int id)
         {
-            return await this.GetAll().SingleOrDefaultAsync(u => u.UserId == id);
+            return await this.GetAll().SingleOrDefaultAsync(u => u.Id == id);
         }
 
         public async Task Update(User user)

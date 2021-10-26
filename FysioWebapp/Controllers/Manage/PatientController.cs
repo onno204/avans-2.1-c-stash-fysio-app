@@ -40,10 +40,10 @@ namespace FysioWebapp.Controllers.Manage
         private void PrefillSelectOptions()
         {
             var therapists = _userRepository.GetAllTherapistUsers();
-            ViewBag.AllTherapists = new SelectList(therapists, "UserId", "Email");
+            ViewBag.AllTherapists = new SelectList(therapists, "Id", "Email");
 
             therapists = _userRepository.GetAllTherapistUsers().Where(u => u.UserType == UserType.Therapist);
-            ViewBag.Therapists = new SelectList(therapists, "UserId", "Email");
+            ViewBag.Therapists = new SelectList(therapists, "Id", "Email");
 
             var userTypes = Enum.GetValues(typeof(UserType)).Cast<UserType>().Where(ut => ut == UserType.Employee || ut == UserType.Student);
             ViewBag.UserTypes = new SelectList(userTypes);
@@ -111,12 +111,15 @@ namespace FysioWebapp.Controllers.Manage
             }
 
             await _userRepository.Add(user);
-            return RedirectToAction("Info", user.UserId);
+            return RedirectToAction("Info", new { user.Id });
         }
 
-        public IActionResult Info(int id)
+        public async Task<IActionResult> Info(int id)
         {
-            return View("Manage/Patient/Info");
+            var user = await _userRepository.GetById(id);
+            UsersViewModel model = user.ToViewModel();
+
+            return View("Manage/Patient/Info", model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

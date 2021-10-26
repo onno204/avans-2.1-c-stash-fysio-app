@@ -11,7 +11,7 @@ namespace Infrastructure.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Email = table.Column<string>(type: "nvarchar(450)", nullable: true),
@@ -33,24 +33,24 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.UserId);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Users_Users_IntakeSuperVisionUserId",
                         column: x => x.IntakeSuperVisionUserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Users_Users_IntakeUserId",
                         column: x => x.IntakeUserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Users_Users_MainTherapistId",
                         column: x => x.MainTherapistId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -72,19 +72,19 @@ namespace Infrastructure.Migrations
                         name: "FK_Appointment_Users_AppointmentCreatedByUserId",
                         column: x => x.AppointmentCreatedByUserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Appointment_Users_AppointmentWithUserId",
                         column: x => x.AppointmentWithUserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Appointment_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -107,13 +107,13 @@ namespace Infrastructure.Migrations
                         name: "FK_Comment_Users_CommentMadeById",
                         column: x => x.CommentMadeById,
                         principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Comment_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -138,20 +138,20 @@ namespace Infrastructure.Migrations
                         name: "FK_Treatment_Users_CarriedOutByUserId",
                         column: x => x.CarriedOutByUserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Treatment_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "UserId",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "UserId", "AdditionalIdentifier", "BirthDate", "DcsphCode", "DcsphDescription", "Email", "EndDateTreatment", "FullName", "Gender", "GlobalDescriptionComplaints", "IntakeSuperVisionUserId", "IntakeUserId", "MainTherapistId", "Password", "Picture", "SignUpDate", "TreatmentPlan", "UserType" },
-                values: new object[] { 1, 2167988, new DateTime(2002, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 999, "unknown", "o.vanhelfteren@student.avans.nl", new DateTime(2021, 10, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Onno van Helfteren", 0, "Heel veel klachten", null, null, null, null, null, new DateTime(2021, 10, 27, 1, 26, 54, 811, DateTimeKind.Local).AddTicks(1960), "Geen", 0 });
+                columns: new[] { "Id", "AdditionalIdentifier", "BirthDate", "DcsphCode", "DcsphDescription", "Email", "EndDateTreatment", "FullName", "Gender", "GlobalDescriptionComplaints", "IntakeSuperVisionUserId", "IntakeUserId", "MainTherapistId", "Password", "Picture", "SignUpDate", "TreatmentPlan", "UserType" },
+                values: new object[] { 1, 2167988, new DateTime(2002, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 999, "unknown", "o.vanhelfteren@student.avans.nl", new DateTime(2021, 10, 30, 0, 0, 0, 0, DateTimeKind.Unspecified), "Onno van Helfteren", 0, "Heel veel klachten", null, null, null, null, null, new DateTime(2021, 10, 27, 1, 41, 24, 954, DateTimeKind.Local).AddTicks(4518), "Geen", 0 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appointment_AppointmentCreatedByUserId",

@@ -17,7 +17,7 @@
         @foreach (UsersViewModel user in @Model)
         {
             <tr>
-                <th scope="row" style="width: 13rem;"><a class="btn" asp-area="Manage" asp-controller="Patient" asp-action="Info" asp-route-id="@user.UserId">Patiënt weergeven <i class="fa fa-eye"></i></a></th>
+                <th scope="row" style="width: 13rem;"><a class="btn" asp-area="Manage" asp-controller="Patient" asp-action="Info" asp-route-id="@user.Id">Patiënt weergeven <i class="fa fa-eye"></i></a></th>
                 <td>@user.FullName</td>
                 <td>@user.Email</td>
                 <td>@($"{@user.BirthDate:dd-MM-yyyy}")</td>

@@ -8,11 +8,11 @@ namespace FysioWebapp.Models
 {
     public static class ViewModelHelper
     {
-        public static List<UsersViewModel> ToViewModel(this IEnumerable<User> games)
+        public static List<UsersViewModel> ToViewModel(this IEnumerable<User> users)
         {
             var result = new List<UsersViewModel>();
 
-            foreach (var user in games)
+            foreach (var user in users)
             {
                 result.Add(user.ToViewModel());
             }
@@ -24,10 +24,20 @@ namespace FysioWebapp.Models
         {
             var result = new UsersViewModel
             {
-                UserId = user.UserId,
+                Id = user.Id,
                 BirthDate = user.BirthDate,
                 Email = user.Email,
-                FullName = user.FullName
+                FullName = user.FullName,
+                DcsphDescription = user.DcsphDescription,
+                GlobalDescriptionComplaints = user.GlobalDescriptionComplaints,
+                DcsphCode = user.DcsphCode,
+                EndDateTreatment = user.EndDateTreatment,
+                UserType = user.UserType,
+                AdditionalIdentifier = user.AdditionalIdentifier,
+                SignUpDate = user.SignUpDate,
+                IntakeSuperVisionUserId = user.IntakeSuperVisionUser.Id,
+                IntakeUserId = user.IntakeUser.Id,
+                MainTherapistId = user.MainTherapist.Id
             };
 
             return result;

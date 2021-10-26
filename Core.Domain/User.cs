@@ -8,7 +8,7 @@ namespace Core.Domain
     [Index(nameof(Email), IsUnique = true)]
     public class User
     {
-        public int UserId { get; set; }
+        public int Id { get; set; }
 
         public string FullName { get; set; }
 

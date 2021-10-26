@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20211026232655_initial")]
+    [Migration("20211026234125_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -121,7 +121,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Core.Domain.User", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -177,7 +177,7 @@ namespace Infrastructure.Migrations
                     b.Property<int>("UserType")
                         .HasColumnType("int");
 
-                    b.HasKey("UserId");
+                    b.HasKey("Id");
 
                     b.HasIndex("Email")
                         .IsUnique()
@@ -194,7 +194,7 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = 1,
+                            Id = 1,
                             AdditionalIdentifier = 2167988,
                             BirthDate = new DateTime(2002, 2, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             DcsphCode = 999,
@@ -204,7 +204,7 @@ namespace Infrastructure.Migrations
                             FullName = "Onno van Helfteren",
                             Gender = 0,
                             GlobalDescriptionComplaints = "Heel veel klachten",
-                            SignUpDate = new DateTime(2021, 10, 27, 1, 26, 54, 811, DateTimeKind.Local).AddTicks(1960),
+                            SignUpDate = new DateTime(2021, 10, 27, 1, 41, 24, 954, DateTimeKind.Local).AddTicks(4518),
                             TreatmentPlan = "Geen",
                             UserType = 0
                         });
