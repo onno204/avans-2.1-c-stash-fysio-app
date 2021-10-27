@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,6 +14,7 @@ namespace Core.Domain
         public string FullName { get; set; }
 
         private string _email;
+
         public virtual string Email
         {
             get => _email;
@@ -20,6 +22,7 @@ namespace Core.Domain
         }
 
         private DateTime _birthDate;
+
         public virtual DateTime BirthDate
         {
             get => _birthDate;
@@ -57,25 +60,24 @@ namespace Core.Domain
 
 #nullable disable
         private int? IntakeUserId { get; set; }
-        [ForeignKey("IntakeUserId")]
-        public virtual User IntakeUser { get; set; }
+        [ForeignKey("IntakeUserId")] public virtual User IntakeUser { get; set; }
 
         private int? IntakeSuperVisionUserId { get; set; }
+
         [ForeignKey("IntakeSuperVisionUserId")]
         public virtual User IntakeSuperVisionUser { get; set; }
 
         private int? MainTherapistId { get; set; }
-        [ForeignKey("MainTherapistId")]
-        public virtual User MainTherapist { get; set; }
+        [ForeignKey("MainTherapistId")] public virtual User MainTherapist { get; set; }
+
+        [InverseProperty("User")] 
+        public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
         [InverseProperty("User")]
-        public ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Treatment> TreatmentHistory { get; set; } = new List<Treatment>();
 
         [InverseProperty("User")]
-        public ICollection<Treatment> TreatmentHistory { get; set; }
-
-        [InverseProperty("User")]
-        public ICollection<Appointment> Appointments { get; set; }
+        public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 
         public int DcsphCode { get; set; }
 

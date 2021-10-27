@@ -40,7 +40,7 @@
             <div class="form-group">
                 <label asp-for="DcsphCode">Diagnosecode</label>
                 <select asp-for="DcsphCode" class="form-control" asp-items="@ViewBag.DcsphCode" id="diagnosticscode"></select>
-                <input asp-for="DcsphDescription" type="text" disabled class="form-control" placeholder="Omschrijving" value="Amputatie">
+                <input asp-for="DcsphDescription" type="text" disabled class="form-control" placeholder="Omschrijving">
                 <span asp-validation-for="DcsphDescription" class="text-danger"></span>
             </div>
             <div class="form-group">

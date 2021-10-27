@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Patiënten Lijst";
 }
-@model List<UsersViewModel>
+@model List<UserViewModel>
 
 <table class="table table-striped">
     <thead>
@@ -14,7 +14,7 @@
     </thead>
     <tbody>
 
-        @foreach (UsersViewModel user in @Model)
+        @foreach (UserViewModel user in @Model)
         {
             <tr>
                 <th scope="row" style="width: 13rem;"><a class="btn" asp-area="Manage" asp-controller="Patient" asp-action="Info" asp-route-id="@user.Id">Patiënt weergeven <i class="fa fa-eye"></i></a></th>

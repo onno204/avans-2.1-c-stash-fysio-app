@@ -14,3 +14,4 @@ C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\Infrastructur
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete

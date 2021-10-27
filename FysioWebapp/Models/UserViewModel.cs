@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core.Domain;
 
 namespace FysioWebapp.Models
 {
-    public class UsersViewModel
+    public class UserViewModel
     {
         public int Id { get; set; }
 
@@ -25,13 +26,19 @@ namespace FysioWebapp.Models
 
         public DateTime EndDateTreatment { get; set; }
 
-        public int IntakeUserId { get; set; }
+        public int? IntakeUserId { get; set; }
 
         public int? IntakeSuperVisionUserId { get; set; }
 
-        public int MainTherapistId { get; set; }
+        public int? MainTherapistId { get; set; }
 
         public DateTime SignUpDate { get; set; }
+
+        public List<CommentViewModel> Comments { get; set; }
+
+        public List<AppointmentViewModel> Appointments { get; set; }
+
+        public List<TreatmentViewModel> TreatmentHistory { get; set; }
 
     }
 }

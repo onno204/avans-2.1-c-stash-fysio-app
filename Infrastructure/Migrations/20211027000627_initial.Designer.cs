@@ -4,14 +4,16 @@ using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    partial class UserDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211027000627_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -202,7 +204,7 @@ namespace Infrastructure.Migrations
                             FullName = "Onno van Helfteren",
                             Gender = 0,
                             GlobalDescriptionComplaints = "Heel veel klachten",
-                            SignUpDate = new DateTime(2021, 10, 27, 2, 15, 25, 164, DateTimeKind.Local).AddTicks(1000),
+                            SignUpDate = new DateTime(2021, 10, 27, 2, 6, 26, 757, DateTimeKind.Local).AddTicks(2269),
                             TreatmentPlan = "Geen",
                             UserType = 0
                         });

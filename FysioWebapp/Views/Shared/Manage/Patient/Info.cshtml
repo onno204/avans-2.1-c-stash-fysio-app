@@ -1,57 +1,57 @@
 ﻿@{
     ViewData["Title"] = "Patiënt Info";
 }
-@model UsersViewModel
+@model UserViewModel
 
 
 <form asp-area="Manage" asp-controller="Patient" asp-action="Add">
     <div class="row new-patient">
-    <div class="col-md-3">
-        <h3>Persoonsgegevens</h3>
-        <div class="form-group">
-            <label asp-for="FullName">Volledige naam</label>
-            <input asp-for="FullName" class="form-control" placeholder="Onno van Helfteren">
-            <span asp-validation-for="FullName" class="text-danger"></span>
+        <div class="col-md-3">
+            <h3>Persoonsgegevens</h3>
+            <div class="form-group">
+                <label asp-for="FullName">Volledige naam</label>
+                <input asp-for="FullName" class="form-control" placeholder="Onno van Helfteren">
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email">E-mailadres</label>
+                <input asp-for="Email" type="email" class="form-control" placeholder="onno@fysioapp.com">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDate">Geboortedatum</label>
+                <input asp-for="BirthDate" type="date" class="form-control">
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserType">Medewerker of student?</label>
+                <select asp-for="UserType" asp-items="@ViewBag.UserTypes" class="form-control"></select>
+                <span asp-validation-for="UserType" class="text-danger"></span>
+                <input asp-for="AdditionalIdentifier" type="number" class="form-control" placeholder="Student-/medewerkernummer">
+                <span asp-validation-for="AdditionalIdentifier" class="text-danger"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <label asp-for="Email">E-mailadres</label>
-            <input asp-for="Email" type="email" class="form-control" placeholder="onno@fysioapp.com">
-            <span asp-validation-for="Email" class="text-danger"></span>
+        <div class="col-md-3">
+            <h3>Behandel gegevens</h3>
+            <div class="form-group">
+                <label asp-for="GlobalDescriptionComplaints">Globale klachten omschrijving</label>
+                <textarea asp-for="GlobalDescriptionComplaints" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="GlobalDescriptionComplaints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DcsphCode">Diagnosecode</label>
+                <select asp-for="DcsphCode" class="form-control" asp-items="@ViewBag.DcsphCode" id="diagnosticscode"></select>
+                <input asp-for="DcsphDescription" type="text" disabled class="form-control" placeholder="Omschrijving">
+                <span asp-validation-for="DcsphDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDateTreatment">Einddatum behandeling</label>
+                <input asp-for="EndDateTreatment" type="date" class="form-control">
+                <span asp-validation-for="EndDateTreatment" class="text-danger"></span>
+            </div>
+            <br />
+            <button type="submit" style="float: right;" class="btn btn-primary">Opslaan</button>
         </div>
-        <div class="form-group">
-            <label asp-for="BirthDate">Geboortedatum</label>
-            <input asp-for="BirthDate" type="date" class="form-control">
-            <span asp-validation-for="BirthDate" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="UserType">Medewerker of student?</label>
-            <select asp-for="UserType" asp-items="@ViewBag.UserTypes" class="form-control"></select>
-            <span asp-validation-for="UserType" class="text-danger"></span>
-            <input asp-for="AdditionalIdentifier" type="number" class="form-control" placeholder="Student-/medewerkernummer">
-            <span asp-validation-for="AdditionalIdentifier" class="text-danger"></span>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <h3>Behandel gegevens</h3>
-        <div class="form-group">
-            <label asp-for="GlobalDescriptionComplaints">Globale klachten omschrijving</label>
-            <textarea asp-for="GlobalDescriptionComplaints" class="form-control" rows="3"></textarea>
-            <span asp-validation-for="GlobalDescriptionComplaints" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="DcsphCode">Diagnosecode</label>
-            <select asp-for="DcsphCode" class="form-control" asp-items="@ViewBag.DcsphCode" id="diagnosticscode"></select>
-            <input asp-for="DcsphDescription" type="text" disabled class="form-control" placeholder="Omschrijving" value="Amputatie">
-            <span asp-validation-for="DcsphDescription" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="EndDateTreatment">Einddatum behandeling</label>
-            <input asp-for="EndDateTreatment" type="date" class="form-control">
-            <span asp-validation-for="EndDateTreatment" class="text-danger"></span>
-        </div>
-        <br />
-        <button type="submit" style="float: right;" class="btn btn-primary">Opslaan</button>
-    </div>
         <div class="col-md-6" style="max-height: 50vh">
             <h3>Bezoek geschiedenis</h3>
             <table class="table table-striped table-max-height-1">
@@ -64,18 +64,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">01-10-2021</th>
-                        <td>10.00u</td>
-                        <td>11.00u</td>
-                        <td>onno@fysioapp.com</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">01-10-2021</th>
-                        <td>10.00u</td>
-                        <td>11.00u</td>
-                        <td>onno@fysioapp.com</td>
-                    </tr>
+                    @foreach (AppointmentViewModel appointment in @Model.Appointments)
+                    {
+                        <tr>
+                            <td>@($"{appointment.Date:dd-MM-yyyy}")</td>
+                            <td>@($"{appointment.Date:HH:mm}")</td>
+                            <td>TODO</td>
+                            <td>@appointment.AppointmentWithUser.Email</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
             <h3>Opmerking geschiedenis</h3>
@@ -89,18 +86,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">01-10-2021 11:32</th>
-                        <td>Hij heeft overgewicht</td>
-                        <td>onno@fysioapp.com</td>
-                        <td>Ja</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">01-10-2021 11:32</th>
-                        <td>Hij heeft overgewicht</td>
-                        <td>onno@fysioapp.com</td>
-                        <td>Ja</td>
-                    </tr>
+                    @foreach (CommentViewModel comment in @Model.Comments)
+                    {
+                        <tr>
+                            <td>@($"{comment.Date:dd-MM-yyyy HH:mm}")</td>
+                            <td>@comment.CommentText</td>
+                            <td>@comment.CommentMadeBy.Email</td>
+                            <td>@comment.PubliclyVisible</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
@@ -139,18 +133,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">01-10-2021 11:32</th>
-                        <td>onno@fysioapp.com</td>
-                        <td>1100</td>
-                        <td>Individuele zitting kinderfysiotherapie</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">01-10-2021 11:32</th>
-                        <td>onno@fysioapp.com</td>
-                        <td>1100</td>
-                        <td>Individuele zitting kinderfysiotherapie</td>
-                    </tr>
+                    @foreach (TreatmentViewModel treatment in @Model.TreatmentHistory)
+                    {
+                        <tr>
+                            <td>@($"{treatment.Date:dd-MM-yyyy HH:mm}")</td>
+                            <td>@treatment.CarriedOutByUser.Email</td>
+                            <td>@treatment.VektisId</td>
+                            <td>@treatment.VektisExplanation</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

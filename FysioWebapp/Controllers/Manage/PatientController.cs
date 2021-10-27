@@ -117,7 +117,8 @@ namespace FysioWebapp.Controllers.Manage
         public async Task<IActionResult> Info(int id)
         {
             var user = await _userRepository.GetById(id);
-            UsersViewModel model = user.ToViewModel();
+            UserViewModel model = user.ToViewModel();
+            PrefillSelectOptions();
 
             return View("Manage/Patient/Info", model);
         }
