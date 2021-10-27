@@ -8,7 +8,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Domain;
+using FysioWebapp.Helpers;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace FysioWebapp.Controllers.Manage
 {
@@ -37,23 +39,10 @@ namespace FysioWebapp.Controllers.Manage
             return View("Manage/Patient/Add", model);
         }
 
-        private void PrefillSelectOptions()
-        {
-            var therapists = _userRepository.GetAllTherapistUsers();
-            ViewBag.AllTherapists = new SelectList(therapists, "Id", "Email");
-
-            therapists = _userRepository.GetAllTherapistUsers().Where(u => u.UserType == UserType.Therapist);
-            ViewBag.Therapists = new SelectList(therapists, "Id", "Email");
-
-            var userTypes = Enum.GetValues(typeof(UserType)).Cast<UserType>().Where(ut => ut == UserType.Employee || ut == UserType.Student);
-            ViewBag.UserTypes = new SelectList(userTypes);
-        }
-
         [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> Add(NewPatientModel model)
         {
-            Debug.WriteLine(model.FullName);
             if (model.UserType == UserType.StudentTherapist && model.IntakeSuperVisionUserId == null)
             {
                 ModelState.AddModelError(nameof(model.IntakeSuperVisionUserId),
@@ -98,17 +87,7 @@ namespace FysioWebapp.Controllers.Manage
             }
             user.IntakeUser = await _userRepository.GetById(model.IntakeUserId);
             user.MainTherapist = await _userRepository.GetById(model.MainTherapistId);
-            foreach (string commentText in model.CommentsInput.Split("\n"))
-            {
-                user.Comments.Add(new Comment()
-                {
-                    // User = user,
-                    CommentMadeBy = user.IntakeUser,
-                    Date = DateTime.Now,
-                    PubliclyVisible = false,
-                    CommentText = commentText
-                });
-            }
+            AddCommentsToUserFromInput(user, model.CommentsInput);
 
             await _userRepository.Add(user);
             return RedirectToAction("Info", new { user.Id });
@@ -121,6 +100,83 @@ namespace FysioWebapp.Controllers.Manage
             PrefillSelectOptions();
 
             return View("Manage/Patient/Info", model);
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<IActionResult> Info(int id, UserViewModel model)
+        {
+            Debug.WriteLine(model.Id);
+            var user = await _userRepository.GetById(id);
+            if (model.UserType != UserType.Student && model.UserType != UserType.Employee)
+            {
+                ModelState.AddModelError(nameof(model.UserType),
+                    "Illegal user group");
+            }
+            if (!ModelState.IsValid)
+            {
+                PrefillSelectOptions();
+                return View("Manage/Patient/Info", model);
+            }
+
+            user.AdditionalIdentifier = model.AdditionalIdentifier;
+            user.BirthDate = model.BirthDate;
+            user.DcsphCode = model.DcsphCode;
+            user.DcsphDescription = model.DcsphDescription;
+            user.Email = model.Email;
+            user.EndDateTreatment = model.EndDateTreatment;
+            user.FullName = model.FullName;
+            user.Gender = model.Gender;
+            user.GlobalDescriptionComplaints = model.GlobalDescriptionComplaints;
+            user.UserType = model.UserType;
+
+            if (model.MainTherapistId != null)
+            {
+                user.MainTherapist = await _userRepository.GetById(model.MainTherapistId.Value);
+            }
+            AddCommentsToUserFromInput(user, model.CommentsInput);
+
+            await _userRepository.Update(user);
+            return RedirectToAction("Info", new { user.Id });
+        }
+
+#nullable enable
+        private void AddCommentsToUserFromInput(User user, string? text)
+        {
+            if (text == null)
+            {
+                return;
+            }
+            foreach (string commentText in text.Split("\n"))
+            {
+                if (commentText.Equals(""))
+                {
+                    continue;
+                }
+                user.Comments.Add(new Comment()
+                {
+                    CommentMadeBy = user.IntakeUser,
+                    Date = DateTime.Now,
+                    PubliclyVisible = false,
+                    CommentText = commentText
+                });
+            }
+        }
+#nullable disable
+
+        private void PrefillSelectOptions()
+        {
+            var therapists = _userRepository.GetAllTherapistUsers();
+            ViewBag.AllTherapists = new SelectList(therapists, "Id", "Email");
+
+            therapists = _userRepository.GetAllTherapistUsers().Where(u => u.UserType == UserType.Therapist);
+            ViewBag.Therapists = new SelectList(therapists, "Id", "Email");
+
+            var userTypes = Enum.GetValues(typeof(UserType)).Cast<UserType>().Where(ut => ut == UserType.Employee || ut == UserType.Student);
+            ViewBag.UserTypes = new SelectList(userTypes);
+
+            var genders = Enum.GetValues(typeof(Gender)).Cast<Gender>();
+            ViewBag.Genders = new SelectList(genders);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

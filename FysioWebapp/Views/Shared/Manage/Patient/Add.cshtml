@@ -29,6 +29,11 @@
                 <input asp-for="AdditionalIdentifier" type="number" class="form-control" placeholder="Student-/medewerkernummer">
                 <span asp-validation-for="AdditionalIdentifier" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Gender">Geslacht</label>
+                <select asp-for="Gender" asp-items="@ViewBag.Genders" class="form-control"></select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
         </div>
         <div class="col-md-4">
             <h3>Behandel gegevens</h3>

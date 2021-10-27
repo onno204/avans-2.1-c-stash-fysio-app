@@ -8,18 +8,32 @@
     --accent-color: #FFC947;
 }
 
+.table-full-width {
+    display: table;
+}
+
+.modal {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-backdrop {
+    display: none;
+}
+
 .btn-primary {
     background-color: var(--btn-bg-color);
     border-color: var(--btn-bg-color);
     color: var(--btn-color);
 }
+
 .btn {
     border-color: var(--btn-bg-color);
 }
-    .btn-primary:hover {
-        background-color: var(--btn-hover-bg-color);
-        border-color: var(--btn-hover-bg-color);
-    }
+
+.btn-primary:hover {
+    background-color: var(--btn-hover-bg-color);
+    border-color: var(--btn-hover-bg-color);
+}
 
 
 

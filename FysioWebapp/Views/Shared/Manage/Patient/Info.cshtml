@@ -4,7 +4,7 @@
 @model UserViewModel
 
 
-<form asp-area="Manage" asp-controller="Patient" asp-action="Add">
+<form asp-area="Manage" asp-controller="Patient" asp-action="Info" asp-route-id="@Model.Id">
     <div class="row new-patient">
         <div class="col-md-3">
             <h3>Persoonsgegevens</h3>
@@ -30,6 +30,11 @@
                 <input asp-for="AdditionalIdentifier" type="number" class="form-control" placeholder="Student-/medewerkernummer">
                 <span asp-validation-for="AdditionalIdentifier" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Gender">Geslacht</label>
+                <select asp-for="Gender" asp-items="@ViewBag.Genders" class="form-control" disabled></select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
         </div>
         <div class="col-md-3">
             <h3>Behandel gegevens</h3>
@@ -54,47 +59,52 @@
         </div>
         <div class="col-md-6" style="max-height: 50vh">
             <h3>Bezoek geschiedenis</h3>
-            <table class="table table-striped table-max-height-1">
+            <table class="table table-striped table-full-width table-max-height-1">
                 <thead>
-                    <tr>
-                        <th scope="col">Datum</th>
-                        <th scope="col">Start tijd</th>
-                        <th scope="col">Eind tijd</th>
-                        <th scope="col">Behandelaar</th>
-                    </tr>
+                <tr>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Start tijd</th>
+                    <th scope="col">Eind tijd</th>
+                    <th scope="col">Behandelaar</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach (AppointmentViewModel appointment in @Model.Appointments)
-                    {
-                        <tr>
-                            <td>@($"{appointment.Date:dd-MM-yyyy}")</td>
-                            <td>@($"{appointment.Date:HH:mm}")</td>
-                            <td>TODO</td>
-                            <td>@appointment.AppointmentWithUser.Email</td>
-                        </tr>
-                    }
+                @foreach (AppointmentViewModel appointment in @Model.Appointments)
+                {
+                    <tr>
+                        <td>@($"{appointment.Date:dd-MM-yyyy}")</td>
+                        <td>@($"{appointment.Date:HH:mm}")</td>
+                        <td>TODO</td>
+                        <td>@appointment.AppointmentWithUser.Email</td>
+                    </tr>
+                }
                 </tbody>
             </table>
-            <h3>Opmerking geschiedenis</h3>
-            <table class="table table-striped table-max-height-1">
+            <h3>
+                Opmerking geschiedenis
+                <button type="button" style="float: right;" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Add comment
+                </button>
+            </h3>
+            <table class="table table-striped table-max-height-1 table-full-width">
                 <thead>
-                    <tr>
-                        <th scope="col">Datum</th>
-                        <th scope="col">Opmerking</th>
-                        <th scope="col">Door</th>
-                        <th scope="col">Intern</th>
-                    </tr>
+                <tr>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Opmerking</th>
+                    <th scope="col">Door</th>
+                    <th scope="col">Intern</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach (CommentViewModel comment in @Model.Comments)
-                    {
-                        <tr>
-                            <td>@($"{comment.Date:dd-MM-yyyy HH:mm}")</td>
-                            <td>@comment.CommentText</td>
-                            <td>@comment.CommentMadeBy.Email</td>
-                            <td>@comment.PubliclyVisible</td>
-                        </tr>
-                    }
+                @foreach (CommentViewModel comment in @Model.Comments)
+                {
+                    <tr>
+                        <td>@($"{comment.Date:dd-MM-yyyy HH:mm}")</td>
+                        <td>@comment.CommentText</td>
+                        <td>@comment.CommentMadeBy.Email</td>
+                        <td>@comment.PubliclyVisible</td>
+                    </tr>
+                }
                 </tbody>
             </table>
         </div>
@@ -102,12 +112,12 @@
             <h3>Administratie gegevens</h3>
             <div class="form-group">
                 <label asp-for="IntakeUserId">Intake gedaan door</label>
-                <select asp-for="IntakeUserId" asp-items="@ViewBag.AllTherapists" class="form-control"></select>
+                <select asp-for="IntakeUserId" asp-items="@ViewBag.AllTherapists" class="form-control" disabled></select>
                 <span asp-validation-for="IntakeUserId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IntakeSuperVisionUserId">Onder supervisie van</label>
-                <select asp-for="IntakeSuperVisionUserId" asp-items="@ViewBag.Therapists" class="form-control"></select>
+                <select asp-for="IntakeSuperVisionUserId" asp-items="@ViewBag.Therapists" class="form-control" disabled></select>
                 <span asp-validation-for="IntakeSuperVisionUserId" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -117,33 +127,55 @@
             </div>
             <div class="form-group">
                 <label asp-for="SignUpDate">Aanmeld datum</label>
-                <input asp-for="SignUpDate" type="date" class="form-control">
+                <input asp-for="SignUpDate" type="date" class="form-control" disabled>
                 <span asp-validation-for="SignUpDate" class="text-danger"></span>
             </div>
         </div>
         <div class="col-md-9 mt-3">
             <h3>Behandel geschiedenis</h3>
-            <table class="table table-striped table-max-height-2">
+            <table class="table table-striped table-full-width table-max-height-2">
                 <thead>
-                    <tr>
-                        <th scope="col">Datum</th>
-                        <th scope="col">Door</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Omschrijving</th>
-                    </tr>
+                <tr>
+                    <th scope="col">Datum</th>
+                    <th scope="col">Door</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Omschrijving</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach (TreatmentViewModel treatment in @Model.TreatmentHistory)
-                    {
-                        <tr>
-                            <td>@($"{treatment.Date:dd-MM-yyyy HH:mm}")</td>
-                            <td>@treatment.CarriedOutByUser.Email</td>
-                            <td>@treatment.VektisId</td>
-                            <td>@treatment.VektisExplanation</td>
-                        </tr>
-                    }
+                @foreach (TreatmentViewModel treatment in @Model.TreatmentHistory)
+                {
+                    <tr>
+                        <td>@($"{treatment.Date:dd-MM-yyyy HH:mm}")</td>
+                        <td>@treatment.CarriedOutByUser.Email</td>
+                        <td>@treatment.VektisId</td>
+                        <td>@treatment.VektisExplanation</td>
+                    </tr>
+                }
                 </tbody>
             </table>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="CommentsInput">Opmerkingen (1 per regel)</label>
+                        <textarea asp-for="CommentsInput" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="CommentsInput" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sluiten</button>
+                    <button type="submit" class="btn btn-primary">Opmerking toevoegen</button>
+                </div>
+            </div>
         </div>
     </div>
 </form>

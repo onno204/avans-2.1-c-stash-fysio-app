@@ -22,6 +22,10 @@ namespace FysioWebapp.Models
 
         public static UserViewModel ToViewModel(this User user)
         {
+            if (user == null)
+            {
+                return null;
+            }
             var result = new UserViewModel
             {
                 Id = user.Id,
