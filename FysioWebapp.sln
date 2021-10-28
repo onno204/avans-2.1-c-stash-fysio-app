@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FysioWebapp", "FysioWebapp\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Domain", "Core.Domain\Core.Domain.csproj", "{A9CBC3EA-8C57-4889-A4C2-6BDE0C3B0E1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.DomainServices", "Core.DomainServices\Core.DomainServices.csproj", "{E2621DE7-7C25-42CA-A507-8824CB87ECA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.DomainServices", "Core.DomainServices\Core.DomainServices.csproj", "{E2621DE7-7C25-42CA-A507-8824CB87ECA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{E993B7E4-6FD1-4DBC-A789-2B06CBC2C8A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{E993B7E4-6FD1-4DBC-A789-2B06CBC2C8A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FysioWebService", "FysioWebService\FysioWebService.csproj", "{EF8D69FD-DBB8-481F-9BB1-71CADA08F2CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{E993B7E4-6FD1-4DBC-A789-2B06CBC2C8A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E993B7E4-6FD1-4DBC-A789-2B06CBC2C8A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E993B7E4-6FD1-4DBC-A789-2B06CBC2C8A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF8D69FD-DBB8-481F-9BB1-71CADA08F2CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF8D69FD-DBB8-481F-9BB1-71CADA08F2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF8D69FD-DBB8-481F-9BB1-71CADA08F2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF8D69FD-DBB8-481F-9BB1-71CADA08F2CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
