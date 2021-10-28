@@ -5,19 +5,22 @@
 
 <div class="row" style="height: 100%;">
     <div class="col-md-5" style="height: 100%; position: relative">
-        <form asp-area="Public" asp-controller="Login" asp-action="EmployeeLogin" method="post">
+        <form asp-area="Public" asp-controller="Login" method="post">
             <div class="col-md-6" style="top: 35%; left: 50%; transform: translate(-50%, -50%); position: absolute;">
                 <h3 class="text-center" style="margin-bottom: 25%;">Medewerker Login</h3>
                 <div class="form-group">
-                    <label asp-for="Email">E-mailadres</label>
-                    <input asp-for="Email" class="form-control" placeholder="onno@fysioapp.com">
+                    <label asp-for="EmployeeEmail">E-mailadres</label>
+                    <input asp-for="EmployeeEmail" class="form-control" placeholder="onno@fysioapp.com">
+                    <span asp-validation-for="EmployeeEmail" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Password">E-Wachtwoord</label>
                     <input asp-for="Password" type="password" class="form-control" placeholder="Wachtwoord">
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 <br />
-                <button class="btn btn-primary" style="width: 100%">Inloggen als medewerker <i class="fa fa-lock-open"></i></button>
+                <input asp-for="TargetSubmitButton" type="hidden" value="">
+                <button value="employeeLogin" onclick="submitClick(this);" class="btn btn-primary" style="width: 100%;">Inloggen als medewerker <i class="fa fa-lock-open"></i></button>
             </div>
         </form>
     </div>
@@ -25,22 +28,31 @@
         <div class="login-spacer"></div>
     </div>
     <div class="col-md-5" style="height: 100%; position: relative">
-        <form asp-area="Public" asp-controller="Login" asp-action="PatientLogin" method="post">
+        <form asp-area="Public" asp-controller="Login" method="post">
             <div class="col-md-6" style="top: 35%; left: 50%; transform: translate(-50%, -50%); position: absolute;">
-                <h3 class="text-center" style="margin-bottom: 25%;">Medewerker Login</h3>
+                <h3 class="text-center" style="margin-bottom: 25%;">Patiënt Login</h3>
                 <div class="form-group">
-                    <label asp-for="Email">E-mailadres</label>
-                    <input asp-for="Email" class="form-control" placeholder="onno@fysioapp.com">
+                    <label asp-for="PatientEmail">E-mailadres</label>
+                    <input asp-for="PatientEmail" class="form-control" placeholder="onno@fysioapp.com">
+                    <span asp-validation-for="PatientEmail" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Password">E-Wachtwoord</label>
                     <input asp-for="Password" type="password" class="form-control" placeholder="Wachtwoord">
+                    <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
                 <br />
-                <button class="btn btn-primary" style="width: 45%; padding-left: 0; padding-right: 0;">Registreren <i class="fa fa-user-plus"></i></button>
-                <button class="btn btn-primary" style="width: 45%; float: right;">Inloggen <i class="fa fa-lock-open"></i></button>
+                <input asp-for="TargetSubmitButton" type="hidden" value="">
+                <button value="register" onclick="submitClick(this);" class="btn btn-primary" style="width: 45%; padding-left: 0; padding-right: 0;">Registreren <i class="fa fa-user-plus"></i></button>
+                <button value="patientLogin" onclick="submitClick(this);" class="btn btn-primary" style="width: 45%; float: right;">Inloggen <i class="fa fa-lock-open"></i></button>
             </div>
         </form>
     </div>
     <div class="col-md-6"></div>
 </div>
+
+<script>
+    function submitClick(button) {
+        button.form.TargetSubmitButton.value = button.value;
+    }
+</script>

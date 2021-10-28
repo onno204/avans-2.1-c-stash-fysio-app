@@ -9,13 +9,22 @@ namespace FysioWebapp.Models
     public class LoginViewModel
     {
 
-        private string _email;
-        [Required]
-        public virtual string Email
+        private string _employeeEmail;
+        public virtual string EmployeeEmail
         {
-            get => _email;
-            set => _email = value.ToLower();
+            get => _employeeEmail;
+            set => _employeeEmail = value.ToLower();
         }
+
+        private string _patientEmail;
+        public virtual string PatientEmail
+        {
+            get => _patientEmail;
+            set => _patientEmail = value.ToLower();
+        }
+
+        [Required]
+        public string TargetSubmitButton { get; set; }
 
         [Required]
         [UIHint("password")]
