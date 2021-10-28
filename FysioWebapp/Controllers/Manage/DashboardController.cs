@@ -6,9 +6,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FysioWebapp.Controllers.Manage
 {
+
+    [Authorize(Policy = "TherapistOnly")]
     [Area("Manage")]
     public class DashboardController : Controller
     {

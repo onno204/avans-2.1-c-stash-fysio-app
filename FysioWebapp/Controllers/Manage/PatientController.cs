@@ -9,11 +9,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Domain;
 using FysioWebapp.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace FysioWebapp.Controllers.Manage
 {
+
+    [Authorize(Policy = "TherapistOnly")]
     [Area("Manage")]
     public class PatientController : Controller
     {

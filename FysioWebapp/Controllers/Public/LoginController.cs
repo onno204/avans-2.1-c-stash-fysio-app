@@ -6,17 +6,26 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace FysioWebapp.Controllers.Public
 {
+
+    [AllowAnonymous]
     [Area("Public")]
     public class LoginController : Controller
     {
-        private readonly ILogger<LoginController> _logger;
+        private UserManager<IdentityUser> userManager;
+        private SignInManager<IdentityUser> signInManager;
 
-        public LoginController(ILogger<LoginController> logger)
+        public LoginController(UserManager<IdentityUser> userMgr,
+            SignInManager<IdentityUser> signInMgr)
         {
-            _logger = logger;
+            userManager = userMgr;
+            signInManager = signInMgr;
+
+            IdentitySeedData.EnsurePopulated(userMgr).Wait();
         }
 
         public IActionResult Index()
@@ -28,6 +37,40 @@ namespace FysioWebapp.Controllers.Public
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public async Task<RedirectResult> Logout(string returnUrl = "/")
+        {
+            await signInManager.SignOutAsync();
+            return Redirect(returnUrl);
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<IActionResult> EmployeeLogin(LoginViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await userManager.FindByNameAsync(model.Email);
+                if (user != null)
+                {
+                    await signInManager.SignOutAsync();
+                    if ((await signInManager.PasswordSignInAsync(user,
+                        model.Password, false, false)).Succeeded)
+                    {
+                        return Redirect("/Manage");
+                    }
+                }
+            }
+            ModelState.AddModelError("", "Invalid name or password");
+            return View("Public/Login/Login", model);
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public IActionResult PatientLogin(LoginViewModel model)
+        {
+            return View("Public/Login/Login", model);
         }
     }
 }

@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "p3TU513xVo5WKndWdcPX8dn6VZAVuDS1Kubb1DVAI0zAu4nJImA9qmnsWRAs3gmcMPOrhrUJsGz4Sjd5IIvc1Q==",
+  "dgSpecHash": "Ch6dejPIAE7m2uTNv02yJOuLexlUclSWdIG4yAfb965Oye5xLhmti9Jgn1jZOkphkFXTvYzBvwK/7kn6QfsIvw==",
   "success": true,
   "projectFilePath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\FysioWebapp\\FysioWebapp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\onnov\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\onnov\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.11\\microsoft.aspnetcore.cryptography.internal.5.0.11.nupkg.sha512",
+    "C:\\Users\\onnov\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.11\\microsoft.aspnetcore.cryptography.keyderivation.5.0.11.nupkg.sha512",
+    "C:\\Users\\onnov\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.11\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.11.nupkg.sha512",
     "C:\\Users\\onnov\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.extensions\\5.0.11\\microsoft.aspnetcore.mvc.razor.extensions.5.0.11.nupkg.sha512",
     "C:\\Users\\onnov\\.nuget\\packages\\microsoft.aspnetcore.mvc.razor.runtimecompilation\\5.0.11\\microsoft.aspnetcore.mvc.razor.runtimecompilation.5.0.11.nupkg.sha512",
     "C:\\Users\\onnov\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\5.0.11\\microsoft.aspnetcore.razor.language.5.0.11.nupkg.sha512",
@@ -28,6 +31,8 @@
     "C:\\Users\\onnov\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.2\\microsoft.extensions.dependencyinjection.5.0.2.nupkg.sha512",
     "C:\\Users\\onnov\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\onnov\\.nuget\\packages\\microsoft.extensions.dependencymodel\\5.0.0\\microsoft.extensions.dependencymodel.5.0.0.nupkg.sha512",
+    "C:\\Users\\onnov\\.nuget\\packages\\microsoft.extensions.identity.core\\5.0.11\\microsoft.extensions.identity.core.5.0.11.nupkg.sha512",
+    "C:\\Users\\onnov\\.nuget\\packages\\microsoft.extensions.identity.stores\\5.0.11\\microsoft.extensions.identity.stores.5.0.11.nupkg.sha512",
     "C:\\Users\\onnov\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\onnov\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\onnov\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",

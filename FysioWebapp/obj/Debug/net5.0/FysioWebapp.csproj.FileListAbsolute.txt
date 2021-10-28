@@ -23,8 +23,6 @@ C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\b
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Connections.Abstractions.dll
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.AspNetCore.CookiePolicy.dll
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Cors.dll
-C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Cryptography.Internal.dll
-C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.AspNetCore.DataProtection.Abstractions.dll
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.AspNetCore.DataProtection.dll
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.AspNetCore.DataProtection.Extensions.dll
@@ -109,8 +107,6 @@ C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\b
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.Extensions.Hosting.Abstractions.dll
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.Extensions.Hosting.dll
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.Extensions.Http.dll
-C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.Extensions.Identity.Core.dll
-C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.Extensions.Localization.Abstractions.dll
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.Extensions.Localization.dll
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\refs\Microsoft.Extensions.Logging.Abstractions.dll
@@ -400,3 +396,8 @@ C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\b
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Core.DomainServices.pdb
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Infrastructure.pdb
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Core.Domain.pdb
+C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll

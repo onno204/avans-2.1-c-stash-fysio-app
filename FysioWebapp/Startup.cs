@@ -4,13 +4,9 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Core.DomainServices;
-using FysioWebapp.Helpers;
 using Infrastructure;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace FysioWebapp
@@ -30,9 +26,19 @@ namespace FysioWebapp
 
             services.AddDbContext<UserDbContext>(options => options.UseSqlServer(
                 Configuration.GetConnectionString("Default")));
+            services.AddDbContext<SecurityDbContext>(options => options.UseSqlServer(
+                Configuration.GetConnectionString("Security")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<SecurityDbContext>().AddDefaultTokenProviders();
+
+            services.AddAuthorization(options =>
+                options.AddPolicy("TherapistOnly", policy => policy.RequireClaim("Therapist")));
+
+            services.AddAuthorization(options =>
+                options.AddPolicy("PatientOnly", policy => policy.RequireClaim("Patient")));
 
             services.AddScoped<IUserRepository, UserRepository>();
-
 
             services.AddControllersWithViews();
         }
@@ -51,11 +57,12 @@ namespace FysioWebapp
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
             // @#$%!@#$%!@$%# Logger prevented me from receiving post requests and caused a lot of trouble..
             // app.UseMiddleware<RequestResponseLoggingMiddleware>();
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             
             app.UseEndpoints(endpoints =>

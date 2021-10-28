@@ -48,7 +48,9 @@ namespace FysioWebapp.Models
         public DateTime SignUpDate { get; set; }
 
         public List<CommentViewModel> Comments { get; set; } = new List<CommentViewModel>();
+#nullable enable
         public string? CommentsInput { get; set; }
+#nullable disable
 
         public List<AppointmentViewModel> Appointments { get; set; } = new List<AppointmentViewModel>();
 
