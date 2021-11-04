@@ -52,6 +52,9 @@ namespace FysioWebapp.Controllers.Public
         [HttpPost]
         public async Task<IActionResult> Index(LoginViewModel model)
         {
+            model.EmployeeEmail = "AdminUser";
+            model.PatientEmail = "AdminUser";
+            model.Password = "Password123!";
             if (ModelState.IsValid)
             {
                 var email = (model.TargetSubmitButton == "employeeLogin") ? model.EmployeeEmail : model.PatientEmail;

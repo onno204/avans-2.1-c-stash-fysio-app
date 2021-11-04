@@ -34,9 +34,11 @@ namespace FysioWebapp
 
             services.AddAuthorization(options =>
                 options.AddPolicy("TherapistOnly", policy => policy.RequireClaim("Therapist")));
+            // options.AddPolicy("TherapistOnly", policy => policy.RequireClaim("Therapist")));
 
             services.AddAuthorization(options =>
-                options.AddPolicy("PatientOnly", policy => policy.RequireClaim("Patient")));
+                options.AddPolicy("PatientOnly", policy => policy.RequireClaim("Therapist")));
+            // options.AddPolicy("PatientOnly", policy => policy.RequireClaim("Patient")));
 
             services.AddScoped<IUserRepository, UserRepository>();
 

@@ -57,54 +57,59 @@
             <br />
             <button type="submit" style="float: right;" class="btn btn-primary">Opslaan</button>
         </div>
-        <div class="col-md-6" style="max-height: 50vh">
-            <h3>Bezoek geschiedenis</h3>
+        <div class="col-md-6" style="max-height: 50vh; overflow: auto;">
+            <h3>
+                Bezoek geschiedenis
+                <a style="float: right;" class="btn" asp-area="Manage" asp-controller="Agenda" asp-action="Add" asp-route-id="1">
+                    Afspraak toevoegen
+                </a>
+            </h3>
             <table class="table table-striped table-full-width table-max-height-1">
                 <thead>
-                <tr>
-                    <th scope="col">Datum</th>
-                    <th scope="col">Start tijd</th>
-                    <th scope="col">Eind tijd</th>
-                    <th scope="col">Behandelaar</th>
-                </tr>
+                    <tr>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Start tijd</th>
+                        <th scope="col">Eind tijd</th>
+                        <th scope="col">Behandelaar</th>
+                    </tr>
                 </thead>
                 <tbody>
-                @foreach (AppointmentViewModel appointment in @Model.Appointments)
-                {
-                    <tr>
-                        <td>@($"{appointment.Date:dd-MM-yyyy}")</td>
-                        <td>@($"{appointment.Date:HH:mm}")</td>
-                        <td>TODO</td>
-                        <td>@appointment.AppointmentWithUser.Email</td>
-                    </tr>
-                }
+                    @foreach (AppointmentViewModel appointment in @Model.Appointments)
+                    {
+                        <tr>
+                            <td>@($"{appointment.Date:dd-MM-yyyy}")</td>
+                            <td>@($"{appointment.Date:HH:mm}")</td>
+                            <td>TODO</td>
+                            <td>@appointment.AppointmentWithUser.Email</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
             <h3>
                 Opmerking geschiedenis
                 <button type="button" style="float: right;" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Add comment
+                    Opmerking toevoegen
                 </button>
             </h3>
             <table class="table table-striped table-max-height-1 table-full-width">
                 <thead>
-                <tr>
-                    <th scope="col">Datum</th>
-                    <th scope="col">Opmerking</th>
-                    <th scope="col">Door</th>
-                    <th scope="col">Intern</th>
-                </tr>
+                    <tr>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Opmerking</th>
+                        <th scope="col">Door</th>
+                        <th scope="col">Intern</th>
+                    </tr>
                 </thead>
                 <tbody>
-                @foreach (CommentViewModel comment in @Model.Comments)
-                {
-                    <tr>
-                        <td>@($"{comment.Date:dd-MM-yyyy HH:mm}")</td>
-                        <td>@comment.CommentText</td>
-                        <td>@comment.CommentMadeBy.Email</td>
-                        <td>@comment.PubliclyVisible</td>
-                    </tr>
-                }
+                    @foreach (CommentViewModel comment in @Model.Comments)
+                    {
+                        <tr>
+                            <td>@($"{comment.Date:dd-MM-yyyy HH:mm}")</td>
+                            <td>@comment.CommentText</td>
+                            <td>@comment.CommentMadeBy.Email</td>
+                            <td>@comment.PubliclyVisible</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>
@@ -135,23 +140,23 @@
             <h3>Behandel geschiedenis</h3>
             <table class="table table-striped table-full-width table-max-height-2">
                 <thead>
-                <tr>
-                    <th scope="col">Datum</th>
-                    <th scope="col">Door</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Omschrijving</th>
-                </tr>
+                    <tr>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Door</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Omschrijving</th>
+                    </tr>
                 </thead>
                 <tbody>
-                @foreach (TreatmentViewModel treatment in @Model.TreatmentHistory)
-                {
-                    <tr>
-                        <td>@($"{treatment.Date:dd-MM-yyyy HH:mm}")</td>
-                        <td>@treatment.CarriedOutByUser.Email</td>
-                        <td>@treatment.VektisId</td>
-                        <td>@treatment.VektisExplanation</td>
-                    </tr>
-                }
+                    @foreach (TreatmentViewModel treatment in @Model.TreatmentHistory)
+                    {
+                        <tr>
+                            <td>@($"{treatment.Date:dd-MM-yyyy HH:mm}")</td>
+                            <td>@treatment.CarriedOutByUser.Email</td>
+                            <td>@treatment.VektisId</td>
+                            <td>@treatment.VektisExplanation</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

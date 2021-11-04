@@ -401,3 +401,5 @@ C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\b
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Patient\Agenda\Add.cshtml.g.cs
+C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Manage\Agenda\Add.cshtml.g.cs

@@ -27,6 +27,11 @@ namespace FysioWebapp.Controllers.Manage
             return View("Manage/Agenda/Agenda");
         }
 
+        public IActionResult Add(int id)
+        {
+            return View("Patient/Agenda/Add");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
