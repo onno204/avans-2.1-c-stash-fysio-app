@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = Core.DomainServices
-build_property.ProjectDir = C:\Users\onnov\Documents\AA_Sorted\Git\avans-2.1-c-stash-fysio-app\Core.DomainServices\
+build_property.ProjectDir = C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\Core.DomainServices\

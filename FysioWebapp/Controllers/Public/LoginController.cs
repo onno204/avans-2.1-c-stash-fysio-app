@@ -114,6 +114,7 @@ namespace FysioWebapp.Controllers.Public
                             {
                                 ModelState.AddModelError(nameof(model.Password),
                                     "Onbekend errors tijdens het registreren");
+                                e.ToString();
                             }
                         }
                         else

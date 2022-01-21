@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Core.Domain;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
 
 namespace Infrastructure
 {
@@ -29,6 +30,33 @@ namespace Infrastructure
             modelBuilder.Entity<User>().HasOne<User>(u => u.IntakeUser);
             modelBuilder.Entity<User>().HasOne<User>(u => u.MainTherapist);
             modelBuilder.Entity<User>().HasOne<User>(u => u.IntakeSuperVisionUser);
+            modelBuilder.Entity<Vektis>().HasData(getVektisList());
+        }
+
+        protected List<Vektis> getVektisList()
+        {
+            List<Vektis> vektisList = new List<Vektis>();
+            using (var reader = new StreamReader(@"C:\Users\onnov\Downloads\TeamManagement-Feature-AddWebService\TeamManagement-Feature-AddWebService\Data\VektisLijst.csv"))
+            {
+                Boolean isFirstLine = true;
+                while (!reader.EndOfStream)
+                {
+                    if (isFirstLine)
+                    {
+                        isFirstLine = false;
+                        continue;
+                    }
+                    var line = reader.ReadLine();
+                    var values = line.Split(';');
+
+                    vektisList.Add(new Vektis()
+                    {
+                        Id = int.Parse(values[0]), Position = values[1], Text = values[2]
+                    });
+                }
+            }
+            Console.WriteLine("Got results: " + vektisList.Count);
+            return vektisList;
         }
     }
 }

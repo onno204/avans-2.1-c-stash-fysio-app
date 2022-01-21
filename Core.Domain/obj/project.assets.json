@@ -40,11 +40,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\Core.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\Core.Domain.csproj",
       "projectName": "Core.Domain",
-      "projectPath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\Core.Domain.csproj",
+      "projectPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\Core.Domain.csproj",
       "packagesPath": "C:\\Users\\onnov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\obj\\",
+      "outputPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\onnov\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -93,7 +93,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }

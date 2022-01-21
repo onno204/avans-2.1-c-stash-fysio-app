@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\FysioWebapp\\FysioWebapp.csproj": {}
+    "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\FysioWebapp\\FysioWebapp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj": {
+    "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj",
+        "projectUniqueName": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj",
         "projectName": "Core.DomainServices",
-        "projectPath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj",
+        "projectPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj",
         "packagesPath": "C:\\Users\\onnov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\obj\\",
+        "outputPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\onnov\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\Core.Domain.csproj": {
-                "projectPath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\Core.Domain.csproj"
+              "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\Core.Domain.csproj": {
+                "projectPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\Core.Domain.csproj"
               }
             }
           }
@@ -58,18 +58,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\Core.Domain.csproj": {
+    "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\Core.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\Core.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\Core.Domain.csproj",
         "projectName": "Core.Domain",
-        "projectPath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\Core.Domain.csproj",
+        "projectPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\Core.Domain.csproj",
         "packagesPath": "C:\\Users\\onnov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\obj\\",
+        "outputPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\onnov\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -118,18 +118,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\FysioWebapp\\FysioWebapp.csproj": {
+    "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\FysioWebapp\\FysioWebapp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\FysioWebapp\\FysioWebapp.csproj",
+        "projectUniqueName": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\FysioWebapp\\FysioWebapp.csproj",
         "projectName": "FysioWebapp",
-        "projectPath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\FysioWebapp\\FysioWebapp.csproj",
+        "projectPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\FysioWebapp\\FysioWebapp.csproj",
         "packagesPath": "C:\\Users\\onnov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\FysioWebapp\\obj\\",
+        "outputPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\FysioWebapp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\onnov\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -146,11 +146,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj": {
-                "projectPath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj"
+              "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj": {
+                "projectPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj"
               },
-              "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -198,18 +198,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\onnov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\onnov\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -226,8 +226,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj": {
-                "projectPath": "C:\\Users\\onnov\\Documents\\AA_Sorted\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj"
+              "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj": {
+                "projectPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj"
               }
             }
           }
@@ -274,7 +274,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }
