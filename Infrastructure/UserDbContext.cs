@@ -9,6 +9,7 @@ namespace Infrastructure
     public class UserDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Vektis> VektisList { get; set; }
 
         public UserDbContext(DbContextOptions<UserDbContext> contextOptions) : base(contextOptions)
         {
@@ -36,18 +37,19 @@ namespace Infrastructure
         protected List<Vektis> getVektisList()
         {
             List<Vektis> vektisList = new List<Vektis>();
-            using (var reader = new StreamReader(@"C:\Users\onnov\Downloads\TeamManagement-Feature-AddWebService\TeamManagement-Feature-AddWebService\Data\VektisLijst.csv"))
+            using (var reader = new StreamReader(@"C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\Data\VektisLijst.csv"))
             {
                 Boolean isFirstLine = true;
                 while (!reader.EndOfStream)
                 {
+                    var line = reader.ReadLine();
                     if (isFirstLine)
                     {
                         isFirstLine = false;
                         continue;
                     }
-                    var line = reader.ReadLine();
-                    var values = line.Split(';');
+
+                    var values = line.Split(',');
 
                     vektisList.Add(new Vektis()
                     {
@@ -55,7 +57,6 @@ namespace Infrastructure
                     });
                 }
             }
-            Console.WriteLine("Got results: " + vektisList.Count);
             return vektisList;
         }
     }

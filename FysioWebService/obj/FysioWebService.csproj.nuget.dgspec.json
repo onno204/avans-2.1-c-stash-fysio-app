@@ -146,6 +146,9 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
+              "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj": {
+                "projectPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Core.DomainServices\\Core.DomainServices.csproj"
+              },
               "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Infrastructure\\Infrastructure.csproj": {
                 "projectPath": "C:\\Users\\onnov\\Git\\avans-2.1-c-stash-fysio-app\\Infrastructure\\Infrastructure.csproj"
               }

@@ -19,13 +19,14 @@ namespace Infrastructure
 
         public IQueryable<Vektis> GetAll()
         {
-            return _context.Vektis.Include(u => u.Appointments)
-                .Include(u => u.Comments)
-                .Include(u => u.TreatmentHistory)
-                .Include(u => u.IntakeUser)
-                .Include(u => u.IntakeSuperVisionUser)
-                .Include(u => u.MainTherapist);
+            return _context.VektisList;
         }
+
+        public IEnumerable<Vektis> GetAllList()
+        {
+            return this.GetAll().ToList();
+        }
+
         public async Task<Vektis> GetById(int id)
         {
             return await this.GetAll().SingleOrDefaultAsync(u => u.Id == id);

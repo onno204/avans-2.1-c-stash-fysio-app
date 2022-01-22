@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.DomainServices", "Core
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{E993B7E4-6FD1-4DBC-A789-2B06CBC2C8A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FysioWebService", "FysioWebService\FysioWebService.csproj", "{EF8D69FD-DBB8-481F-9BB1-71CADA08F2CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FysioWebService", "FysioWebService\FysioWebService.csproj", "{EF8D69FD-DBB8-481F-9BB1-71CADA08F2CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

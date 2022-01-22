@@ -7,11 +7,8 @@ namespace FysioWebapp.Models
     {
         public int Id { get; set; }
 
-        public DateTime Date { get; set; }
+        public String Position { get; set; }
 
-        public UserViewModel AppointmentWithUser { get; set; }
-
-        public UserViewModel AppointmentCreatedByUser { get; set; }
+        public String Text { get; set; }
     }
 }
-

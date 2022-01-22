@@ -11,5 +11,7 @@ namespace Core.DomainServices
         IQueryable<Vektis> GetAll();
 
         Task<Vektis> GetById(int id);
+
+        IEnumerable<Vektis> GetAllList();
     }
 }
