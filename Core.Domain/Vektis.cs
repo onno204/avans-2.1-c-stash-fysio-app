@@ -12,9 +12,6 @@ namespace Core.Domain
 
         public string Text { get; set; }
 
-#nullable enable
-        public string? FullText { get; set; }
-
-#nullable disable
+        public string FullText { get; set; }
     }
 }

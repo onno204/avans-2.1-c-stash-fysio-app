@@ -121,8 +121,6 @@ namespace FysioWebapp.Controllers.Manage
                 await PrefillSelectOptions();
                 return View("Manage/Patient/Info", model);
             }
-            Console.WriteLine("KANKER?");
-            Console.WriteLine(model.DcsphDescription);
             user.AdditionalIdentifier = model.AdditionalIdentifier;
             user.BirthDate = model.BirthDate;
             user.DcsphCode = model.DcsphCode;
@@ -188,7 +186,7 @@ namespace FysioWebapp.Controllers.Manage
             };
             var request = new RestRequest("vektis");
             var DiagnosticCodes = await client.GetAsync<List<Vektis>>(request);
-            DiagnosticCodes.ForEach(item => item.FullText = $"({item.Id}) {item.Position} - {item.Text}");
+            //DiagnosticCodes.ForEach(item => item.FullText = $"({item.Id}) {item.Position} - {item.Text}");
             ViewBag.DcsphCode = new SelectList(DiagnosticCodes, nameof(Vektis.Id), nameof(Vektis.FullText));
         }
 

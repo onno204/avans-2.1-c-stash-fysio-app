@@ -57,7 +57,8 @@ namespace Infrastructure
                         {
                             Id = int.Parse(values[0]),
                             Position = values[1],
-                            Text = values[2]
+                            Text = values[2],
+                            FullText = $"({values[0]}) {values[1]} - {values[2]}"
                         });
                     }
                 }
