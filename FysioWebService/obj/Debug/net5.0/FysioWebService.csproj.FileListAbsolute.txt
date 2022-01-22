@@ -70,3 +70,6 @@ C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebService\obj\Debug\net5.0\
 C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebService\obj\Debug\net5.0\FysioWebService.genruntimeconfig.cache
 C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebService\bin\Debug\net5.0\Humanizer.dll
 C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebService\bin\Debug\net5.0\System.Net.Http.Formatting.dll
+C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebService\bin\Debug\net5.0\System.Web.Http.dll
+C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebService\bin\Debug\net5.0\Swashbuckle.Core.dll

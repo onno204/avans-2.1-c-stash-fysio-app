@@ -1,14 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
-using System.Linq;
 using Core.DomainServices;
 
 namespace FysioWebService.Controllers
 {
 
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class VektisController : Controller
     {
         private readonly ILogger<VektisController> _logger;
