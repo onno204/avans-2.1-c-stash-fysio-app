@@ -11,5 +11,10 @@ namespace Core.Domain
         public string Position { get; set; }
 
         public string Text { get; set; }
+
+#nullable enable
+        public string? FullText { get; set; }
+
+#nullable disable
     }
 }

@@ -808,3 +808,10 @@ C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Fysi
 C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\FysioWebapp.Views.pdb
 C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\FysioWebapp.csproj.CopyComplete
 C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\FysioWebapp.genruntimeconfig.cache
+C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Azure.Core.dll
+C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Azure.Extensions.AspNetCore.Configuration.Secrets.dll
+C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Azure.Identity.dll
+C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Azure.Security.KeyVault.Secrets.dll
+C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\RestSharp.dll

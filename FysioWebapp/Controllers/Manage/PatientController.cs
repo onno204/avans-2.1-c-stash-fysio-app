@@ -8,10 +8,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Domain;
-using FysioWebapp.Helpers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using RestSharp;
+using RestSharp.Authenticators;
 
 namespace FysioWebapp.Controllers.Manage
 {
@@ -35,10 +35,10 @@ namespace FysioWebapp.Controllers.Manage
         }
 
         [HttpGet]
-        public IActionResult Add()
+        public async Task<IActionResult> AddAsync()
         {
             var model = new NewPatientModel();
-            PrefillSelectOptions();
+            await PrefillSelectOptions();
             return View("Manage/Patient/Add", model);
         }
 
@@ -59,7 +59,7 @@ namespace FysioWebapp.Controllers.Manage
             }
             if (!ModelState.IsValid)
             {
-                PrefillSelectOptions();
+                await PrefillSelectOptions();
                 return View("Manage/Patient/Add", model);
             }
 
@@ -100,7 +100,7 @@ namespace FysioWebapp.Controllers.Manage
         {
             var user = await _userRepository.GetById(id);
             UserViewModel model = user.ToViewModel();
-            PrefillSelectOptions();
+            await PrefillSelectOptions();
 
             return View("Manage/Patient/Info", model);
         }
@@ -118,10 +118,11 @@ namespace FysioWebapp.Controllers.Manage
             }
             if (!ModelState.IsValid)
             {
-                PrefillSelectOptions();
+                await PrefillSelectOptions();
                 return View("Manage/Patient/Info", model);
             }
-
+            Console.WriteLine("KANKER?");
+            Console.WriteLine(model.DcsphDescription);
             user.AdditionalIdentifier = model.AdditionalIdentifier;
             user.BirthDate = model.BirthDate;
             user.DcsphCode = model.DcsphCode;
@@ -167,7 +168,7 @@ namespace FysioWebapp.Controllers.Manage
         }
 #nullable disable
 
-        private void PrefillSelectOptions()
+        private async Task PrefillSelectOptions()
         {
             var therapists = _userRepository.GetAllTherapistUsers();
             ViewBag.AllTherapists = new SelectList(therapists, "Id", "Email");
@@ -180,6 +181,15 @@ namespace FysioWebapp.Controllers.Manage
 
             var genders = Enum.GetValues(typeof(Gender)).Cast<Gender>();
             ViewBag.Genders = new SelectList(genders);
+
+            var client = new RestClient("https://avansfysioapi2167988.azurewebsites.net/api/v1")
+            {
+                //Authenticator = new HttpBasicAuthenticator("username", "password")
+            };
+            var request = new RestRequest("vektis");
+            var DiagnosticCodes = await client.GetAsync<List<Vektis>>(request);
+            DiagnosticCodes.ForEach(item => item.FullText = $"({item.Id}) {item.Position} - {item.Text}");
+            ViewBag.DcsphCode = new SelectList(DiagnosticCodes, nameof(Vektis.Id), nameof(Vektis.FullText));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

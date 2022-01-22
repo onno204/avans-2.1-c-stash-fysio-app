@@ -186,6 +186,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.11, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[107.1.1, )"
             }
           },
           "imports": [
