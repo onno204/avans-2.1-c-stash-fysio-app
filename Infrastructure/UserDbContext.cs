@@ -37,25 +37,33 @@ namespace Infrastructure
         protected List<Vektis> getVektisList()
         {
             List<Vektis> vektisList = new List<Vektis>();
-            using (var reader = new StreamReader(@"C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\Data\VektisLijst.csv"))
+            try
             {
-                Boolean isFirstLine = true;
-                while (!reader.EndOfStream)
+                using (var reader = new StreamReader(@"C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\Data\VektisLijst.csv"))
                 {
-                    var line = reader.ReadLine();
-                    if (isFirstLine)
+                    Boolean isFirstLine = true;
+                    while (!reader.EndOfStream)
                     {
-                        isFirstLine = false;
-                        continue;
+                        var line = reader.ReadLine();
+                        if (isFirstLine)
+                        {
+                            isFirstLine = false;
+                            continue;
+                        }
+
+                        var values = line.Split(',');
+
+                        vektisList.Add(new Vektis()
+                        {
+                            Id = int.Parse(values[0]),
+                            Position = values[1],
+                            Text = values[2]
+                        });
                     }
-
-                    var values = line.Split(',');
-
-                    vektisList.Add(new Vektis()
-                    {
-                        Id = int.Parse(values[0]), Position = values[1], Text = values[2]
-                    });
                 }
+            }catch (Exception e)
+            {
+                e.ToString();
             }
             return vektisList;
         }
