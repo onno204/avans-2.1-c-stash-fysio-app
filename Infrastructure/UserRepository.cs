@@ -19,7 +19,7 @@ namespace Infrastructure
 
         public IQueryable<User> GetAll()
         {
-            return _context.Users.Include(u => u.Appointments)
+            return _context.Users.Include(u => u.Appointments).ThenInclude(a => a.AppointmentWithUser)
                 .Include(u => u.Comments)
                 .Include(u => u.TreatmentHistory)
                 .Include(u => u.IntakeUser)
