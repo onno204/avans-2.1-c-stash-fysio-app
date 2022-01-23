@@ -1,6 +1,8 @@
 ﻿@{
     ViewData["Title"] = "Plannen";
 }
+@model List<UserViewModel>
+
 <style>
     .btn-margin {
         margin-left: .2rem;
@@ -16,160 +18,171 @@
 </style>
 
 <div class="row" style="margin-top: 4rem;">
-    <div class="col-md-3">
-        <h3>Maandag 01-10</h3>
-        <div class="div-margin">
-            <h4 class="d-inline-block">09.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">10.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">11.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">11.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">12.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">13.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">14.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">15.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">16.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
+    @foreach (var item in ViewContext.ViewData.ModelState)
+    {
+        if (item.Value.Errors.Any())
+        {
+            <h1 style="color: red">@(string.Join("; ", item.Value.Errors.Select(x => x.ErrorMessage)))</h1>
+        }
+    }
+    <div class="therapistSelectorContainer">
+
+    </div>
+
+    <div class="dateSelectorContainer mt-3">
+        <h6>Selecteer dag</h6>
+        <input type="date" id="start" name="trip-start" class="form-control dateSelector"
+               onchange="dateSelectorChange(this)"
+               value="@DateTime.Now.ToString("yyyy-MM-dd")"
+               min="@DateTime.Now.ToString("yyyy-MM-dd")">
+        <div class="daySelectorContainer">
+
         </div>
     </div>
-    <div class="col-md-3">
-        <h3>Dinsdag 02-10</h3>
-        <div class="div-margin">
-            <h4 class="d-inline-block">09.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
+
+
+    <div class="timeSelectorContainer">
+        <div class="startTimeSelectorContainer mt-3">
+
         </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">10.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
+        <div class="endTimeSelectorContainer mt-3">
+
         </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">11.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
+        <div class="durationContainer mt-3">
+
         </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">11.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">12.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">13.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">14.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">15.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">16.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
-        </div>
+
+        <input type="button" class="btn" value="Save appointment" onclick="saveAppointment()" />
     </div>
-    <div class="col-md-3">
-        <h3>Woensdag 03-10</h3>
-        <div class="div-margin">
-            <h4 class="d-inline-block">09.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">10.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">11.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">11.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">12.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">13.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">14.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">15.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">16.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <h3>Donderdag 04-10</h3>
-        <div class="div-margin">
-            <h4 class="d-inline-block">09.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">10.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">11.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">11.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">12.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">13.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">14.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">15.00u</h4>
-            <a class="btn btn-margin">Plannen <i class="fa fa-calendar"></i></a>
-        </div>
-        <div class="div-margin">
-            <h4 class="d-inline-block">16.00u</h4>
-            <h5 class="d-inline-block busy-text">Bezet</h5>
-        </div>
-    </div>
+    <form asp-area="Manage" asp-controller="Agenda" asp-action="Add" method="post" class="submitToController">
+    </form>
 </div>
+
+<script>
+    const therapistData = {};
+    function addTherapistData(email, day, startTime, endTime) {
+        if (therapistData[email] === undefined) {
+            therapistData[email] = {};
+        }
+        if (therapistData[email][day] === undefined) {
+            therapistData[email][day] = [];
+        }
+        therapistData[email][day].push({
+            startTime: startTime,
+            endTime: endTime
+        });
+    }
+
+    function dateSelectorChange(target) {
+        const date = new Date(target.value);
+        const week = new Array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
+        const day = week[date.getDay()];
+        $(".daySelector").val(day).change();
+    }
+
+    function ListToSelect(inputList, extraData) {
+        var selectString = `<select ${extraData}>`;
+        inputList.forEach((arrayValue, i) => {
+            selectString += `<option value="${arrayValue}">${arrayValue}</option>`
+        });
+        selectString += "</select>";
+        return selectString;
+    };
+
+    function setTherapistSelector() {
+        const selectDay = ListToSelect(Object.keys(therapistData), `class="therapistSelector form-control" onchange="showTherapist($(this).val())"`);
+        $(".therapistSelectorContainer").html(`<h6>Selecteer therapeut</h6>${selectDay}`);
+        showTherapist(Object.keys(therapistData)[0]);
+    }
+
+    function getTimesBetween(startTime, endTime) {
+        let selectString = "";
+        for (let hr = startTime; hr < endTime; hr += 0.5) {
+            let isHalfHour = hr !== parseInt(hr);
+            const hrStr = parseInt(hr).toString().padStart(2, "0") + ":";
+            selectString += `<option value="${hr}">${hrStr}${isHalfHour ? "30" : "00"}</option>`;
+        }
+        return selectString;
+    }
+
+    function showTherapist(email) {
+        const selectDay = ListToSelect(Object.keys(therapistData[email]), `class="daySelector form-control" disabled onchange="showStartHours('${email}', $(this).val())"`);
+        $(".daySelectorContainer").html(`${selectDay}`);
+        $(".dateSelector").change();
+        //showStartHours(email, Object.keys(therapistData[email])[0]);
+    }
+
+    function showStartHours(email, day) {
+        const timings = therapistData[email][day];
+        if (timings === undefined) {
+            $(".startTimeSelectorContainer").html("<h1>Er zijn geen tijdssloten beschikbaar voor deze dag!</h1>");
+            $(".endTimeSelectorContainer").html("");
+            $(".durationContainer").html("");
+            return;
+        }
+        let selectString = `<select class="startTimeSelector form-control" onchange="showEndHours('${email}', '${day}', $(this).val())">`;
+        timings.forEach(elmt => {
+            selectString += getTimesBetween(elmt.startTime, elmt.endTime - 0.5);
+        })
+        selectString += "</select>";
+        $(".startTimeSelectorContainer").html(`<h6>Start tijd</h6>${selectString}`);
+        showEndHours(email, day, timings[0].startTime)
+    }
+
+    function showEndHours(email, day, startTime) {
+        startTime = parseFloat(startTime);
+        const timings = therapistData[email][day];
+        let selectString = `<select class="endTimeSelector form-control" onchange="calculateTime('${email}', '${day}', '${startTime}', $(this).val())">`;
+        let foundStartTime = false;
+        timings.forEach(elmt => {
+            if (startTime < elmt.endTime && startTime >= elmt.startTime && foundStartTime === false) {
+                foundStartTime = true;
+                selectString += getTimesBetween(startTime + 0.5, elmt.endTime + 0.5);
+            }
+        })
+        selectString += "</select>";
+        $(".endTimeSelectorContainer").html(`<h6>Eind tijd</h6>${selectString}`);
+        $(".endTimeSelector").change()
+    }
+
+    function calculateTime(email, day, startTime, endTime) {
+        const totalDuration = endTime - startTime;
+        $(".durationContainer").html(`<h5>Totale duur: ${totalDuration} uur</h5>`);
+    }
+
+    function saveAppointment() {
+        const therapistEmail = $(".therapistSelector").val();
+        const startTime = parseFloat($(".startTimeSelector").val());
+        const endTime = parseFloat($(".endTimeSelector").val());
+
+        const startDate = new Date($(".dateSelector").val());
+        startDate.setHours(parseInt(startTime));
+        startDate.setMinutes(60 * (startTime - parseInt(startTime)))
+
+        const endDate = new Date($(".dateSelector").val());
+        endDate.setHours(parseInt(endTime));
+        endDate.setMinutes(60 * (endTime - parseInt(endTime)));
+
+        $(".submitToController").append(`<input type="hidden" name="StartDate" value="${startDate.toISOString()}" />`);
+        $(".submitToController").append(`<input type="hidden" name="EndDate" value="${endDate.toISOString()}" />`);
+        $(".submitToController").append(`<input type="hidden" name="UserEmail" value="${therapistEmail}" />`);
+        $(".submitToController").submit();
+    }
+
+    setTimeout(() => {
+        setTherapistSelector();
+    }, 300);
+</script>
+
+@foreach (UserViewModel user in @Model)
+{
+    @foreach (AvailabilityModel availability in user.Availability)
+    {
+        <script>
+            setTimeout(() =>
+            {
+                addTherapistData("@user.Email", "@availability.AvailabilityDay", parseFloat("@availability.StartTime".replace(",", ".")), parseFloat("@availability.EndTime".replace(",", ".")));
+            }, 250);
+        </script>
+    }
+}
