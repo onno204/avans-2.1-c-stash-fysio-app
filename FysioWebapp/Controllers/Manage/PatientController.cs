@@ -91,7 +91,7 @@ namespace FysioWebapp.Controllers.Manage
             }
             user.IntakeUser = await _userRepository.GetById(model.IntakeUserId);
             user.MainTherapist = await _userRepository.GetById(model.MainTherapistId);
-            AddCommentsToUserFromInput(user, model.CommentsInput);
+            AddCommentsToUserFromInput(user, model.CommentsInput, false);
 
             await _userRepository.Add(user);
             return RedirectToAction("Info", new { user.Id });
@@ -138,14 +138,14 @@ namespace FysioWebapp.Controllers.Manage
             {
                 user.MainTherapist = await _userRepository.GetById(model.MainTherapistId.Value);
             }
-            AddCommentsToUserFromInput(user, model.CommentsInput);
+            AddCommentsToUserFromInput(user, model.CommentsInput, model.CommentsPublic);
 
             await _userRepository.Update(user);
             return RedirectToAction("Info", new { user.Id });
         }
 
 #nullable enable
-        private void AddCommentsToUserFromInput(User user, string? text)
+        private void AddCommentsToUserFromInput(User user, string? text, bool commentsPublic)
         {
             if (text == null)
             {
@@ -161,7 +161,7 @@ namespace FysioWebapp.Controllers.Manage
                 {
                     CommentMadeBy = user.IntakeUser,
                     Date = DateTime.Now,
-                    PubliclyVisible = false,
+                    PubliclyVisible = commentsPublic,
                     CommentText = commentText
                 });
             }
@@ -188,7 +188,6 @@ namespace FysioWebapp.Controllers.Manage
             };
             var request = new RestRequest("vektis");
             var DiagnosticCodes = await client.GetAsync<List<Vektis>>(request);
-            //DiagnosticCodes.ForEach(item => item.FullText = $"({item.Id}) {item.Position} - {item.Text}");
             ViewBag.DcsphCode = new SelectList(DiagnosticCodes, nameof(Vektis.Id), nameof(Vektis.FullText));
         }
 

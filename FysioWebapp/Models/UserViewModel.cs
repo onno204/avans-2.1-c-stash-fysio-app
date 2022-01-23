@@ -54,6 +54,7 @@ namespace FysioWebapp.Models
 #nullable enable
         public string? CommentsInput { get; set; }
 #nullable disable
+        public bool CommentsPublic { get; set; }
 
         public List<AppointmentViewModel> Appointments { get; set; } = new List<AppointmentViewModel>();
 

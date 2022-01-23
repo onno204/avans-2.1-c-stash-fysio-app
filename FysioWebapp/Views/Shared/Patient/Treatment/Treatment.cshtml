@@ -1,246 +1,199 @@
 ﻿@{
     ViewData["Title"] = "Behandeldossier";
 }
+@model UserViewModel
 
-<div class="row new-patient">
-    <div class="col-md-3">
-        <h3>Persoonsgegevens</h3>
-        <div class="form-group">
-            <label for="full-name">Volledige naam</label>
-            <input type="text" class="form-control" id="full-name" placeholder="Onno van Helfteren" disabled>
+
+<form asp-area="Manage" asp-controller="Patient" asp-action="Info" asp-route-id="@Model.Id">
+    <div class="row new-patient">
+        <div class="col-md-3">
+            <h3>Persoonsgegevens</h3>
+            <div class="form-group">
+                <label asp-for="FullName">Volledige naam</label>
+                <input disabled asp-for="FullName" class="form-control" placeholder="Onno van Helfteren">
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email">E-mailadres</label>
+                <input disabled asp-for="Email" type="email" class="form-control" placeholder="onno@fysioapp.com">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BirthDate">Geboortedatum</label>
+                <input disabled asp-for="BirthDate" type="date" class="form-control">
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserType">Medewerker of student?</label>
+                <select disabled asp-for="UserType" asp-items="@ViewBag.UserTypes" class="form-control"></select>
+                <span asp-validation-for="UserType" class="text-danger"></span>
+                <input disabled asp-for="AdditionalIdentifier" type="number" class="form-control" placeholder="Student-/medewerkernummer">
+                <span asp-validation-for="AdditionalIdentifier" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender">Geslacht</label>
+                <select disabled asp-for="Gender" asp-items="@ViewBag.Genders" class="form-control" disabled></select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="email">E-mailadres</label>
-            <input type="email" class="form-control" id="email" placeholder="onno@fysioapp.com" disabled>
+        <div class="col-md-3">
+            <h3>Behandel gegevens</h3>
+            <div class="form-group">
+                <label asp-for="GlobalDescriptionComplaints">Globale klachten omschrijving</label>
+                <textarea disabled asp-for="GlobalDescriptionComplaints" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="GlobalDescriptionComplaints" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DcsphCode">Diagnosecode</label>
+                <select disabled asp-for="DcsphCode" class="form-control" asp-items="@ViewBag.DcsphCode" id="diagnosticscode" onchange="document.getElementById('DcsphDescription').value = this.options[this.selectedIndex].text"></select>
+                <input disabled asp-for="DcsphDescription" type="text" readonly class="form-control" placeholder="Omschrijving">
+                <span asp-validation-for="DcsphDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDateTreatment">Einddatum behandeling</label>
+                <input disabled asp-for="EndDateTreatment" type="date" class="form-control">
+                <span asp-validation-for="EndDateTreatment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SessionsPerWeek">SessionsPerWeek</label>
+                <input disabled asp-for="SessionsPerWeek" type="number" class="form-control">
+                <span asp-validation-for="SessionsPerWeek" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SessionDuration">SessionDuration</label>
+                <input disabled asp-for="SessionDuration" type="number" class="form-control">
+                <span asp-validation-for="SessionDuration" class="text-danger"></span>
+            </div>
+            <br />
         </div>
-        <div class="form-group">
-            <label for="birthdate">Geboortedatum</label>
-            <input type="date" class="form-control" id="birthdate" disabled>
+        <div class="col-md-6" style="max-height: 50vh; overflow: auto;">
+            <h3>
+                Bezoek geschiedenis
+                <a style="float: right;" class="btn" asp-area="Manage" asp-controller="Agenda" asp-action="Add" asp-route-id="@Model.Id">
+                    Afspraak toevoegen
+                </a>
+            </h3>
+            <table class="table table-striped table-full-width table-max-height-1">
+                <thead>
+                    <tr>
+                        <th scope="col">Start tijd</th>
+                        <th scope="col">Eind tijd</th>
+                        <th scope="col">Behandelaar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (AppointmentViewModel appointment in @Model.Appointments)
+                    {
+                        <tr>
+                            <td>@($"{appointment.StartDate:dd-MM-yyyy HH:mm}")</td>
+                            <td>@($"{appointment.EndDate:dd-MM-yyyy HH:mm}")</td>
+                            <td>@appointment.AppointmentWithUser.Email</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <h3>
+                Opmerking geschiedenis
+            </h3>
+            <table class="table table-striped table-max-height-1 table-full-width">
+                <thead>
+                    <tr>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Opmerking</th>
+                        <th scope="col">Door</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (CommentViewModel comment in @Model.Comments)
+                    {
+                        @if (comment.PubliclyVisible)
+                        {
+
+                            <tr>
+                                <td>@($"{comment.Date:dd-MM-yyyy HH:mm}")</td>
+                                <td>@comment.CommentText</td>
+                                <td>@comment.CommentMadeBy.Email</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
         </div>
-        <div class="form-group">
-            <label for="employee-or-student">Medewerker of student?</label>
-            <select class="form-control" id="employee-or-student" disabled>
-                <option>Medewerker</option>
-            </select>
-            <input type="number" class="form-control" id="studentnumber" placeholder="Student-/medewerkernummer" value="2167988" disabled>
+        <div style="margin-top: 1rem;" class="col-md-3">
+            <h3>Administratie gegevens</h3>
+            <div class="form-group">
+                <label asp-for="IntakeUserId">Intake gedaan door</label>
+                <select disabled asp-for="IntakeUserId" asp-items="@ViewBag.AllTherapists" class="form-control" disabled></select>
+                <span asp-validation-for="IntakeUserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IntakeSuperVisionUserId">Onder supervisie van</label>
+                <select disabled asp-for="IntakeSuperVisionUserId" asp-items="@ViewBag.Therapists" class="form-control" disabled></select>
+                <span asp-validation-for="IntakeSuperVisionUserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MainTherapistId">Hoofdbehandelaar</label>
+                <select disabled asp-for="MainTherapistId" asp-items="@ViewBag.Therapists" class="form-control"></select>
+                <span asp-validation-for="MainTherapistId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SignUpDate">Aanmeld datum</label>
+                <input disabled asp-for="SignUpDate" type="date" class="form-control" disabled>
+                <span asp-validation-for="SignUpDate" class="text-danger"></span>
+            </div>
         </div>
-    </div>
-    <div class="col-md-3">
-        <h3>Behandel gegevens</h3>
-        <div class="form-group">
-            <label for="global-description-complaints">Globale klachten omschrijving</label>
-            <textarea class="form-control" id="global-description-complaints" rows="3" disabled></textarea>
-        </div>
-        <div class="form-group">
-            <label for="diagnosticscode">Diagnosecode</label>
-            <select class="form-control" id="diagnosticscode" disabled>
-                <option>2500 [Inwendige organen thorax] Amputatie</option>
-            </select>
-            <input type="text" disabled class="form-control" id="diagnostics-description" placeholder="Omschrijving" value="Amputatie" disabled>
-        </div>
-        <div class="form-group">
-            <label for="enddate-treatment">Einddatum behandeling</label>
-            <input type="date" class="form-control" id="enddate-treatment" disabled>
-        </div>
-        <br />
-    </div>
-    <div class="col-md-6" style="max-height: 50vh">
-        <h3>Bezoek geschiedenis</h3>
-        <table class="table table-striped table-max-height-1">
-            <thead>
-                <tr>
-                    <th scope="col">Datum</th>
-                    <th scope="col">Start tijd</th>
-                    <th scope="col">Eind tijd</th>
-                    <th scope="col">Behandelaar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">01-10-2021</th>
-                    <td>10.00u</td>
-                    <td>11.00u</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021</th>
-                    <td>10.00u</td>
-                    <td>11.00u</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021</th>
-                    <td>10.00u</td>
-                    <td>11.00u</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021</th>
-                    <td>10.00u</td>
-                    <td>11.00u</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021</th>
-                    <td>10.00u</td>
-                    <td>11.00u</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021</th>
-                    <td>10.00u</td>
-                    <td>11.00u</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021</th>
-                    <td>10.00u</td>
-                    <td>11.00u</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021</th>
-                    <td>10.00u</td>
-                    <td>11.00u</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021</th>
-                    <td>10.00u</td>
-                    <td>11.00u</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021</th>
-                    <td>10.00u</td>
-                    <td>11.00u</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-            </tbody>
-        </table>
-        <h3>Opmerking geschiedenis</h3>
-        <table class="table table-striped table-max-height-1">
-            <thead>
-                <tr>
-                    <th scope="col">Datum</th>
-                    <th scope="col">Opmerking</th>
-                    <th scope="col">Door</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">01-10-2021 11:32</th>
-                    <td>Hij heeft overgewicht</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021 11:32</th>
-                    <td>Hij heeft overgewicht</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021 11:32</th>
-                    <td>Hij heeft overgewicht</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021 11:32</th>
-                    <td>Hij heeft overgewicht</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021 11:32</th>
-                    <td>Hij heeft overgewicht</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021 11:32</th>
-                    <td>Hij heeft overgewicht</td>
-                    <td>onno@fysioapp.com</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div style="margin-top: 1rem;" class="col-md-3">
-        <h3>Administratie gegevens</h3>
-        <div class="form-group">
-            <label for="intake-by">Intake gedaan door</label>
-            <select class="form-control" id="intake-by" disabled>
-                <option>onno@fysioapp.com</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="intake-supervision">Intake onder supervisie van</label>
-            <select class="form-control" id="intake-supervision" disabled>
-                <option>sylvester@fysioapp.com</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="main-therapist">Hoofdbehandelaar</label>
-            <select class="form-control" id="main-therapist" disabled>
-                <option>onno@fysioapp.com</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="signup-date">Aanmeld datum</label>
-            <input type="date" class="form-control" id="signup-date" disabled>
+        <div class="col-md-9 mt-3">
+            <h3>Behandel geschiedenis</h3>
+            <table class="table table-striped table-full-width table-max-height-2">
+                <thead>
+                    <tr>
+                        <th scope="col">Datum</th>
+                        <th scope="col">Door</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Omschrijving</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (TreatmentViewModel treatment in @Model.TreatmentHistory)
+                    {
+                        <tr>
+                            <td>@($"{treatment.Date:dd-MM-yyyy HH:mm}")</td>
+                            <td>@treatment.CarriedOutByUser.Email</td>
+                            <td>@treatment.VektisId</td>
+                            <td>@treatment.VektisExplanation</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
-    <div class="col-md-9 mt-3">
-        <h3>Behandel geschiedenis</h3>
-        <table class="table table-striped table-max-height-2">
-            <thead>
-                <tr>
-                    <th scope="col">Datum</th>
-                    <th scope="col">Door</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Omschrijving</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">01-10-2021 11:32</th>
-                    <td>onno@fysioapp.com</td>
-                    <td>1100</td>
-                    <td>Individuele zitting kinderfysiotherapie</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021 11:32</th>
-                    <td>onno@fysioapp.com</td>
-                    <td>1100</td>
-                    <td>Individuele zitting kinderfysiotherapie</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021 11:32</th>
-                    <td>onno@fysioapp.com</td>
-                    <td>1100</td>
-                    <td>Individuele zitting kinderfysiotherapie</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021 11:32</th>
-                    <td>onno@fysioapp.com</td>
-                    <td>1100</td>
-                    <td>Individuele zitting kinderfysiotherapie</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021 11:32</th>
-                    <td>onno@fysioapp.com</td>
-                    <td>1100</td>
-                    <td>Individuele zitting kinderfysiotherapie</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021 11:32</th>
-                    <td>onno@fysioapp.com</td>
-                    <td>1100</td>
-                    <td>Individuele zitting kinderfysiotherapie</td>
-                </tr>
-                <tr>
-                    <th scope="row">01-10-2021 11:32</th>
-                    <td>onno@fysioapp.com</td>
-                    <td>1100</td>
-                    <td>Individuele zitting kinderfysiotherapie</td>
-                </tr>
-            </tbody>
-        </table>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Comments toevoegen</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-check">
+                        <input disabled asp-for="CommentsPublic" class="form-check-input" type="checkbox">
+                        <label asp-for="CommentsPublic" class="form-check-label">
+                            Opmerkingen zichtbaar voor patient
+                        </label>
+                        <span asp-validation-for="CommentsPublic" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="CommentsInput">Opmerkingen (1 per regel)</label>
+                        <textarea disabled asp-for="CommentsInput" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="CommentsInput" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Sluiten</button>
+                    <button type="submit" class="btn btn-primary">Opmerking toevoegen</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</form>
