@@ -54,20 +54,29 @@
                 <input asp-for="EndDateTreatment" type="date" class="form-control">
                 <span asp-validation-for="EndDateTreatment" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="SessionsPerWeek">SessionsPerWeek</label>
+                <input asp-for="SessionsPerWeek" type="number" class="form-control">
+                <span asp-validation-for="SessionsPerWeek" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SessionDuration">SessionDuration</label>
+                <input asp-for="SessionDuration" type="number" class="form-control">
+                <span asp-validation-for="SessionDuration" class="text-danger"></span>
+            </div>
             <br />
             <button type="submit" style="float: right;" class="btn btn-primary">Opslaan</button>
         </div>
         <div class="col-md-6" style="max-height: 50vh; overflow: auto;">
             <h3>
                 Bezoek geschiedenis
-                <a style="float: right;" class="btn" asp-area="Manage" asp-controller="Agenda" asp-action="Add" asp-route-id="1">
+                <a style="float: right;" class="btn" asp-area="Manage" asp-controller="Agenda" asp-action="Add" asp-route-id="@Model.Id">
                     Afspraak toevoegen
                 </a>
             </h3>
             <table class="table table-striped table-full-width table-max-height-1">
                 <thead>
                     <tr>
-                        <th scope="col">Datum</th>
                         <th scope="col">Start tijd</th>
                         <th scope="col">Eind tijd</th>
                         <th scope="col">Behandelaar</th>
@@ -77,9 +86,8 @@
                     @foreach (AppointmentViewModel appointment in @Model.Appointments)
                     {
                         <tr>
-                            <td>@($"{appointment.Date:dd-MM-yyyy}")</td>
-                            <td>@($"{appointment.Date:HH:mm}")</td>
-                            <td>TODO</td>
+                            <td>@($"{appointment.StartDate:dd-MM-yyyy HH:mm}")</td>
+                            <td>@($"{appointment.EndDate:dd-MM-yyyy HH:mm}")</td>
                             <td>@appointment.AppointmentWithUser.Email</td>
                         </tr>
                     }
@@ -166,7 +174,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Comments toevoegen</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

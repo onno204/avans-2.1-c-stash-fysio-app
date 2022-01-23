@@ -72,7 +72,7 @@
 
     function getWeekDays(weekday) {
         var week = new Array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
-        var selectString = "<select class='weekdaySelector'>";
+        var selectString = "<select class='weekdaySelector form-control'>";
         week.forEach((day, i) => {
             console.log(day, i);
             selectString += `<option value="${day}" ${day === weekday ? 'selected' : ''}>${day}</option>`
@@ -82,7 +82,7 @@
     };
 
     function getTimesBetween(startTime, endTime, selectedTime) {
-        var selectString = "<select onchange='checkMinMaxTime(this)'>";
+        var selectString = "<select class='form-control' onchange='checkMinMaxTime(this)'>";
         for (let hr = startTime; hr < endTime; hr += 0.5) {
             var isHalfHour = hr !== parseInt(hr);
             let hrStr = parseInt(hr).toString().padStart(2, "0") + ":";

@@ -54,6 +54,16 @@
                 <span asp-validation-for="EndDateTreatment" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="SessionsPerWeek">SessionsPerWeek</label>
+                <input asp-for="SessionsPerWeek" type="number" class="form-control">
+                <span asp-validation-for="SessionsPerWeek" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SessionDuration">SessionDuration</label>
+                <input asp-for="SessionDuration" type="number" class="form-control">
+                <span asp-validation-for="SessionDuration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="CommentsInput">Opmerkingen (1 per regel)</label>
                 <textarea asp-for="CommentsInput" class="form-control" rows="3"></textarea>
                 <span asp-validation-for="CommentsInput" class="text-danger"></span>

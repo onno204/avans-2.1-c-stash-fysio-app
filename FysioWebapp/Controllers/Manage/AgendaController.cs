@@ -47,9 +47,50 @@ namespace FysioWebapp.Controllers.Manage
             return View("Manage/Agenda/Availability", user.UserAvailability.ToList().ToViewModel());
         }
 
-        public IActionResult Add(int id)
+        [HttpGet]
+        public async Task<IActionResult> Add(int id)
         {
-            return View("Patient/Agenda/Add");
+            List<UserViewModel> therapists = _userRepository.GetAllStudentTherapistUsers().ToList().ToViewModel();
+            User user = await _userRepository.GetByEmail(User.Identity.Name);
+            therapists.Insert(0, user.ToViewModel());
+            return View("Manage/Agenda/Add", therapists);
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<IActionResult> Add(int id, AddAppointmentViewModel model)
+        {
+            User user = await _userRepository.GetById(id);
+            User withUser = await _userRepository.GetByEmail(model.UserEmail);
+            User thisUser = await _userRepository.GetByEmail(User.Identity.Name);
+
+            if (ModelState.IsValid)
+            {
+                double diff = (model.EndDate - model.StartDate).TotalMinutes / 60.0;
+                if (user.SessionDuration != diff)
+                {
+                    ModelState.AddModelError(nameof(user.SessionDuration),
+                        "Your session duration must be " + user.SessionDuration + " hours");
+                }
+            }
+            if (!ModelState.IsValid)
+            {
+                List<UserViewModel> therapists = _userRepository.GetAllStudentTherapistUsers().ToList().ToViewModel();
+                therapists.Insert(0, thisUser.ToViewModel());
+                return View("Manage/Agenda/Add", therapists);
+            }
+            user.Appointments.Add(new Appointment()
+            {
+                EndDate = model.EndDate,
+                StartDate = model.StartDate,
+                AppointmentWithUser = withUser,
+                AppointmentCreatedByUser = thisUser,
+            });
+            Console.WriteLine(model.StartDate.ToString());
+            Console.WriteLine(model.EndDate.ToString());
+            Console.WriteLine(model.UserEmail.ToString());
+            await _userRepository.Update(user);
+            return Redirect("/Manage/Patient/Info/" + id);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

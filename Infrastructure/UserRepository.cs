@@ -35,6 +35,12 @@ namespace Infrastructure
 
             return users.ToList();
         }
+        
+        public IEnumerable<User> GetAllStudentTherapistUsers()
+        {
+            var users = this.GetAll().Where(u => u.UserType == UserType.StudentTherapist);
+            return users.ToList();
+        }
 
         public IEnumerable<User> GetAllTherapistUsers()
         {

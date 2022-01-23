@@ -11,6 +11,7 @@ namespace Core.DomainServices
         IQueryable<User> GetAll();
 
         IEnumerable<User> GetAllTherapistUsers();
+        IEnumerable<User> GetAllStudentTherapistUsers();
 
         IEnumerable<User> GetAllPatientUsers();
 

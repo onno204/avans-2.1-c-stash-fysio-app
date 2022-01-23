@@ -53,6 +53,10 @@ namespace FysioWebapp.Models
 
         [Required]
         public DateTime SignUpDate { get; set; }
+        [Required]
+        public int SessionsPerWeek { get; set; }
+        [Required]
+        public float SessionDuration { get; set; }
 
         [Required]
         public int IntakeUserId { get; set; }

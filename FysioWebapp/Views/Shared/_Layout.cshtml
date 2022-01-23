@@ -29,7 +29,7 @@
             </div>
             <div class="nav-bottom">
                 <span class="button"><a data-title="Uitloggen" asp-area="Public" asp-controller="Login" asp-action="Logout"></a></span>
-                <label><i class="fa-solid fa-user"></i> onno@fysioapp.com</label>
+                <label><i class="fa-solid fa-user"></i> @User.Identity.Name</label>
             </div>
         </nav>
         hasNav = true;
@@ -46,7 +46,7 @@
             </div>
             <div class="nav-bottom">
                 <span class="button"><a data-title="Uitloggen" asp-area="Public" asp-controller="Login" asp-action="Logout"></a></span>
-                <label><i class="fa-solid fa-user"></i> onno@fysioapp.com</label>
+                <label><i class="fa-solid fa-user"></i> @User.Identity.Name</label>
             </div>
         </nav>
         hasNav = true;

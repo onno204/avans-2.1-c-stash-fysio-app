@@ -4,14 +4,16 @@ using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    partial class UserDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220123182617_seed")]
+    partial class seed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,10 +34,7 @@ namespace Infrastructure.Migrations
                     b.Property<int?>("AppointmentWithUserId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("UserId")
@@ -195,12 +194,6 @@ namespace Infrastructure.Migrations
                     b.Property<string>("Picture")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("SessionDuration")
-                        .HasColumnType("real");
-
-                    b.Property<int>("SessionsPerWeek")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("SignUpDate")
                         .HasColumnType("datetime2");
 
@@ -237,9 +230,7 @@ namespace Infrastructure.Migrations
                             FullName = "Onno van Helfteren",
                             Gender = 0,
                             GlobalDescriptionComplaints = "Heel veel klachten",
-                            SessionDuration = 0f,
-                            SessionsPerWeek = 0,
-                            SignUpDate = new DateTime(2022, 1, 23, 21, 16, 1, 25, DateTimeKind.Local).AddTicks(6125),
+                            SignUpDate = new DateTime(2022, 1, 23, 19, 26, 16, 625, DateTimeKind.Local).AddTicks(8734),
                             TreatmentPlan = "Geen",
                             UserType = 0
                         },
@@ -255,9 +246,7 @@ namespace Infrastructure.Migrations
                             FullName = "Onno thrapist",
                             Gender = 0,
                             GlobalDescriptionComplaints = "Heel veel klachten",
-                            SessionDuration = 0f,
-                            SessionsPerWeek = 0,
-                            SignUpDate = new DateTime(2022, 1, 23, 21, 16, 1, 26, DateTimeKind.Local).AddTicks(4116),
+                            SignUpDate = new DateTime(2022, 1, 23, 19, 26, 16, 626, DateTimeKind.Local).AddTicks(7296),
                             TreatmentPlan = "Geen",
                             UserType = 0
                         });

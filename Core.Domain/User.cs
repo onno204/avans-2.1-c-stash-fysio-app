@@ -45,7 +45,8 @@ namespace Core.Domain
         public UserType UserType { get; set; }
 
         public int AdditionalIdentifier { get; set; }
-
+        public int SessionsPerWeek { get; set; }
+        public float SessionDuration { get; set; }
         public Gender Gender { get; set; }
 
         public DateTime EndDateTreatment { get; set; }

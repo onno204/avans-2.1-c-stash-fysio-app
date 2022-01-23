@@ -70,6 +70,8 @@ namespace FysioWebapp.Controllers.Manage
                 Comments = new List<Comment>(),
                 DcsphCode = model.DcsphCode,
                 DcsphDescription = model.DcsphDescription,
+                SessionDuration = model.SessionDuration,
+                SessionsPerWeek = model.SessionsPerWeek,
                 Email = model.Email,
                 EndDateTreatment = model.EndDateTreatment,
                 FullName = model.FullName,
@@ -108,7 +110,6 @@ namespace FysioWebapp.Controllers.Manage
         [HttpPost]
         public async Task<IActionResult> Info(int id, UserViewModel model)
         {
-            Debug.WriteLine(model.Id);
             var user = await _userRepository.GetById(id);
             if (model.UserType != UserType.Student && model.UserType != UserType.Employee)
             {
@@ -123,6 +124,8 @@ namespace FysioWebapp.Controllers.Manage
             user.AdditionalIdentifier = model.AdditionalIdentifier;
             user.BirthDate = model.BirthDate;
             user.DcsphCode = model.DcsphCode;
+            user.SessionDuration = model.SessionDuration;
+            user.SessionsPerWeek = model.SessionsPerWeek;
             user.DcsphDescription = model.DcsphDescription;
             user.Email = model.Email;
             user.EndDateTreatment = model.EndDateTreatment;

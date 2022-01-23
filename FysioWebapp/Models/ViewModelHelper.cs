@@ -35,6 +35,8 @@ namespace FysioWebapp.Models
                 DcsphDescription = user.DcsphDescription,
                 GlobalDescriptionComplaints = user.GlobalDescriptionComplaints,
                 DcsphCode = user.DcsphCode,
+                SessionDuration = user.SessionDuration,
+                SessionsPerWeek = user.SessionsPerWeek,
                 EndDateTreatment = user.EndDateTreatment,
                 UserType = user.UserType,
                 AdditionalIdentifier = user.AdditionalIdentifier,
@@ -42,6 +44,7 @@ namespace FysioWebapp.Models
                 IntakeSuperVisionUserId = user.IntakeSuperVisionUser?.Id,
                 IntakeUserId = user.IntakeUser?.Id,
                 MainTherapistId = user.MainTherapist?.Id,
+                Availability = user.UserAvailability.ToList().ToViewModel(),
                 Comments = new List<CommentViewModel>(),
                 Appointments = new List<AppointmentViewModel>(),
                 TreatmentHistory = new List<TreatmentViewModel>()
@@ -92,7 +95,8 @@ namespace FysioWebapp.Models
             return new AppointmentViewModel()
             {
                 Id = appointment.Id,
-                Date = appointment.Date,
+                StartDate = appointment.StartDate,
+                EndDate = appointment.EndDate,
                 AppointmentCreatedByUser = appointment.AppointmentCreatedByUser.ToViewModel(),
                 AppointmentWithUser = appointment.AppointmentWithUser.ToViewModel()
             };

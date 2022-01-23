@@ -27,6 +27,31 @@ namespace Infrastructure
                     EndDateTreatment = new DateTime(2021, 10, 30), FullName = "Onno van Helfteren", Gender = Gender.Male, GlobalDescriptionComplaints = "Heel veel klachten", IntakeSuperVisionUser = null, IntakeUser = null, MainTherapist = null, Password = null,
                     Picture = null, SignUpDate = DateTime.Now, TreatmentHistory = new List<Treatment>(), TreatmentPlan = "Geen", Id = 1, UserType = UserType.Therapist
                 });
+            modelBuilder.Entity<User>().HasData(
+                new User()
+                {
+                    AdditionalIdentifier = 2167989,
+                    Appointments = new List<Appointment>(),
+                    BirthDate = new DateTime(2002, 02, 05),
+                    Comments = new List<Comment>(),
+                    DcsphCode = 999,
+                    DcsphDescription = "unknown",
+                    Email = "o.thrapist@student.avans.nl",
+                    EndDateTreatment = new DateTime(2021, 10, 30),
+                    FullName = "Onno thrapist",
+                    Gender = Gender.Male,
+                    GlobalDescriptionComplaints = "Heel veel klachten",
+                    IntakeSuperVisionUser = null,
+                    IntakeUser = null,
+                    MainTherapist = null,
+                    Password = null,
+                    Picture = null,
+                    SignUpDate = DateTime.Now,
+                    TreatmentHistory = new List<Treatment>(),
+                    TreatmentPlan = "Geen",
+                    Id = 100000,
+                    UserType = UserType.Therapist
+                });
 
             modelBuilder.Entity<User>().HasOne<User>(u => u.IntakeUser);
             modelBuilder.Entity<User>().HasOne<User>(u => u.MainTherapist);

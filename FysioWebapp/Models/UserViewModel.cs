@@ -14,6 +14,8 @@ namespace FysioWebapp.Models
 
         [Required]
         public string Email { get; set; }
+        public int SessionsPerWeek { get; set; }
+        public float SessionDuration { get; set; }
 
         [Required]
         public DateTime BirthDate { get; set; }
@@ -46,6 +48,7 @@ namespace FysioWebapp.Models
 
         [Required]
         public DateTime SignUpDate { get; set; }
+        public List<AvailabilityModel> Availability { get; set; } = new List<AvailabilityModel>();
 
         public List<CommentViewModel> Comments { get; set; } = new List<CommentViewModel>();
 #nullable enable
