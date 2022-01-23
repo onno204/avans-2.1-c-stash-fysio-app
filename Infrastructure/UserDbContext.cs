@@ -52,6 +52,7 @@ namespace Infrastructure
                         }
 
                         var values = line.Split(',');
+                        values[2].Replace("\"", "");
 
                         vektisList.Add(new Vektis()
                         {

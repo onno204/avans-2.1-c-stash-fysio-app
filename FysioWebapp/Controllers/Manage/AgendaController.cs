@@ -27,6 +27,12 @@ namespace FysioWebapp.Controllers.Manage
             return View("Manage/Agenda/Agenda");
         }
 
+        public IActionResult Availability()
+        {
+            List<AvailabilityModel> list = new List<AvailabilityModel>();
+            return View("Manage/Agenda/Availability", list);
+        }
+
         public IActionResult Add(int id)
         {
             return View("Patient/Agenda/Add");

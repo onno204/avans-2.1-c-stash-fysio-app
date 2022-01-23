@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Beschikbaarheid";
+}
+@model List<AvailabilityModel>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">AvailabilityDay</th>
+            <th scope="col">StartTime</th>
+            <th scope="col">EndTime</th>
+        </tr>
+    </thead>
+    <tbody class="timeblocks">
+        @foreach (AvailabilityModel availability in @Model)
+        {
+            <tr>
+                <td>@availability.AvailabilityDay</td>
+                <td>
+                    <input type="time" id="appt" name="appt"
+                           min="09:00" max="18:00" step="30" required value="@availability.StartTime.ToString("'hh':'mm'")">
+                </td>
+                <td>@availability.EndTime</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<input type="button" class="btn" value="Add new timeblock" onclick="buildNewRow()" />
+
+<script>
+    function buildNewRow() {
+        $(".timeblocks").append(`
+        <tr>
+            <td>
+                ${getWeekDays()}
+            </td>
+            <td class="startTime">
+                ${getTimesBetween(0, 24)}
+            </td>
+            <td class="endTime">
+                ${getTimesBetween(0, 24, 23.5)}
+            </td>
+        </tr>`);
+    }
+    function checkMinMaxTime(target) {
+        $startElmt = $(target).parent().parent().find(".startTime select");
+        $endElmt = $(target).parent().parent().find(".endTime select");
+        startTime = parseFloat($startElmt.val());
+        endTime = parseFloat($endElmt.val());
+        $startElmt.html(getTimesBetween(0, endTime, startTime));
+        $endElmt.html(getTimesBetween(startTime + 0.5, 24, endTime));
+        console.log("checkMinMaxTime: ", startTime, endTime)
+    }
+
+    function getWeekDays() {
+        var week = new Array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
+        var selectString = "<select>";
+        week.forEach(day => selectString += '<option val="' + day + '">' + day + '</option>');
+        selectString += "</select>";
+        return selectString;
+    }
+    function getTimesBetween(startTime, endTime, selectedTime) {
+        var selectString = "<select onchange='checkMinMaxTime(this)'>";
+        for (let hr = startTime; hr < endTime; hr += 0.5) {
+            var isHalfHour = hr !== parseInt(hr);
+            let hrStr = parseInt(hr).toString().padStart(2, "0") + ":";
+            selectString += `<option value="${hr}" ${selectedTime === hr ? 'selected' : ''}>${hrStr}${isHalfHour ? "30" : "00"}</option>`;
+        }
+        selectString += "</select>";
+        return selectString;
+    }
+</script>
+

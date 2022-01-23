@@ -815,3 +815,4 @@ C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Azur
 C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\Microsoft.Identity.Client.Extensions.Msal.dll
 C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\bin\Debug\net5.0\RestSharp.dll
+C:\Users\onnov\Git\avans-2.1-c-stash-fysio-app\FysioWebapp\obj\Debug\net5.0\Razor\Views\Shared\Manage\Agenda\Availability.cshtml.g.cs
