@@ -63,8 +63,6 @@ namespace FysioWebapp.Controllers.Manage
             User user = await _userRepository.GetById(id);
             User withUser = await _userRepository.GetByEmail(model.UserEmail);
             User thisUser = await _userRepository.GetByEmail(User.Identity.Name);
-            Console.Write("User: ");
-            Console.WriteLine(User.Identity.Name);
 
             if (ModelState.IsValid)
             {
@@ -74,10 +72,12 @@ namespace FysioWebapp.Controllers.Manage
                     ModelState.AddModelError(nameof(user.SessionDuration),
                         "Your session duration must be " + user.SessionDuration + " hours");
                 }
-                if (user.SessionsPerWeek > user.Appointments.Count + 1)
+                Console.WriteLine(user.SessionsPerWeek);
+                Console.WriteLine(user.Appointments.Count + 1);
+                if (user.SessionsPerWeek < (user.Appointments.Count + 1))
                 {
-                    ModelState.AddModelError(nameof(user.SessionDuration),
-                        "You have to many sessions planned this week " + user.SessionDuration);
+                    ModelState.AddModelError(nameof(user.SessionsPerWeek),
+                        "You have to many sessions planned this week, your max is: " + user.SessionsPerWeek);
                 }
             }
             if (!ModelState.IsValid)
@@ -93,9 +93,6 @@ namespace FysioWebapp.Controllers.Manage
                 AppointmentWithUser = withUser,
                 AppointmentCreatedByUser = thisUser,
             });
-            Console.WriteLine(model.StartDate.ToString());
-            Console.WriteLine(model.EndDate.ToString());
-            Console.WriteLine(model.UserEmail.ToString());
             await _userRepository.Update(user);
             return Redirect("/Manage/Patient/Info/" + id);
         }
