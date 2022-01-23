@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FysioWebService", "FysioWebService\FysioWebService.csproj", "{EF8D69FD-DBB8-481F-9BB1-71CADA08F2CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FysioWebapp.Tests", "FysioWebapp.Tests\FysioWebapp.Tests.csproj", "{14FC223F-1D0D-4B67-BE74-F2D63C82BE50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{EF8D69FD-DBB8-481F-9BB1-71CADA08F2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF8D69FD-DBB8-481F-9BB1-71CADA08F2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF8D69FD-DBB8-481F-9BB1-71CADA08F2CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14FC223F-1D0D-4B67-BE74-F2D63C82BE50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14FC223F-1D0D-4B67-BE74-F2D63C82BE50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14FC223F-1D0D-4B67-BE74-F2D63C82BE50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14FC223F-1D0D-4B67-BE74-F2D63C82BE50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

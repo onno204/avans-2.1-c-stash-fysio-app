@@ -19,11 +19,13 @@ namespace FysioWebapp.Controllers.Manage
     {
         private readonly ILogger<AgendaController> _logger;
         private readonly IUserRepository _userRepository;
+        public Func<string> GetLoggedinUserEmail;
 
         public AgendaController(ILogger<AgendaController> logger, IUserRepository userRepository)
         {
             _userRepository = userRepository;
             _logger = logger;
+            GetLoggedinUserEmail = () => User.Identity.Name;
         }
 
         public IActionResult Index()
@@ -33,7 +35,7 @@ namespace FysioWebapp.Controllers.Manage
 
         public async Task<IActionResult> Availability()
         {
-            User user = await _userRepository.GetByEmail(User.Identity.Name);
+            User user = await _userRepository.GetByEmail(GetLoggedinUserEmail());
             return View("Manage/Agenda/Availability", user.UserAvailability.ToList().ToViewModel());
         }
 
@@ -41,7 +43,7 @@ namespace FysioWebapp.Controllers.Manage
         [HttpPost]
         public async Task<IActionResult> AvailabilityAsync(List<AvailabilityModel> model)
         {
-            User user = await _userRepository.GetByEmail(User.Identity.Name);
+            User user = await _userRepository.GetByEmail(GetLoggedinUserEmail());
             user.UserAvailability = model.ToModel();
             await _userRepository.Update(user);
             return View("Manage/Agenda/Availability", user.UserAvailability.ToList().ToViewModel());
@@ -51,7 +53,7 @@ namespace FysioWebapp.Controllers.Manage
         public async Task<IActionResult> Add(int id)
         {
             List<UserViewModel> therapists = _userRepository.GetAllStudentTherapistUsers().ToList().ToViewModel();
-            User user = await _userRepository.GetByEmail(User.Identity.Name);
+            User user = await _userRepository.GetByEmail(GetLoggedinUserEmail());
             therapists.Insert(0, user.ToViewModel());
             return View("Manage/Agenda/Add", therapists);
         }
@@ -62,7 +64,9 @@ namespace FysioWebapp.Controllers.Manage
         {
             User user = await _userRepository.GetById(id);
             User withUser = await _userRepository.GetByEmail(model.UserEmail);
-            User thisUser = await _userRepository.GetByEmail(User.Identity.Name);
+            User thisUser = await _userRepository.GetByEmail(GetLoggedinUserEmail());
+            Console.Write("User: ");
+            Console.WriteLine(GetLoggedinUserEmail());
 
             if (ModelState.IsValid)
             {
@@ -71,6 +75,11 @@ namespace FysioWebapp.Controllers.Manage
                 {
                     ModelState.AddModelError(nameof(user.SessionDuration),
                         "Your session duration must be " + user.SessionDuration + " hours");
+                }
+                if (user.SessionsPerWeek > user.Appointments.Count + 1)
+                {
+                    ModelState.AddModelError(nameof(user.SessionDuration),
+                        "You have to many sessions planned this week " + user.SessionDuration);
                 }
             }
             if (!ModelState.IsValid)
