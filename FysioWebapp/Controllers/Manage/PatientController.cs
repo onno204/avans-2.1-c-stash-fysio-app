@@ -11,7 +11,6 @@ using Core.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RestSharp;
-using RestSharp.Authenticators;
 
 namespace FysioWebapp.Controllers.Manage
 {

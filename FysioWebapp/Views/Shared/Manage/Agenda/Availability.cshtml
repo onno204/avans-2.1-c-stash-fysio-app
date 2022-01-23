@@ -9,56 +9,78 @@
             <th scope="col">AvailabilityDay</th>
             <th scope="col">StartTime</th>
             <th scope="col">EndTime</th>
+            <th scope="col" style="text-align: right;">Remove block</th>
         </tr>
     </thead>
     <tbody class="timeblocks">
-        @foreach (AvailabilityModel availability in @Model)
-        {
-            <tr>
-                <td>@availability.AvailabilityDay</td>
-                <td>
-                    <input type="time" id="appt" name="appt"
-                           min="09:00" max="18:00" step="30" required value="@availability.StartTime.ToString("'hh':'mm'")">
-                </td>
-                <td>@availability.EndTime</td>
-            </tr>
-        }
     </tbody>
 </table>
 <input type="button" class="btn" value="Add new timeblock" onclick="buildNewRow()" />
+<input type="button" class="btn" value="Save timeblocks" onclick="saveTimeblocks()" />
+
+<form asp-area="Manage" asp-controller="Agenda" asp-action="Availability" method="post" class="submitToController">
+</form>
 
 <script>
-    function buildNewRow() {
-        $(".timeblocks").append(`
-        <tr>
-            <td>
-                ${getWeekDays()}
-            </td>
-            <td class="startTime">
-                ${getTimesBetween(0, 24)}
-            </td>
-            <td class="endTime">
-                ${getTimesBetween(0, 24, 23.5)}
-            </td>
-        </tr>`);
+    function saveTimeblocks() {
+        const rtnArr = [];
+        $(".timeblocks").children().each(function (index) {
+            const blockInfo = {
+                startTime: $(this).find(".startTime select").val().replace(".", ","),
+                endTime: $(this).find(".endTime select").val().replace(".", ","),
+                weekday: $(this).find(".weekdaySelector").val(),
+            };
+            $(".submitToController").append(`<input type="hidden" name="[${index}].StartTime" value="${blockInfo.startTime}" />`)
+            $(".submitToController").append(`<input type="hidden" name="[${index}].EndTime" value="${blockInfo.endTime}" />`)
+            $(".submitToController").append(`<input type="hidden" name="[${index}].AvailabilityDay" value="${blockInfo.weekday}" />`)
+            rtnArr.push();
+        })
+        $(".submitToController").submit();
+        return rtnArr;
     }
+
+    function buildNewRow(weekday, startTime, endTime) {
+        $(".timeblocks").append(`
+            <tr>
+                <td>
+                    ${getWeekDays(weekday)}
+                </td>
+                <td class="startTime">
+                    ${getTimesBetween(0, 24, startTime)}
+                </td>
+                <td class="endTime">
+                    ${getTimesBetween(0, 24, endTime ? endTime : 23.5)}
+                </td>
+                <td class="endTime">
+                    <input type="button" class="btn" style="float: right;" value="Remove this timeblock" onclick="$(this).parent().parent().remove()" />
+                </td>
+
+            </tr>`);
+    };
+
     function checkMinMaxTime(target) {
         $startElmt = $(target).parent().parent().find(".startTime select");
         $endElmt = $(target).parent().parent().find(".endTime select");
         startTime = parseFloat($startElmt.val());
         endTime = parseFloat($endElmt.val());
+        if (endTime === 0.0) {
+            endTime = 0.5;
+        }
         $startElmt.html(getTimesBetween(0, endTime, startTime));
         $endElmt.html(getTimesBetween(startTime + 0.5, 24, endTime));
-        console.log("checkMinMaxTime: ", startTime, endTime)
-    }
+    };
 
-    function getWeekDays() {
-        var week = new Array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
-        var selectString = "<select>";
-        week.forEach(day => selectString += '<option val="' + day + '">' + day + '</option>');
+    function getWeekDays(weekday) {
+        var week = new Array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+        var selectString = "<select class='weekdaySelector'>";
+        week.forEach((day, i) => {
+            console.log(day, i);
+            selectString += `<option value="${day}" ${day === weekday ? 'selected' : ''}>${day}</option>`
+        });
         selectString += "</select>";
         return selectString;
-    }
+    };
+
     function getTimesBetween(startTime, endTime, selectedTime) {
         var selectString = "<select onchange='checkMinMaxTime(this)'>";
         for (let hr = startTime; hr < endTime; hr += 0.5) {
@@ -70,4 +92,14 @@
         return selectString;
     }
 </script>
+
+@foreach (AvailabilityModel availability in @Model)
+{
+<script>
+            setTimeout(() =>
+            {
+                buildNewRow("@availability.AvailabilityDay", parseFloat("@availability.StartTime".replace(",", ".")), parseFloat("@availability.EndTime".replace(",", ".")));
+            }, 250)
+</script>
+}
 

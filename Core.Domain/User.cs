@@ -73,7 +73,7 @@ namespace Core.Domain
         public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
 
         [InverseProperty("User")]
-        public virtual ICollection<Availability> Availability { get; set; } = new List<Availability>();
+        public virtual ICollection<Availability> UserAvailability { get; set; } = new List<Availability>();
 
         [InverseProperty("User")]
         public virtual ICollection<Treatment> TreatmentHistory { get; set; } = new List<Treatment>();

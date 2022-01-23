@@ -4,14 +4,16 @@ using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    partial class UserDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220123040131_Addavailablily")]
+    partial class Addavailablily
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -228,7 +230,7 @@ namespace Infrastructure.Migrations
                             FullName = "Onno van Helfteren",
                             Gender = 0,
                             GlobalDescriptionComplaints = "Heel veel klachten",
-                            SignUpDate = new DateTime(2022, 1, 23, 5, 3, 4, 570, DateTimeKind.Local).AddTicks(5393),
+                            SignUpDate = new DateTime(2022, 1, 23, 5, 1, 30, 321, DateTimeKind.Local).AddTicks(65),
                             TreatmentPlan = "Geen",
                             UserType = 0
                         });
@@ -34044,7 +34046,7 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Core.Domain.Availability", b =>
                 {
                     b.HasOne("Core.Domain.User", "User")
-                        .WithMany("UserAvailability")
+                        .WithMany("Availability")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -34111,11 +34113,11 @@ namespace Infrastructure.Migrations
                 {
                     b.Navigation("Appointments");
 
+                    b.Navigation("Availability");
+
                     b.Navigation("Comments");
 
                     b.Navigation("TreatmentHistory");
-
-                    b.Navigation("UserAvailability");
                 });
 #pragma warning restore 612, 618
         }

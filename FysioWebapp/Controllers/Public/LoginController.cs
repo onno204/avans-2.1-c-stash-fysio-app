@@ -52,9 +52,9 @@ namespace FysioWebapp.Controllers.Public
         [HttpPost]
         public async Task<IActionResult> Index(LoginViewModel model)
         {
-            model.EmployeeEmail = "AdminUser";
-            model.PatientEmail = "AdminUser";
-            model.Password = "Password123!";
+            //model.EmployeeEmail = "AdminUser";
+            //model.PatientEmail = "AdminUser";
+            //model.Password = "Password123!";
             if (ModelState.IsValid)
             {
                 var email = (model.TargetSubmitButton == "employeeLogin") ? model.EmployeeEmail : model.PatientEmail;
@@ -89,17 +89,22 @@ namespace FysioWebapp.Controllers.Public
                 else if (model.TargetSubmitButton == "register")
                 {
                     var targetUser = await _userRepository.GetByEmail(email);
+                    Console.WriteLine(email);
                     if (targetUser != null && (targetUser.UserType is UserType.Student or UserType.Employee))
                     {
-                        IdentityUser patient = await _userManager.FindByIdAsync(targetUser.Email);
+                        IdentityUser patient = await _userManager.FindByEmailAsync(targetUser.Email);
+                        Console.WriteLine(patient);
                         if (patient == null)
                         {
                             try
                             {
                                 patient = new IdentityUser(email);
-                                Debug.WriteLine(patient);
+                                Console.WriteLine("patient");
+                                Console.WriteLine(patient);
                                 IdentityResult res = await _userManager.CreateAsync(patient, model.Password);
-                                Debug.WriteLine(res);
+                                await _userManager.AddClaimAsync(patient, new Claim("Patient", "true"));
+                                Console.WriteLine("res");
+                                Console.WriteLine(res);
                                 if (res.Errors.Any())
                                 {
                                     ModelState.AddModelError(nameof(model.PatientEmail),

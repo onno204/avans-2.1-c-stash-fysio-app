@@ -6,7 +6,7 @@ namespace FysioWebapp.Models
     public class AvailabilityModel
     {
         public AvailabilityDay AvailabilityDay { get; set; }
-        public TimeSpan StartTime { get; set; }
-        public TimeSpan EndTime { get; set; }
+        public float StartTime { get; set; }
+        public float EndTime { get; set; }
     }
 }

@@ -63,7 +63,7 @@ namespace FysioWebapp.Models
 
         public static CommentViewModel ToViewModel(this Comment comment)
         {
-            var result = new CommentViewModel
+            return new CommentViewModel
             {
                 Id = comment.Id,
                 CommentMadeBy = comment.CommentMadeBy.ToViewModel(),
@@ -71,13 +71,11 @@ namespace FysioWebapp.Models
                 Date = comment.Date,
                 PubliclyVisible = comment.PubliclyVisible
             };
-
-            return result;
         }
 
         public static TreatmentViewModel ToViewModel(this Treatment treatment)
         {
-            var result = new TreatmentViewModel()
+            return new TreatmentViewModel()
             {
                 Id = treatment.Id,
                 CarriedOutByUser = treatment.User.ToViewModel(),
@@ -87,21 +85,46 @@ namespace FysioWebapp.Models
                 VektisExplanation = treatment.VektisExplanation,
                 VektisId = treatment.VektisId
             };
-
-            return result;
         }
 
         public static AppointmentViewModel ToViewModel(this Appointment appointment)
         {
-            var result = new AppointmentViewModel()
+            return new AppointmentViewModel()
             {
                 Id = appointment.Id,
                 Date = appointment.Date,
                 AppointmentCreatedByUser = appointment.AppointmentCreatedByUser.ToViewModel(),
                 AppointmentWithUser = appointment.AppointmentWithUser.ToViewModel()
             };
+        }
+        public static List<AvailabilityModel> ToViewModel(this List<Availability> availabilities)
+        {
+            List<AvailabilityModel> availabilityList = new List<AvailabilityModel>();
+            availabilities.ForEach(model =>
+            {
+                availabilityList.Add(new AvailabilityModel()
+                {
+                    AvailabilityDay = model.AvailabilityDay,
+                    EndTime = model.EndTime,
+                    StartTime = model.StartTime
+                });
+            });
+            return availabilityList;
+        }
 
-            return result;
+        public static List<Availability> ToModel(this List<AvailabilityModel> availabilities)
+        {
+            List<Availability> availabilityList = new List<Availability>();
+            availabilities.ForEach(model =>
+            {
+                availabilityList.Add(new Availability()
+                {
+                    AvailabilityDay = model.AvailabilityDay,
+                    EndTime = model.EndTime,
+                    StartTime = model.StartTime
+                });
+            });
+            return availabilityList;
         }
     }
 }

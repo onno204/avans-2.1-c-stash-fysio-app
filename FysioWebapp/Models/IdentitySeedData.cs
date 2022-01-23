@@ -14,7 +14,7 @@ namespace FysioWebapp.Models
 
         public static async Task EnsurePopulated(UserManager<IdentityUser> userManager)
         {
-            IdentityUser user = await userManager.FindByIdAsync(AdminUser);
+            IdentityUser user = await userManager.FindByNameAsync(AdminUser);
             if (user == null)
             {
                 user = new IdentityUser(AdminUser);
@@ -22,7 +22,7 @@ namespace FysioWebapp.Models
                 await userManager.AddClaimAsync(user, new Claim("Therapist", "true"));
             }
 
-            IdentityUser patient = await userManager.FindByIdAsync(PatientUser);
+            IdentityUser patient = await userManager.FindByNameAsync(PatientUser);
             if (patient == null)
             {
                 patient = new IdentityUser(PatientUser);

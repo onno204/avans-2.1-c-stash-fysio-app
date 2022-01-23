@@ -7,6 +7,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Core.DomainServices;
+using Core.Domain;
 
 namespace FysioWebapp.Controllers.Manage
 {
@@ -16,9 +18,11 @@ namespace FysioWebapp.Controllers.Manage
     public class AgendaController : Controller
     {
         private readonly ILogger<AgendaController> _logger;
+        private readonly IUserRepository _userRepository;
 
-        public AgendaController(ILogger<AgendaController> logger)
+        public AgendaController(ILogger<AgendaController> logger, IUserRepository userRepository)
         {
+            _userRepository = userRepository;
             _logger = logger;
         }
 
@@ -27,10 +31,20 @@ namespace FysioWebapp.Controllers.Manage
             return View("Manage/Agenda/Agenda");
         }
 
-        public IActionResult Availability()
+        public async Task<IActionResult> Availability()
         {
-            List<AvailabilityModel> list = new List<AvailabilityModel>();
-            return View("Manage/Agenda/Availability", list);
+            User user = await _userRepository.GetByEmail(User.Identity.Name);
+            return View("Manage/Agenda/Availability", user.UserAvailability.ToList().ToViewModel());
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public async Task<IActionResult> AvailabilityAsync(List<AvailabilityModel> model)
+        {
+            User user = await _userRepository.GetByEmail(User.Identity.Name);
+            user.UserAvailability = model.ToModel();
+            await _userRepository.Update(user);
+            return View("Manage/Agenda/Availability", user.UserAvailability.ToList().ToViewModel());
         }
 
         public IActionResult Add(int id)

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Domain
 {
@@ -13,9 +8,8 @@ namespace Core.Domain
         private int UserId { get; set; }
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
-
         public AvailabilityDay AvailabilityDay { get; set; }
-        public TimeSpan StartTime { get; set; }
-        public TimeSpan EndTime { get; set; }
+        public float StartTime { get; set; }
+        public float EndTime { get; set; }
     }
 }

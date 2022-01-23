@@ -24,6 +24,7 @@ namespace Infrastructure
                 .Include(u => u.TreatmentHistory)
                 .Include(u => u.IntakeUser)
                 .Include(u => u.IntakeSuperVisionUser)
+                .Include(u => u.UserAvailability)
                 .Include(u => u.MainTherapist);
         }
 
