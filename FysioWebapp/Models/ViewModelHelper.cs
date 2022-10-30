@@ -20,7 +20,7 @@ namespace FysioWebapp.Models
             return result;
         }
 
-        public static UserViewModel ToViewModel(this User user)
+        public static UserViewModel ToViewModel(this User user, Boolean partial = false)
         {
             if (user == null)
             {
@@ -49,17 +49,20 @@ namespace FysioWebapp.Models
                 Appointments = new List<AppointmentViewModel>(),
                 TreatmentHistory = new List<TreatmentViewModel>()
             };
-            foreach (Comment comment in user.Comments)
+            if (!partial)
             {
-                result.Comments.Add(comment.ToViewModel());
-            }
-            foreach (Appointment appointment in user.Appointments)
-            {
-                result.Appointments.Add(appointment.ToViewModel());
-            }
-            foreach (Treatment treatment in user.TreatmentHistory)
-            {
-                result.TreatmentHistory.Add(treatment.ToViewModel());
+                foreach (Comment comment in user.Comments)
+                {
+                    result.Comments.Add(comment.ToViewModel());
+                }
+                foreach (Appointment appointment in user.Appointments)
+                {
+                    result.Appointments.Add(appointment.ToViewModel());
+                }
+                foreach (Treatment treatment in user.TreatmentHistory)
+                {
+                    result.TreatmentHistory.Add(treatment.ToViewModel());
+                }
             }
             return result;
         }
@@ -81,7 +84,7 @@ namespace FysioWebapp.Models
             return new TreatmentViewModel()
             {
                 Id = treatment.Id,
-                CarriedOutByUser = treatment.User.ToViewModel(),
+                CarriedOutByUser = treatment.User.ToViewModel(true),
                 Date = treatment.Date,
                 Description = treatment.Description,
                 Room = treatment.Room,
@@ -97,8 +100,8 @@ namespace FysioWebapp.Models
                 Id = appointment.Id,
                 StartDate = appointment.StartDate,
                 EndDate = appointment.EndDate,
-                AppointmentCreatedByUser = appointment.AppointmentCreatedByUser.ToViewModel(),
-                AppointmentWithUser = appointment.AppointmentWithUser.ToViewModel()
+                AppointmentCreatedByUser = appointment.AppointmentCreatedByUser.ToViewModel(true),
+                AppointmentWithUser = appointment.AppointmentWithUser.ToViewModel(true)
             };
         }
         public static List<AvailabilityModel> ToViewModel(this List<Availability> availabilities)

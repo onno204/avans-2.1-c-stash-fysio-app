@@ -54,7 +54,7 @@
 
         <input type="button" class="btn" value="Save appointment" onclick="saveAppointment()" />
     </div>
-    <form asp-area="Manage" asp-controller="Agenda" asp-action="Add" method="post" class="submitToController">
+    <form asp-area="Patient" asp-controller="Agenda" asp-action="Add" method="post" class="submitToController">
     </form>
 </div>
 
@@ -171,7 +171,7 @@
 
     setTimeout(() => {
         setTherapistSelector();
-    }, 300);
+    }, 350);
 </script>
 
 @foreach (UserViewModel user in @Model)

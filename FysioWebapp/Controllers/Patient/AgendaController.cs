@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Core.DomainServices;
 using Core.Domain;
+using FysioWebapp.Helpers;
 
 namespace FysioWebapp.Controllers.Patient
 {
@@ -36,7 +37,8 @@ namespace FysioWebapp.Controllers.Patient
         {
             List<UserViewModel> therapists = new List<UserViewModel>();
             User user = await _userRepository.GetByEmail(User.Identity.Name);
-            therapists.Insert(0, user.MainTherapist.ToViewModel());
+            User mainTherapist = await _userRepository.GetById(user.MainTherapist.Id);
+            therapists.Insert(0, mainTherapist.ToViewModel());
             return View("Patient/Agenda/Add", therapists);
         }
 
@@ -51,17 +53,20 @@ namespace FysioWebapp.Controllers.Patient
             if (ModelState.IsValid)
             {
                 double diff = (model.EndDate - model.StartDate).TotalMinutes / 60.0;
-                if (user.SessionDuration != diff)
+                if (thisUser.SessionDuration != diff)
                 {
-                    ModelState.AddModelError(nameof(user.SessionDuration),
-                        "Your session duration must be " + user.SessionDuration + " hours");
+                    ModelState.AddModelError(nameof(thisUser.SessionDuration),
+                        "Your session duration must be " + thisUser.SessionDuration + " hours");
                 }
-                Console.WriteLine(user.SessionsPerWeek);
-                Console.WriteLine(user.Appointments.Count + 1);
-                if (user.SessionsPerWeek < (user.Appointments.Count + 1))
+                DateTime startOfWeek = model.StartDate.StartOfWeek(DayOfWeek.Monday);
+                DateTime endOfWeek = startOfWeek.AddDays(7);
+                IEnumerable<Appointment> appointments = thisUser.Appointments.Where(x => x.EndDate <= endOfWeek && x.StartDate >= startOfWeek).ToList();
+                Console.WriteLine(thisUser.SessionsPerWeek);
+                Console.WriteLine(thisUser.Appointments.Count + 1);
+                if (thisUser.SessionsPerWeek < (appointments.Count() + 1))
                 {
-                    ModelState.AddModelError(nameof(user.SessionsPerWeek),
-                        "You have to many sessions planned this week, your max is: " + user.SessionsPerWeek);
+                    ModelState.AddModelError(nameof(thisUser.SessionsPerWeek),
+                        "You have to many sessions planned this week, your max is: " + thisUser.SessionsPerWeek);
                 }
             }
             if (!ModelState.IsValid)
@@ -70,15 +75,15 @@ namespace FysioWebapp.Controllers.Patient
                 therapists.Insert(0, thisUser.ToViewModel());
                 return View("Patient/Agenda/Add", therapists);
             }
-            user.Appointments.Add(new Appointment()
+            thisUser.Appointments.Add(new Appointment()
             {
                 EndDate = model.EndDate,
                 StartDate = model.StartDate,
                 AppointmentWithUser = withUser,
                 AppointmentCreatedByUser = thisUser,
             });
-            await _userRepository.Update(user);
-            return Redirect("/Manage/Patient/Info/" + id);
+            await _userRepository.Update(thisUser);
+            return View("Patient/Dashboard");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
